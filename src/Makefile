@@ -9,9 +9,9 @@
 ## The compiler your gonna use to compile this with...
 ##
 #CC=g++-2.95
-#CC=g++-4.1
+CC=g++-4.1
 #CC=g++-3.3
-CC=g++
+#CC=g++
 ##
 LD=$(CC)
 ##
