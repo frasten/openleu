@@ -635,7 +635,6 @@ void boot_the_shops()
   int temp;
   int count;
   FILE *shop_f;
-  
   if (!(shop_f = fopen(SHOP_FILE, "r")))
     {
       perror("Error in boot shop\n");
@@ -643,7 +642,7 @@ void boot_the_shops()
     }
   
   number_of_shops = 0;
-printf("Ehi, io sono dentro, e numero shops deve essere 0: %d", number_of_shops);  
+
   for(;;)    {
     buf = fread_string(shop_f);
     if(*buf == '#')        /* a new shop */        {
@@ -657,7 +656,7 @@ printf("Ehi, io sono dentro, e numero shops deve essere 0: %d", number_of_shops)
           perror("Error in boot shop\n");
           exit(0);
         }
-      
+
       for(count=0;count<MAX_PROD;count++)
         {
           fscanf(shop_f,"%d \n", &temp);
@@ -713,7 +712,6 @@ printf("Ehi, io sono dentro, e numero shops deve essere 0: %d", number_of_shops)
              &shop_index[number_of_shops].open2);
       fscanf(shop_f,"%d \n",
              &shop_index[number_of_shops].close2);
-      
       number_of_shops++;
     }
     else 
@@ -727,14 +725,13 @@ printf("Ehi, io sono dentro, e numero shops deve essere 0: %d", number_of_shops)
 void assign_the_shopkeepers()
 {
   int temp1;
-/*
- * 0x000000000046b4f5 in assign_the_shopkeepers () at shop.c:732
-732	    mob_index[shop_index[temp1].keeper].func = CASTVF shop_keeper;
-* #define CASTVF (int(*)(struct char_data*,int,char*,void*,int))
- * */  
-printf("%d",number_of_shops);
-  for(temp1=0 ; temp1<number_of_shops ; temp1++)
+	
+  for(temp1=0 ; temp1<number_of_shops ; temp1++) {
+		if (shop_index[temp1].keeper < 0) {
+			mudlog( LOG_ERROR, "Shopkeeper mancante nello shop in room #%d.", shop_index[temp1].in_room );
+			continue;
+		}
     mob_index[shop_index[temp1].keeper].func = CASTVF shop_keeper;
-  
+  }
 }
 
