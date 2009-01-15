@@ -83,11 +83,11 @@ int top_of_wizhelpt;                  /* top of wiz help index table         */
 struct time_info_data time_info;        /* the infomation about the time   */
 struct weather_data weather_info;       /* the infomation about the weather */
 
-long saved_rooms[WORLD_SIZE]; 
+long saved_rooms[WORLD_SIZE];
 long number_of_saved_rooms = 0;
 extern struct descriptor_data *descriptor_list;
 extern struct spell_info_type spell_info[MAX_SPL_LIST];
-struct index_data *InsertInIndex( struct index_data *pIndex, char *szName, 
+struct index_data *InsertInIndex( struct index_data *pIndex, char *szName,
                                   int nVNum, int *alloc_top, int *top );
 void clean_playerfile(void);
 void ReadTextZone( FILE *fl );
@@ -134,13 +134,13 @@ void boot_db()
   CommandSetup();
   InitScripts();
   mudlog( LOG_CHECK, "Opening mobile, object and help files.");
-  if (!(mob_f = fopen(MOB_FILE, "r")))    
+  if (!(mob_f = fopen(MOB_FILE, "r")))
   {
     perror("Opening mob file");
     abort();
   }
 
-  if (!(obj_f = fopen(OBJ_FILE, "r")))    
+  if (!(obj_f = fopen(OBJ_FILE, "r")))
   {
     perror("Opening obj file");
     abort();
@@ -161,7 +161,7 @@ void boot_db()
 #endif
 
   mudlog( LOG_CHECK, "Booting mail system.");
-  if (!scan_mail_file()) 
+  if (!scan_mail_file())
   {
     mudlog( LOG_ERROR, "   Mail system error -- mail system disabled!");
     no_mail = 1;
@@ -180,9 +180,9 @@ void boot_db()
   boot_saved_rooms();
 
   mudlog( LOG_CHECK, "Generating index tables for mobile and object files.");
-  mob_index = generate_indices( mob_f, &top_of_mobt, &top_of_sort_mobt, 
+  mob_index = generate_indices( mob_f, &top_of_mobt, &top_of_sort_mobt,
                                 &top_of_alloc_mobt, MOB_DIR );
-  obj_index = generate_indices( obj_f, &top_of_objt, &top_of_sort_objt, 
+  obj_index = generate_indices( obj_f, &top_of_objt, &top_of_sort_objt,
                                 &top_of_alloc_objt, OBJ_DIR );
 
   mudlog( LOG_CHECK, "Renumbering zone table.");
@@ -201,7 +201,7 @@ void boot_db()
   boot_pose_messages();
 
   mudlog( LOG_CHECK, "Assigning function pointers:");
-  if (!no_specials)       
+  if (!no_specials)
   {
     mudlog( LOG_CHECK, "   Mobiles.");
     assign_mobiles();
@@ -239,13 +239,13 @@ void boot_db()
              zone_table[i].num, s, d, e );
     zone_table[i].start = 0;
 
-    if( i == 0 ) 
+    if( i == 0 )
     {
       fprintf(stderr, "Performing boot-time reload of static mobs\n" );
       reset_zone(0);
     }
 
-    if( i == 1 ) 
+    if( i == 1 )
     {
       mudlog( LOG_CHECK, "Reset of %s\n", s );
       reset_zone(1);
@@ -267,7 +267,7 @@ void reset_time()
 
 
   struct time_info_data mud_time_passed(time_t t2, time_t t1);
-  
+
   time_info = mud_time_passed(time(0), beginning_of_time);
 
   moontype = time_info.day;
@@ -323,11 +323,11 @@ void reset_time()
       break;
     }
   }
-  
+
   mudlog( LOG_CHECK,"   Current Gametime: %dH %dD %dM %dY.",
           time_info.hours, time_info.day,
           time_info.month, time_info.year);
-  
+
   weather_info.pressure = 960;
   if ((time_info.month>=7)&&(time_info.month<=12))
     weather_info.pressure += dice(1,50);
@@ -427,10 +427,10 @@ void build_player_index()
 
           if( max >= IMMORTAL )
           {
-            mudlog( LOG_CHECK, 
+            mudlog( LOG_CHECK,
                     "GOD: %s, Levels [%d][%d][%d][%d][%d][%d][%d][%d]",
-                    Player.name, Player.level[0], Player.level[1], 
-                    Player.level[2], Player.level[3], Player.level[4], 
+                    Player.name, Player.level[0], Player.level[1],
+                    Player.level[2], Player.level[3], Player.level[4],
                     Player.level[5], Player.level[6], Player.level[7] );
 
             list_wiz.lookup[max - 51].stuff[list_wiz.number[max - 51]].name =
@@ -487,8 +487,8 @@ void build_player_index()
 
       CREATE(player_table[nr].name, char,
              strlen(dummy.name) + 1);
-      for( i = 0; 
-           ( *( player_table[nr].name + i ) = LOWER( *( dummy.name + i ) ) ); 
+      for( i = 0;
+           ( *( player_table[nr].name + i ) = LOWER( *( dummy.name + i ) ) );
            i++);
 
         for (j=0;j<=ABS_MAX_CLASS;j++)
@@ -497,8 +497,8 @@ void build_player_index()
 
 #if 1
                         /* was 5 */
-      for (i = 0; i < MAX_CLASS; i++) 
-        if (dummy.level[i] >= 51) 
+      for (i = 0; i < MAX_CLASS; i++)
+        if (dummy.level[i] >= 51)
         {
           mudlog( LOG_CHECK, "GOD: %s, Levels [%d][%d][%d][%d][%d][%d][%d][%d]",
                   dummy.name, dummy.level[0],dummy.level[1],dummy.level[2],
@@ -509,7 +509,7 @@ void build_player_index()
 
           /* MAX_CLASS does not work here... */
           for (j=0 ; j < MAX_CLASS; j++)
-            if (dummy.level[j] > max) 
+            if (dummy.level[j] > max)
             {
               max = dummy.level[j];
             }
@@ -550,7 +550,7 @@ void build_player_index()
   strcat(wizlist, buf);
 
 
-  for( i = 0; i < list_wiz.number[9]; i++) 
+  for( i = 0; i < list_wiz.number[9]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[9].stuff[i].name,
             list_wiz.lookup[9].stuff[i].title);
@@ -571,7 +571,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[8]; i++) 
+  for(i = 0; i < list_wiz.number[8]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[8].stuff[i].name,
             list_wiz.lookup[8].stuff[i].title);
@@ -591,7 +591,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[7]; i++) 
+  for(i = 0; i < list_wiz.number[7]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[7].stuff[i].name,
             list_wiz.lookup[7].stuff[i].title);
@@ -611,7 +611,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[6]; i++) 
+  for(i = 0; i < list_wiz.number[6]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[6].stuff[i].name,
             list_wiz.lookup[6].stuff[i].title);
@@ -631,7 +631,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[5]; i++) 
+  for(i = 0; i < list_wiz.number[5]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[5].stuff[i].name,
             list_wiz.lookup[5].stuff[i].title);
@@ -651,7 +651,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[4]; i++) 
+  for(i = 0; i < list_wiz.number[4]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[4].stuff[i].name,
             list_wiz.lookup[4].stuff[i].title);
@@ -671,7 +671,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[3]; i++) 
+  for(i = 0; i < list_wiz.number[3]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[3].stuff[i].name,
             list_wiz.lookup[3].stuff[i].title);
@@ -691,7 +691,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[2]; i++) 
+  for(i = 0; i < list_wiz.number[2]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[2].stuff[i].name,
             list_wiz.lookup[2].stuff[i].title);
@@ -711,7 +711,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[1]; i++) 
+  for(i = 0; i < list_wiz.number[1]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[1].stuff[i].name,
             list_wiz.lookup[1].stuff[i].title);
@@ -731,7 +731,7 @@ void build_player_index()
     strcat(wizlist, " ");
   strcat(wizlist, buf);
 
-  for(i = 0; i < list_wiz.number[0]; i++) 
+  for(i = 0; i < list_wiz.number[0]; i++)
   {
     sprintf(buf, "%s %s\n\r", list_wiz.lookup[0].stuff[i].name,
             list_wiz.lookup[0].stuff[i].title);
@@ -760,7 +760,7 @@ void ReplaceInIndex( struct index_data *pIndex, char *szName, int nRNum,
     mudlog( LOG_SYSERR, "Invalid RNum in ReplaceInIndex (db.c)." );
     return;
   }
-  
+
   pIndex[ nRNum ].iVNum = nVNum;
   pIndex[ nRNum ].pos = -1;
   pIndex[ nRNum ].name = strdup( szName );
@@ -796,7 +796,7 @@ void InsertObject( struct obj_data *pObj, int nVNum )
   int nRNum = real_object( nVNum );
   if( nRNum < 0 )
   {
-    obj_index = InsertInIndex( obj_index, pObj->name, nVNum, 
+    obj_index = InsertInIndex( obj_index, pObj->name, nVNum,
                                &top_of_alloc_objt, &top_of_objt );
   }
   else
@@ -810,7 +810,7 @@ void InsertMobile( struct char_data *pMob, int nVNum )
   int nRNum = real_mobile( nVNum );
   if( nRNum < 0 )
   {
-    obj_index = InsertInIndex( mob_index, GET_NAME( pMob ), nVNum, 
+    obj_index = InsertInIndex( mob_index, GET_NAME( pMob ), nVNum,
                                &top_of_alloc_mobt, &top_of_mobt );
   }
   else
@@ -828,7 +828,7 @@ void read_object_to_memory( int nVNum)
 }
 
 /* generate index table for object or monster file */
-struct index_data *generate_indices( FILE *fl, int *top, int *sort_top, 
+struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
                                      int *alloc_top, char *dirname )
 {
   FILE *f;
@@ -842,18 +842,18 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
 
   /* scan main obj file */
   rewind(fl);
-  for (;;) 
+  for (;;)
   {
-    if (fgets(buf, sizeof(buf), fl)) 
+    if (fgets(buf, sizeof(buf), fl))
     {
-      if (*buf == '#') 
+      if (*buf == '#')
       {
         if (!i)                                          /* first cell */
           CREATE(index, struct index_data, bc);
-        else if (i >= bc) 
+        else if (i >= bc)
         {
           if (!(index = (struct index_data*)
-                realloc(index, (i + 50) * sizeof(struct index_data)))) 
+                realloc(index, (i + 50) * sizeof(struct index_data))))
           {
             perror("load indices");
             assert(0);
@@ -862,13 +862,13 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
         }
         sscanf(buf, "#%d", &index[i].iVNum );
         sprintf(tbuf,"%s/%d",dirname,index[i].iVNum);
-        if((f=fopen(tbuf,"rt"))==NULL) 
+        if((f=fopen(tbuf,"rt"))==NULL)
         {
           index[i].pos = ftell(fl);
-          index[i].name = (index[i].iVNum < 99999) ? fread_string(fl) : 
+          index[i].name = (index[i].iVNum < 99999) ? fread_string(fl) :
                                                        strdup("omega");
-        } 
-        else 
+        }
+        else
         {
           index[i].pos = -1;
           fscanf(f, "#%*d\n");
@@ -881,14 +881,14 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
         index[i].func = 0;
         index[i].data = NULL;
         i++;
-      } 
-      else 
+      }
+      else
       {
         if (*buf == '%' && buf[ 1 ] == '%' )        /* EOF */
           break;
       }
-    } 
-    else 
+    }
+    else
     {
       fprintf(stderr,"generate indices");
       assert(0);
@@ -898,17 +898,17 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
   *alloc_top = bc;
   *top = *sort_top;
   /* scan for directory entrys */
-  if((dir=opendir(dirname))==NULL) 
+  if((dir=opendir(dirname))==NULL)
   {
     mudlog( LOG_ERROR ,"unable to open index directory %s",dirname);
     return(index);
   }
-  while((ent=readdir(dir)) != NULL) 
+  while((ent=readdir(dir)) != NULL)
   {
-    if(*ent->d_name=='.') 
+    if(*ent->d_name=='.')
       continue;
     vnum=atoi(ent->d_name);
-    if(vnum == 0) 
+    if(vnum == 0)
       continue;
     /* search if vnum was already sorted in main database */
     for(j=0;j<di;j++)
@@ -917,17 +917,17 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
     if(dvnums[j] == vnum)
       continue;
     sprintf(buf,"%s/%s",dirname, ent->d_name);
-    if((f=fopen(buf,"rt")) == NULL) 
+    if((f=fopen(buf,"rt")) == NULL)
     {
       mudlog( LOG_ERROR, "Can't open file %s for reading\n",buf);
       continue;
     }
     if (!i)
       CREATE(index, struct index_data, bc);
-    else if (i >= bc) 
+    else if (i >= bc)
     {
       if (!(index = (struct index_data*)
-            realloc(index, (i + 50) * sizeof(struct index_data)))) 
+            realloc(index, (i + 50) * sizeof(struct index_data))))
       {
         perror("load indices");
         assert(0);
@@ -935,8 +935,8 @@ struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
       bc += 50;
     }
     fscanf(f, "#%*d\n");
-    index[i].iVNum = vnum; 
-    index[i].pos = -1; 
+    index[i].iVNum = vnum;
+    index[i].pos = -1;
     index[i].name = (index[i].iVNum<99999)?fread_string(f):strdup("omega");
     index[i].number = 0;
     index[i].func = 0;
@@ -1063,7 +1063,7 @@ void load_one_room( FILE *fl, struct room_data *rp )
   }
 
   if( tmp == SECT_WATER_NOSWIM || tmp == SECT_UNDERWATER )
-  { 
+  {
     /* river */
     /* read direction and rate of flow */
     tmp = fread_number( fl );
@@ -1140,7 +1140,7 @@ void load_one_room( FILE *fl, struct room_data *rp )
 
         sprintf( buf, "world/%ld", rp->number );
         fp = fopen( buf, "r" );
-        if( fp ) 
+        if( fp )
         {
           saved_rooms[ number_of_saved_rooms ] = rp->number;
           number_of_saved_rooms++;
@@ -1149,7 +1149,7 @@ void load_one_room( FILE *fl, struct room_data *rp )
       }
       return;
      case 'C':
-      /* Commento, non deve fare nulla. Il tutto deve stare su una sola 
+      /* Commento, non deve fare nulla. Il tutto deve stare su una sola
        * linea. */
       break;
      default:
@@ -1300,18 +1300,18 @@ void boot_saved_rooms()
   struct room_data *rp;
   long rooms = 0, vnum;
 
-  if ((dir = opendir("rooms")) == NULL) 
+  if ((dir = opendir("rooms")) == NULL)
   {
     mudlog( LOG_ERROR, "Unable to open rooms directory.\n");
     return;
   }
 
-  while((ent = readdir(dir)) != NULL) 
+  while((ent = readdir(dir)) != NULL)
   {
-    if(*ent->d_name=='.') 
+    if(*ent->d_name=='.')
       continue;
     vnum=atoi(ent->d_name);
-    if(!vnum || vnum>top_of_world) 
+    if(!vnum || vnum>top_of_world)
       continue;
     sprintf(buf,"rooms/%s",ent->d_name);
     if((fp=fopen(buf,"rt")) == NULL)
@@ -1319,10 +1319,10 @@ void boot_saved_rooms()
       mudlog( LOG_ERROR, "Can't open file %s for reading\n",buf);
       continue;
     }
-    while (!feof(fp)) 
+    while (!feof(fp))
     {
       fscanf(fp, "#%*d\n");
-      if( ( rp = real_roomp( vnum ) ) == NULL ) 
+      if( ( rp = real_roomp( vnum ) ) == NULL )
       {  /* empty room */
         rp = (struct room_data *)malloc( sizeof( struct room_data ) );
         if( rp )
@@ -1420,7 +1420,7 @@ void renum_zone_table(int spec_zone)
         break;
        case 'D':
         /*cmd->arg1 = real_room(cmd->arg1);*/
-        if( cmd->arg1 < 0 || real_roomp( cmd->arg1 ) == NULL ) 
+        if( cmd->arg1 < 0 || real_roomp( cmd->arg1 ) == NULL )
           LOG_ZONE_ERROR('D', "room", zone, comm);
         break;
       }
@@ -1437,13 +1437,13 @@ void boot_zones()
   int zon = 0, cmd_no = 0, expand, tmp, bc=100, cc = 22, znumber;
   char *check, buf[81];
 
-  if (!(fl = fopen(ZONE_FILE, "r")))   
+  if (!(fl = fopen(ZONE_FILE, "r")))
   {
     perror("boot_zones");
     assert(0);
   }
 
-  for (;;)     
+  for (;;)
   {
     fscanf(fl, " #%d\n",&znumber);
     check = fread_string(fl);
@@ -1532,7 +1532,7 @@ void boot_zones()
           zone_table[zon].cmd[cmd_no].command == 'P' ||
           zone_table[zon].cmd[cmd_no].command == 'D')
         fscanf(fl, " %d", &zone_table[zon].cmd[cmd_no].arg3 );
-      
+
       if( zone_table[zon].cmd[cmd_no].command == 'O')
         fscanf(fl, " %d", &zone_table[zon].cmd[cmd_no].arg4 );
 
@@ -1574,7 +1574,7 @@ struct char_data *read_mobile(int nr, int type)
   i = nr;
   if( type == VIRTUAL )
   {
-    if( ( nr = real_mobile( nr ) ) < 0 )     
+    if( ( nr = real_mobile( nr ) ) < 0 )
     {
       mudlog( LOG_ERROR, "Mobile (V) %d does not exist in database.", i );
       return NULL;
@@ -1621,7 +1621,7 @@ struct char_data *read_mobile(int nr, int type)
   SET_BIT(mob->specials.act, ACT_ISNPC);
   if( IS_SET( mob->specials.act, ACT_POLYSELF ) )
   {
-    mudlog( LOG_ERROR, "ACT_POLYSELF bit set in mob #%d.", 
+    mudlog( LOG_ERROR, "ACT_POLYSELF bit set in mob #%d.",
             mob_index[nr].iVNum );
     REMOVE_BIT( mob->specials.act, ACT_POLYSELF );
   }
@@ -1634,7 +1634,7 @@ struct char_data *read_mobile(int nr, int type)
 
   fscanf(mob_f, " %c ", &letter);
 
-  if (letter == 'S') 
+  if (letter == 'S')
   {
     fscanf(mob_f, "\n");
 
@@ -1652,7 +1652,7 @@ struct char_data *read_mobile(int nr, int type)
     mob->points.hitroll = 20 - fread_number( mob_f );
 
     tmp = fread_number( mob_f );
-    
+
     if (tmp > 10 || tmp < -10)
       tmp /= 10;
 
@@ -1675,7 +1675,7 @@ struct char_data *read_mobile(int nr, int type)
     mob->points.max_move = 50;
 
     tmp = fread_number( mob_f );
-    if (tmp == -1) 
+    if (tmp == -1)
     {
       mob->points.gold = fread_number( mob_f );
       GET_EXP(mob) = fread_number( mob_f );
@@ -1685,7 +1685,7 @@ struct char_data *read_mobile(int nr, int type)
       if(IsSmall(mob))
         mob->abilities.str -= 1;
     }
-    else 
+    else
     {
       mob->points.gold = tmp;
       GET_EXP(mob) = fread_number( mob_f );
@@ -1695,7 +1695,7 @@ struct char_data *read_mobile(int nr, int type)
     mob->specials.default_pos = fread_number( mob_f );
 
     tmp = fread_number( mob_f );
-    if (tmp < 3) 
+    if (tmp < 3)
     {
       mob->player.sex = tmp;
       mob->immune = 0;
@@ -1735,14 +1735,14 @@ struct char_data *read_mobile(int nr, int type)
                                 MAX(20-GET_LEVEL(mob, WARRIOR_LEVEL_IND), 2);
   }
   else if( letter == 'A' || letter == 'N' || letter == 'B' || letter == 'L' )
-  {  
+  {
     if( letter == 'A' || letter == 'B' || letter == 'L' )
     {
       mob->mult_att = (float)fread_number( mob_f );
 
 #if 0
       /*  read in types: */
-      for (i=0;i<mob->mult_att && i < 10; i++) 
+      for (i=0;i<mob->mult_att && i < 10; i++)
       {
          mob->att_type[i] = fread_number( mob_f );
       }
@@ -1764,7 +1764,7 @@ struct char_data *read_mobile(int nr, int type)
     mob->points.hitroll = 20 - fread_number( mob_f );
 
     mob->points.armor = 10 * fread_number( mob_f );
-    
+
     tmp = fread_number( mob_f );
     mob->points.max_hit = dice(GET_LEVEL(mob, WARRIOR_LEVEL_IND), 8)+tmp;
     mob->points.hit = mob->points.max_hit;
@@ -1773,7 +1773,7 @@ struct char_data *read_mobile(int nr, int type)
     mob->points.damroll = tmp3;
     mob->specials.damnodice = tmp;
     mob->specials.damsizedice = tmp2;
- 
+
     mob->points.mana = 10;
     mob->points.max_mana = 10;
 
@@ -1868,7 +1868,7 @@ struct char_data *read_mobile(int nr, int type)
       GET_COND(mob, i) = -1;
 
     for (i = 0; i < 5; i++)
-      mob->specials.apply_saving_throw[ i ] = 
+      mob->specials.apply_saving_throw[ i ] =
         MAX( 20 - GET_LEVEL( mob, WARRIOR_LEVEL_IND ), 2 );
   }
   else
@@ -1880,13 +1880,13 @@ struct char_data *read_mobile(int nr, int type)
 
     fscanf(mob_f, " %ld ", &tmp);
     mob->abilities.intel = tmp;
- 
+
     fscanf(mob_f, " %ld ", &tmp);
     mob->abilities.wis = tmp;
 
     fscanf(mob_f, " %ld ", &tmp);
     mob->abilities.dex = tmp;
- 
+
     fscanf(mob_f, " %ld \n", &tmp);
     mob->abilities.con = tmp;
 
@@ -1907,7 +1907,7 @@ struct char_data *read_mobile(int nr, int type)
     fscanf(mob_f, " %ld ", &tmp);
     mob->points.move = tmp;
     mob->points.max_move = tmp;
- 
+
     fscanf(mob_f, " %ld ", &tmp);
     mob->points.gold = tmp;
 
@@ -1929,7 +1929,7 @@ struct char_data *read_mobile(int nr, int type)
     GET_LEVEL(mob, WARRIOR_LEVEL_IND) = tmp;
 
     mob->abilities.chr = MIN( 10 + number( 0, MAX( 1, tmp / 5 ) ), 18 );
-    
+
     fscanf(mob_f, " %ld ", &tmp);
     mob->player.time.birth = time(0);
     mob->player.time.played     = 0;
@@ -2045,8 +2045,8 @@ struct char_data *read_mobile(int nr, int type)
   total_mbc += bc;
   mob_count++;
 
-  mudlog( LOG_CHECK | LOG_SILENT, 
-          "Loaded mob %s (ADDR: %p, magic %d, next %p, #mobs %ld).", 
+  mudlog( LOG_CHECK | LOG_SILENT,
+          "Loaded mob %s (ADDR: %p, magic %d, next %p, #mobs %ld).",
           GET_NAME_DESC( mob ), mob, mob->nMagicNumber, mob->next, mob_count );
 
 #if 0
@@ -2086,7 +2086,7 @@ void clone_obj_to_obj(struct obj_data *obj, struct obj_data *osrc)
   obj->obj_flags.cost         = osrc->obj_flags.cost;
   obj->obj_flags.cost_per_day = osrc->obj_flags.cost_per_day;
 
-  /* *** extra descriptions *** */ 
+  /* *** extra descriptions *** */
 
   obj->ex_description = 0;
 
@@ -2110,7 +2110,7 @@ void clone_obj_to_obj(struct obj_data *obj, struct obj_data *osrc)
     obj->affected[i].location = osrc->affected[i].location;
     obj->affected[i].modifier = osrc->affected[i].modifier;
   }
-  
+
   if( osrc->szForbiddenWearToChar )
     obj->szForbiddenWearToChar = strdup( osrc->szForbiddenWearToChar );
   if( osrc->szForbiddenWearToRoom )
@@ -2123,7 +2123,7 @@ int read_obj_from_file(struct obj_data *obj, FILE *f)
   long bc = 0L;
   char chk[ 161 ];
   struct extra_descr_data *new_descr;
-  
+
   SetStatus( "Entrato in read_obj_from_file", NULL );
 
   obj->name = fread_string(f);
@@ -2148,7 +2148,7 @@ int read_obj_from_file(struct obj_data *obj, FILE *f)
   }
 
   /* *** numeric data *** */
-  
+
   SetStatus( "Reading numeric data in read_obj_from_file", NULL );
 
   obj->obj_flags.type_flag = fread_number( f );
@@ -2184,8 +2184,8 @@ int read_obj_from_file(struct obj_data *obj, FILE *f)
   }
 
   SetStatus( "Reading affect in read_obj_from_file", NULL );
-  
-  for( i = 0 ; (i < MAX_OBJ_AFFECT) && (*chk == 'A') ; i++)     
+
+  for( i = 0 ; (i < MAX_OBJ_AFFECT) && (*chk == 'A') ; i++)
   {
     fscanf(f, " %d ", &tmp);
     obj->affected[i].location = tmp;
@@ -2198,14 +2198,14 @@ int read_obj_from_file(struct obj_data *obj, FILE *f)
     }
   }
 
-  for (;(i < MAX_OBJ_AFFECT);i++)       
+  for (;(i < MAX_OBJ_AFFECT);i++)
   {
     obj->affected[i].location = APPLY_NONE;
     obj->affected[i].modifier = 0;
   }
-  
+
   SetStatus( "Reading forbidden string in read_obj_from_file", NULL );
-  
+
   if( *chk == 'P' )
   {
     obj->szForbiddenWearToChar = fread_string( f );
@@ -2217,9 +2217,9 @@ int read_obj_from_file(struct obj_data *obj, FILE *f)
     obj->szForbiddenWearToChar = NULL;
     obj->szForbiddenWearToRoom = NULL;
   }
-  
+
   SetStatus( "Returning from read_obj_from_file", NULL );
-  
+
   return bc;
 }
 
@@ -2229,7 +2229,7 @@ void write_obj_to_file(struct obj_data *obj, FILE *f)
   struct extra_descr_data *descr;
 
 
-  fprintf(f,"#%d\n", obj->item_number >= 0 ? 
+  fprintf(f,"#%d\n", obj->item_number >= 0 ?
                      obj_index[obj->item_number].iVNum : 0 );
   fwrite_string(f, obj->name);
   fwrite_string(f, obj->short_description);
@@ -2240,7 +2240,7 @@ void write_obj_to_file(struct obj_data *obj, FILE *f)
           obj->obj_flags.extra_flags, obj->obj_flags.wear_flags);
   fprintf(f,"%d %d %d %d\n", obj->obj_flags.value[0], obj->obj_flags.value[1],
           obj->obj_flags.value[2], obj->obj_flags.value[3]);
-  fprintf(f,"%d %d %d\n", obj->obj_flags.weight, 
+  fprintf(f,"%d %d %d\n", obj->obj_flags.weight,
           obj->obj_flags.cost, obj->obj_flags.cost_per_day);
 
   /* *** extra descriptions *** */
@@ -2258,7 +2258,7 @@ void write_obj_to_file(struct obj_data *obj, FILE *f)
       fprintf(f,"A\n%d %ld\n",obj->affected[i].location,
               obj->affected[i].modifier);
   }
-  
+
   if( obj->szForbiddenWearToChar )
   {
     fprintf( f, "P\n" );
@@ -2292,9 +2292,9 @@ struct obj_data *read_object(int nr, int type)
     mudlog( LOG_ERROR, "Object (V) %d does not exist in database.", i );
     return NULL;
   }
-  
+
   SetStatus( "before CREATE object", NULL );
-  
+
   CREATE(obj, struct obj_data, 1);
   bc = sizeof(struct obj_data);
 
@@ -2329,9 +2329,9 @@ struct obj_data *read_object(int nr, int type)
       }
       else
       {
-        mudlog( LOG_ERROR, 
+        mudlog( LOG_ERROR,
                 "Cannot seek obj file at %l for obj n. %d(%d) in "
-                "read_object (%s).", obj_index[nr].pos, nr, 
+                "read_object (%s).", obj_index[nr].pos, nr,
                 obj_index[nr].iVNum, __FILE__ );
         free( obj );
         return NULL;
@@ -2367,9 +2367,9 @@ struct obj_data *read_object(int nr, int type)
   fprintf(stderr, "Object [%d] uses %d bytes\n", obj_index[nr].iVNum, bc);
 #endif
   total_obc += bc;
-  
+
   SetStatus( "ending read_object", NULL );
-  
+
   return (obj);
 }
 
@@ -2394,12 +2394,12 @@ void zone_update()
       if (zone_table[i].age < zone_table[i].lifespan &&
           zone_table[i].reset_mode)
       {
-        
+
         (zone_table[i].age)++;
       }
       else if (zone_table[i].age < ZO_DEAD && zone_table[i].reset_mode)
       {
-        
+
         /* enqueue zone */
 
         CREATE(update_u, struct reset_q_element, 1);
@@ -2466,7 +2466,7 @@ void zone_update()
 typedef struct tagZoneCommand
 {
   int nCmdNo;
-  
+
 
 } ZoneCommand;
 
@@ -2497,16 +2497,15 @@ void reset_zone(int zone)
   struct char_data *pLastMob = 0;
   struct obj_data *pLastCont = 0;
 
-
-  if( zone == 0 && !done ) 
+  if( zone == 0 && !done )
   {
     done = TRUE;
 
-    for( i = 0; i < WORLD_SIZE; i += 1000 ) 
+    for( i = 0; i < WORLD_SIZE; i += 1000 )
     {
       sprintf( buf, "world/mobs.%d", i );
       fl = fopen(buf, "r");
-      if( !fl ) 
+      if( !fl )
       {
         mudlog( LOG_ERROR, "Unable to load scratch zone file for update.");
         return;
@@ -2525,7 +2524,7 @@ void reset_zone(int zone)
     s = zone_table[zone].name;
     d = (zone ? (zone_table[zone - 1].top + 1) : 0);
     e = zone_table[zone].top;
-    if( zone_table[zone].start == 0 ) 
+    if( zone_table[zone].start == 0 )
       sprintf( buf, "Run time initialization of zone %s (%d), rooms (%d-%d)",
                s, zone, d, e );
     else
@@ -2538,7 +2537,7 @@ void reset_zone(int zone)
   if( !zone_table[zone].cmd )
     return;
 
-  for( cmd_no = 0; ; cmd_no++ ) 
+  for( cmd_no = 0; ; cmd_no++ )
   {
     if (ZCMD.command == 'S')
       break;
@@ -2565,7 +2564,7 @@ void reset_zone(int zone)
           if( GET_RACE( pMob ) > RACE_GNOME &&
               !strchr( zone_table[ zone ].races, GET_RACE( pMob ) ) )
           {
-            zone_table[ zone ].races[ strlen( zone_table[ zone ].races ) ] = 
+            zone_table[ zone ].races[ strlen( zone_table[ zone ].races ) ] =
               GET_RACE( pMob );
           }
 
@@ -2591,7 +2590,7 @@ void reset_zone(int zone)
 
           if( GET_RACE( pMob ) > RACE_GNOME &&
               !strchr( zone_table[ zone ].races, GET_RACE( pMob ) ) )
-            zone_table[ zone ].races[ strlen( zone_table[ zone ].races ) ] = 
+            zone_table[ zone ].races[ strlen( zone_table[ zone ].races ) ] =
                   GET_RACE( pMob );
 
           char_to_room( pMob, pMaster->in_room );
@@ -2601,7 +2600,7 @@ void reset_zone(int zone)
           SET_BIT( pMob->specials.act, ZCMD.arg3 );
           nLastCmd = TRUE;
         }
-        else 
+        else
         {
           pLastMob = pMob = NULL;
           nLastCmd = FALSE;
@@ -2610,7 +2609,7 @@ void reset_zone(int zone)
 
       case 'Z':  /* set the last mobile to this zone */
         SetStatus( "Command Z", NULL );
-        if( pLastMob ) 
+        if( pLastMob )
         {
           pLastMob->specials.zone = ZCMD.arg1;
 
@@ -2625,14 +2624,14 @@ void reset_zone(int zone)
         SetStatus( "Command O", NULL );
         pObj = NULL;
         nLastCmd = FALSE;
-        if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 || 
+        if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 ||
                                 obj_index[ ZCMD.arg1 ].number < ZCMD.arg2 ) )
         {
-          if( ZCMD.arg3 >= 0 && ( ( rp = real_roomp( ZCMD.arg3 ) ) != NULL ) ) 
+          if( ZCMD.arg3 >= 0 && ( ( rp = real_roomp( ZCMD.arg3 ) ) != NULL ) )
           {
             if( ZCMD.arg4 == 0 || ObjRoomCount( ZCMD.arg1, rp ) < ZCMD.arg4 )
             {
-              if( ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL ) 
+              if( ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL )
               {
                 obj_to_room( pObj, ZCMD.arg3 );
                 nLastCmd = TRUE;
@@ -2650,7 +2649,7 @@ void reset_zone(int zone)
 
       case 'P': /* object to object */
         SetStatus( "Command P", NULL );
-        if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 || 
+        if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 ||
                                 obj_index[ ZCMD.arg1 ].number < ZCMD.arg2 ) &&
             ( pCont = get_obj_num( ZCMD.arg3 ) ) != NULL &&
             ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL )
@@ -2669,7 +2668,7 @@ void reset_zone(int zone)
         SetStatus( "Command G", NULL );
         if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 ||
                                 obj_index[ ZCMD.arg1 ].number < ZCMD.arg2 ) &&
-            pLastMob && ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL ) 
+            pLastMob && ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL )
         {
           obj_to_char( pObj, pLastMob );
           if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
@@ -2693,19 +2692,19 @@ void reset_zone(int zone)
         SetStatus( "Command E", NULL );
         if( ZCMD.arg1 >= 0 && ( ZCMD.arg2 == 0 ||
                                 obj_index[ZCMD.arg1].number < ZCMD.arg2 ) &&
-            pLastMob && ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL ) 
+            pLastMob && ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL )
         {
-          if( !pLastMob->equipment[ ZCMD.arg3 ] ) 
+          if( !pLastMob->equipment[ ZCMD.arg3 ] )
           {
             equip_char( pLastMob, pObj, ZCMD.arg3);
             if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
               pLastCont = pObj;
           }
-          else 
+          else
           {
             mudlog( LOG_ERROR, "eq error - zone %d, cmd %d, item %d, mob %d, "
                                "loc %d\n", zone, cmd_no,
-                    obj_index[ ZCMD.arg1 ].iVNum, 
+                    obj_index[ ZCMD.arg1 ].iVNum,
                     mob_index[ pLastMob->nr ].iVNum, ZCMD.arg3 );
           }
         }
@@ -2714,7 +2713,7 @@ void reset_zone(int zone)
       case 'D': /* set state of door */
         SetStatus( "Command D", NULL );
         rp = real_roomp( ZCMD.arg1 );
-        if( rp && rp->dir_option[ZCMD.arg2] ) 
+        if( rp && rp->dir_option[ZCMD.arg2] )
         {
           if( !IS_SET( rp->dir_option[ZCMD.arg2]->exit_info, EX_ISDOOR ) )
           {
@@ -2722,7 +2721,7 @@ void reset_zone(int zone)
                     zone, cmd_no, ZCMD.arg1 );
             SET_BIT( rp->dir_option[ZCMD.arg2]->exit_info, EX_ISDOOR );
           }
-          switch (ZCMD.arg3) 
+          switch (ZCMD.arg3)
           {
           case 0:
             REMOVE_BIT(rp->dir_option[ZCMD.arg2]->exit_info, EX_LOCKED);
@@ -2737,8 +2736,8 @@ void reset_zone(int zone)
             SET_BIT(rp->dir_option[ZCMD.arg2]->exit_info, EX_CLOSED);
             break;
           }
-        } 
-        else 
+        }
+        else
         {
           /* that exit doesn't exist anymore */
           mudlog( LOG_ERROR, "Exit error - zone %d, cmd %d, loc %d",
@@ -2809,9 +2808,9 @@ int load_char(char *name, struct char_file_u *char_element)
   int player_i;
   int find_name(char *name);
 
-  if( ( player_i = find_name( name ) ) >= 0) 
+  if( ( player_i = find_name( name ) ) >= 0)
   {
-    if (!(fl = fopen(PLAYER_FILE, "r"))) 
+    if (!(fl = fopen(PLAYER_FILE, "r")))
     {
       perror("Opening player file for reading. (db.c, load_char)");
       assert(0);
@@ -2869,7 +2868,7 @@ void store_to_char(struct char_file_u *st, struct char_data *ch)
   else
     GET_TITLE(ch) = 0;
 
-  if (*st->description) 
+  if (*st->description)
   {
     CREATE(ch->player.description, char, strlen(st->description) + 1);
     strcpy(ch->player.description, st->description);
@@ -2901,14 +2900,14 @@ void store_to_char(struct char_file_u *st, struct char_data *ch)
 
   if( IS_IMMORTAL( ch ) )
     max = 100;
-  else if( HowManyClasses(ch) >= 3 ) 
+  else if( HowManyClasses(ch) >= 3 )
     max = 81;
-  else if( HowManyClasses(ch) == 2 ) 
+  else if( HowManyClasses(ch) == 2 )
     max = 86;
-  else 
+  else
     max = 95;
 
-  for (i = 0; i <= MAX_SKILLS - 1; i++) 
+  for (i = 0; i <= MAX_SKILLS - 1; i++)
   {
     ch->skills[i].flags   = st->skills[i].flags;
     ch->skills[i].special = st->skills[i].special;
@@ -2943,9 +2942,9 @@ void store_to_char(struct char_file_u *st, struct char_data *ch)
   strcpy(GET_NAME(ch), st->name);
 
 
-  for(i = 0; i <= 4; i++) 
+  for(i = 0; i <= 4; i++)
     ch->specials.apply_saving_throw[i] = 0;
-  
+
   for(i = 0; i <= 2; i++)
     GET_COND(ch, i) = st->conditions[i];
 
@@ -3037,7 +3036,7 @@ void char_to_store(struct char_data *ch, struct char_file_u *st)
 
   ch->specials.charging=0;  /* null it out to be sure. */
   ch->specials.charge_dir=-1; /* null it out */
-  
+
   st->abilities       = ch->abilities;
   st->points          = ch->points;
   st->alignment       = ch->specials.alignment;
@@ -3132,7 +3131,7 @@ int create_entry(char *name)
   CREATE(player_table[top_of_p_table].name, char , strlen(name) + 1);
 
   /* copy lowercase equivalent of name to table field */
-  for( i = 0; 
+  for( i = 0;
        ( *(player_table[top_of_p_table].name + i) = LOWER( *( name + i ) ) );
        i++ );
 
@@ -3157,7 +3156,7 @@ void save_char(struct char_data *ch, sh_int load_room)
   if( IS_NPC( ch ) && !IS_SET( ch->specials.act, ACT_POLYSELF ) )
     return;
 
-  if (IS_NPC(ch)) 
+  if (IS_NPC(ch))
   {
     if (!ch->desc)
       return;
@@ -3165,7 +3164,7 @@ void save_char(struct char_data *ch, sh_int load_room)
     if (!tmp)
       return;
   }
-  else 
+  else
   {
     if (!ch->desc)
       return;
@@ -3189,7 +3188,7 @@ void save_char(struct char_data *ch, sh_int load_room)
   strcpy( st.pwd, ch->desc->pwd );
 
 #if defined( EMANUELE )
-  sprintf( szFileName, "%s/%s.dat", PLAYERS_DIR, 
+  sprintf( szFileName, "%s/%s.dat", PLAYERS_DIR,
            tmp ? lower( tmp->player.name ) : lower( ch->player.name ) );
   if( ( fl = fopen( szFileName, "w+b" ) ) == NULL )
   {
@@ -3237,7 +3236,7 @@ char *fread_string(FILE *f1)
 {
   char buf[ MAX_STRING_LENGTH ];
   int i = 0, tmp;
-  
+
   SetStatus( "In fread_string", NULL );
 
   buf[ 0 ] = '\0';
@@ -3246,12 +3245,12 @@ char *fread_string(FILE *f1)
   {
     if( ( tmp = fgetc(f1) ) == EOF )
     {
-      mudlog( LOG_ERROR, "Error '%s' reading file in fread_string", 
+      mudlog( LOG_ERROR, "Error '%s' reading file in fread_string",
                strerror( errno ) );
       break;
     }
 
-    if(tmp == '~') 
+    if(tmp == '~')
     {
       break;
     }
@@ -3262,37 +3261,37 @@ char *fread_string(FILE *f1)
   }
 
   if( i >= MAX_STRING_LENGTH - 3 )
-  { 
+  {
     /* We filled the buffer */
     mudlog( LOG_ERROR, "File too long (fread_string).");
     while( ( tmp = fgetc( f1 ) ) != EOF )
       if( tmp == '~' )
         break;
   }
-  
+
   buf[ i ] = '\0';
 
   fgetc( f1 );
-  
+
   char *pReturnString = NULL;
-  
+
   if( strlen( buf ) )
   {
-  
+
     SetStatus( "Prima di duplicare la stringa", NULL );
     pReturnString = (char *)strdup(buf);
-  
+
     SetStatus( "Ritorno da fread_string", NULL );
-  
+
     if( pReturnString == NULL )
       mudlog( LOG_ERROR, "Errore nel duplicare la stringa %s", buf );
   }
-  
+
   return pReturnString;
 }
 
 /****************************************************************************
- * Legge un numero dl file puntata da pFIle. Se il numero contiene il 
+ * Legge un numero dl file puntata da pFIle. Se il numero contiene il
  * carattere | le due pozioni di numero vengono addizionate. Ad esempio
  * 4|128 diventa 132. Molto utile per i flags.
  ****************************************************************************/
@@ -3348,7 +3347,7 @@ void fwrite_flag( FILE *pFile, unsigned long ulFlags )
 {
   unsigned long ulBit = 1;
   short bPrimaVolta = TRUE;
-  
+
   while( ulFlags )
   {
     if( ulFlags & 1 )
@@ -3357,7 +3356,7 @@ void fwrite_flag( FILE *pFile, unsigned long ulFlags )
         fprintf( pFile, "|" );
       else
         bPrimaVolta = FALSE;
-      
+
       fprintf( pFile, "%lu", ulBit );
     }
     ulBit *= 2;
@@ -3376,12 +3375,12 @@ void free_char(struct char_data *ch)
   if( ch->nMagicNumber != CHAR_VALID_MAGIC )
   {
     mudlog( LOG_SYSERR,
-            "Characters char %s with uncorrect magic number in free_char!", 
+            "Characters char %s with uncorrect magic number in free_char!",
             GET_NAME_DESC( ch ) );
     return;
   }
-  
-  mudlog( LOG_CHECK, "Freeing char %s (ADDR: %p, magic %d)", 
+
+  mudlog( LOG_CHECK, "Freeing char %s (ADDR: %p, magic %d)",
           GET_NAME_DESC( ch ), ch, ch->nMagicNumber );
 
   if( GET_NAME( ch ) )
@@ -3421,7 +3420,7 @@ void free_char(struct char_data *ch)
   }
   if( ch->specials.A_list )
   {
-    for (i=0;i<10;i++) 
+    for (i=0;i<10;i++)
     {
       if( GET_ALIAS( ch, i ) )
       {
@@ -3438,7 +3437,7 @@ void free_char(struct char_data *ch)
     pNext = af->next;
     affect_remove( ch, af );
   }
-  
+
 
   if( ch->skills )
   {
@@ -3494,12 +3493,12 @@ void free_obj(struct obj_data *obj)
     else
     {
       next_one = NULL;
-      mudlog( LOG_SYSERR, 
+      mudlog( LOG_SYSERR,
               "Invalid extra description freeing object in free_obj (db.c)" );
     }
   }
   obj->ex_description = NULL;
-  
+
   free( obj->szForbiddenWearToChar );
   obj->szForbiddenWearToChar = NULL;
   free( obj->szForbiddenWearToRoom );
@@ -3524,13 +3523,13 @@ void free_obj(struct obj_data *obj)
       free( pExDescr->description );
     free( pExDescr );
   }
-  
+
   if( obj->szForbiddenWearToChar )
     free( obj->szForbiddenWearToChar );
   if( obj->szForbiddenWearToRoom )
     free( obj->szForbiddenWearToRoom );
 #endif
-  
+
   free(obj);
 }
 
@@ -3558,7 +3557,7 @@ int file_to_string(char *name, char *buf)
   do
   {
     fgets(tmp, 99, fl);
-    
+
     if (!feof(fl))
     {
       if (strlen(buf) + strlen(tmp) + 2 > MAX_STRING_LENGTH)
@@ -3594,7 +3593,7 @@ void ClearDeadBit(struct char_data *ch)
   if( ( fl = fopen( szFileName, "r+" ) ) != NULL )
   {
     fread( &st, sizeof( st ), 1, fl );
-  
+
     /* this is a serious kludge, and must be changed before multiple
        languages can be implemented */
     if( st.talks[ 2 ] )
@@ -3608,11 +3607,11 @@ void ClearDeadBit(struct char_data *ch)
   }
   else
   {
-    mudlog( LOG_ERROR, "Cannot open file %s.dat for player %s.", 
+    mudlog( LOG_ERROR, "Cannot open file %s.dat for player %s.",
             lower( GET_NAME( ch ) ), GET_NAME( ch ) );
   }
 #else
-  
+
   fl = fopen(PLAYER_FILE, "r+");
   if (!fl) {
     perror("player file");
@@ -3660,15 +3659,15 @@ void reset_char(struct char_data *ch)
   if (!GET_RACE(ch))
     GET_RACE(ch) = RACE_HUMAN;
 
-  if ((ch->player.iClass == 3) && (GET_LEVEL(ch, THIEF_LEVEL_IND))) 
+  if ((ch->player.iClass == 3) && (GET_LEVEL(ch, THIEF_LEVEL_IND)))
   {
     ch->player.iClass = 8;
     send_to_char("Setting your class to THIEF only.\n\r", ch);
   }
 
-  for (i=0;i<MAX_CLASS;i++) 
+  for (i=0;i<MAX_CLASS;i++)
   {
-    if (GET_LEVEL(ch, i) > BIG_GUY) 
+    if (GET_LEVEL(ch, i) > BIG_GUY)
     {
       GET_LEVEL(ch,i) = 51;
     }
@@ -3707,18 +3706,18 @@ void reset_char(struct char_data *ch)
   ch->points.max_mana = 0;
   ch->points.max_move = 0;
 
-  if (IS_IMMORTAL(ch)) 
+  if (IS_IMMORTAL(ch))
   {
     GET_BANK(ch) = 0;
     GET_GOLD(ch) = 100000;
   }
 
-  if (GET_BANK(ch) > GetMaxLevel(ch)*100000) 
+  if (GET_BANK(ch) > GetMaxLevel(ch)*100000)
   {
-    mudlog( LOG_PLAYERS, "%s has %d coins in bank.", GET_NAME(ch), 
+    mudlog( LOG_PLAYERS, "%s has %d coins in bank.", GET_NAME(ch),
             GET_BANK(ch));
   }
-  if (GET_GOLD(ch) > GetMaxLevel(ch)*100000) 
+  if (GET_GOLD(ch) > GetMaxLevel(ch)*100000)
   {
     mudlog( LOG_PLAYERS, "%s has %d coins.", GET_NAME(ch), GET_GOLD(ch));
   }
@@ -3733,8 +3732,8 @@ void reset_char(struct char_data *ch)
       GET_COND( ch, FULL ) = 0;
     if( GET_COND( ch, THIRST ) < 0 )
       GET_COND( ch, THIRST ) = 0;
-  }  
-  
+  }
+
   /*
    * Class specific Stuff
    */
@@ -3742,7 +3741,7 @@ void reset_char(struct char_data *ch)
   ClassSpecificStuff(ch);
 
 
-  if (HasClass(ch, CLASS_MONK)) 
+  if (HasClass(ch, CLASS_MONK))
   {
     GET_AC(ch) -= MIN(150, (GET_LEVEL(ch, MONK_LEVEL_IND)*5));
     ch->points.max_move += GET_LEVEL(ch, MONK_LEVEL_IND);
@@ -3760,14 +3759,14 @@ void reset_char(struct char_data *ch)
   ch->specials.sev = LOG_SYSERR | LOG_ERROR | LOG_CONNECT;
 
   for(af = ch->affected; af; af=af->next)
-  {    
+  {
     affect_modify(ch, af->location, af->modifier, af->bitvector, TRUE);
   }
-  
+
   if (!HasClass(ch, CLASS_MONK))
-  {    
+  {
     GET_AC(ch) += dex_app[ (int)GET_DEX(ch) ].defensive;
-  }  
+  }
 
 
   /* could add barbarian double dex bonus here.... ... Nah! */
@@ -3813,38 +3812,38 @@ void reset_char(struct char_data *ch)
    * Remove bogus flags on mortals
    */
 
-  if( IS_SET(ch->specials.act,PLR_NOHASSLE) && 
-      GetMaxLevel(ch) < LOW_IMMORTAL) 
+  if( IS_SET(ch->specials.act,PLR_NOHASSLE) &&
+      GetMaxLevel(ch) < LOW_IMMORTAL)
   {
     REMOVE_BIT(ch->specials.act,PLR_NOHASSLE);
   }
 
   /* check spells and if lower than 95 remove special flag */
   if( !IS_IMMORTAL( ch ) )
-  {    
+  {
     for( i = 0; i < MAX_SKILLS - 1; i++ )
     {
-      if( ch->skills[i].learned < 95 || 
+      if( ch->skills[i].learned < 95 ||
           !IS_SET(ch->skills[i].flags,SKILL_KNOWN))
         ch->skills[i].special = 0;
     }
   }
-  
+
 
   SetDefaultLang(ch);
 
 
-  if( !strcmp(GET_NAME(ch),"Benem")) 
+  if( !strcmp(GET_NAME(ch),"Benem"))
   {
     GET_LEVEL(ch,0) = 60;
   }
-	
-  if( !strcmp(GET_NAME(ch),"Nemrac")) 
+
+  if( !strcmp(GET_NAME(ch),"Nemrac"))
   {
     GET_LEVEL(ch,11) = 59;
   }
-  
-  if( !strcmp(GET_NAME(ch),"Xilo")) 
+
+  if( !strcmp(GET_NAME(ch),"Xilo"))
   {
     GET_LEVEL(ch,11) = 59;
   }
@@ -3875,15 +3874,15 @@ void reset_char(struct char_data *ch)
     ch->player.level[9]=0;
   if (!HasClass(ch,CLASS_PSI))
     ch->player.level[10]=0;
-  
-  
+
+
 #if 0
   /*
    * Fix problem with Sorcerer learned spells
    */
-  if (HasClass(ch,CLASS_SORCERER)) 
+  if (HasClass(ch,CLASS_SORCERER))
   {
-    for (i=0;i<MAX_SKILLS-1;i++) 
+    for (i=0;i<MAX_SKILLS-1;i++)
     {
       if (IS_SET(ch->skills[i].flags,SKILL_KNOWN)
           && !IS_SET(ch->skills[i].flags,SKILL_KNOWN_CLERIC)
@@ -3931,7 +3930,7 @@ void init_char(struct char_data *ch)
 
   /* *** if this is our first player --- he be God *** */
 
-  if (top_of_p_table < 0)       
+  if (top_of_p_table < 0)
   {
 
     mudlog( LOG_CHECK, "Building FIRST CHAR, setting up IMPLEMENTOR STATUS!") ;
@@ -3996,7 +3995,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(150,180);
     }
     break;
-    
+
    case RACE_DWARF:
    case RACE_GNOME:
    case RACE_DARK_DWARF:
@@ -4012,7 +4011,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(100,150);
     }
     break;
-    
+
    case RACE_HALFLING:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4025,7 +4024,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(70,115);
     }
     break;
- 
+
    case RACE_ELVEN:
    case RACE_DROW:
    case RACE_GOLD_ELF:
@@ -4042,7 +4041,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(150,180);
     }
     break;
-    
+
    case RACE_HALF_ELVEN:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4055,7 +4054,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(140,170);
     }
     break;
-    
+
    case RACE_HALF_OGRE:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4068,8 +4067,8 @@ void init_char(struct char_data *ch)
       ch->player.height = number(190,220);
     }
     break;
-    
-   case RACE_HALF_ORC:  
+
+   case RACE_HALF_ORC:
     if (ch->player.sex == SEX_MALE)
     {
       ch->player.weight = number(120,180);
@@ -4081,7 +4080,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(150,180);
     }
     break;
-    
+
    case RACE_HALF_GIANT:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4094,7 +4093,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(290,350);
     }
     break;
-    
+
    case RACE_ORC:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4107,7 +4106,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(140,170);
     }
     break;
-    
+
    case RACE_GOBLIN:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4120,7 +4119,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(120,150);
     }
     break;
-    
+
    case RACE_TROLL:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4133,7 +4132,7 @@ void init_char(struct char_data *ch)
       ch->player.height = number(110,160);
     }
     break;
-    
+
    default:
     if (ch->player.sex == SEX_MALE)
     {
@@ -4243,7 +4242,7 @@ int real_object( int nVNum )
 
     if( (obj_index + mid)->iVNum == nVNum )
       return(mid);
-    if( bot >= top ) 
+    if( bot >= top )
     {
         /* start unsorted search now */
       for( mid = top_of_sort_objt; mid < top_of_objt; mid++ )
@@ -4325,7 +4324,7 @@ void reboot_text(struct char_data *ch, char *arg, int cmd)
       if(gpScript_data[i].iVNum == mob_index[p->nr].iVNum)
       {
         SET_BIT(p->specials.act, ACT_SCRIPT);
-        mudlog( LOG_CHECK, "Setting SCRIPT bit for mobile %s, file %s.", 
+        mudlog( LOG_CHECK, "Setting SCRIPT bit for mobile %s, file %s.",
                 GET_NAME(p), gpScript_data[i].filename );
         p->script = i;
         break;
@@ -4356,7 +4355,7 @@ void InitScripts()
       mob->commandp = 0;
       REMOVE_BIT(mob->specials.act, ACT_SCRIPT);
     }
-  }  
+  }
 
   if(!(f1 = fopen("scripts.dat", "r")))
   {
@@ -4398,7 +4397,7 @@ void InitScripts()
     else
     {
 
-      gpScript_data = (struct scripts *) realloc(gpScript_data, 
+      gpScript_data = (struct scripts *) realloc(gpScript_data,
                                (top_of_scripts + 1) * sizeof(struct scripts));
 
       count = 0;
@@ -4410,16 +4409,16 @@ void InitScripts()
         /* you really don't want to do a lot of reallocs all at once */
         if (count==0)
         {
-          gpScript_data[top_of_scripts].script = 
+          gpScript_data[top_of_scripts].script =
                       (struct foo_data *) malloc( sizeof( struct foo_data ) );
         }
         else
         {
-          gpScript_data[top_of_scripts].script = 
+          gpScript_data[top_of_scripts].script =
            (struct foo_data *) realloc(gpScript_data[top_of_scripts].script,
                                        sizeof(struct foo_data) * (count + 1));
         }
-        gpScript_data[top_of_scripts].script[count].line = 
+        gpScript_data[top_of_scripts].script[count].line =
                             (char *) malloc(sizeof(char) * (strlen(buf) + 1));
 
         strcpy(gpScript_data[top_of_scripts].script[count].line, buf);
@@ -4609,19 +4608,19 @@ void ReadTextZone( FILE *fl)
     fscanf(fl, " %d %d %d", &tmp, &i, &j);
     if (c == 'M' || c == 'O' || c == 'C' || c == 'E' || c == 'P' || c == 'D')
       fscanf(fl, " %d", &k);
-    
+
     if( c == 'O' )
       fscanf( fl, " %d", &rcount );
 
     fgets(buf, 80, fl);/* read comment */
     if( last_cmd || tmp <= 0 )
     {
-      switch( c ) 
+      switch( c )
       {
       case 'M': /* read a mobile */
         i = real_mobile( i );
         rp = real_roomp( k );
-        if( ( j == 0 || mob_index[ i ].number < j ) && 
+        if( ( j == 0 || mob_index[ i ].number < j ) &&
             !CheckKillFile( mob_index[ i ].iVNum ) &&
             ( mob = read_mobile(i, REAL) ) != NULL &&
             rp != NULL )
@@ -4630,10 +4629,10 @@ void ReadTextZone( FILE *fl)
 
           if( IS_SET( mob->specials.act, ACT_SENTINEL ) )
             mob->lStartRoom = k;
-          
+
           last_cmd = TRUE;
           master = pLastMob = mob;
-        } 
+        }
         else
         {
           master = pLastMob = mob = NULL;
@@ -4645,8 +4644,8 @@ void ReadTextZone( FILE *fl)
 
       case 'C': /* read a mobile.  Charm them to follow prev. */
         i = real_mobile(i);
-        if( ( j == 0 || mob_index[i].number < j ) && 
-            !CheckKillFile( mob_index[i].iVNum ) && master && 
+        if( ( j == 0 || mob_index[i].number < j ) &&
+            !CheckKillFile( mob_index[i].iVNum ) && master &&
             ( mob = read_mobile( i, REAL ) ) != NULL )
         {
           pLastMob = mob;
@@ -4665,7 +4664,7 @@ void ReadTextZone( FILE *fl)
         break;
 
       case 'Z':  /* set the last mobile to this zone */
-        if( pLastMob ) 
+        if( pLastMob )
         {
           pLastMob->specials.zone =i;
 
@@ -4686,14 +4685,14 @@ void ReadTextZone( FILE *fl)
           {
             if( rcount == 0 || ObjRoomCount( i, rp ) < rcount )
             {
-              if( ( obj = read_object( i, REAL ) ) != NULL ) 
+              if( ( obj = read_object( i, REAL ) ) != NULL )
               {
                 obj_to_room(obj, k);
                 last_cmd = TRUE;
               }
             }
           }
-          else 
+          else
           {
             mudlog( LOG_ERROR, "Cannot find room #%d", k);
           }
@@ -4709,7 +4708,7 @@ void ReadTextZone( FILE *fl)
           obj_to_obj(obj, obj_to);
           last_cmd = 1;
         }
-        else 
+        else
         {
           obj = obj_to = NULL;
           last_cmd = 0;
@@ -4719,7 +4718,7 @@ void ReadTextZone( FILE *fl)
       case 'G': /* obj_to_char */
         i = real_object(i);
         if( i >= 0 && ( j == 0 || obj_index[i].number < j ) && pLastMob &&
-            ( obj = read_object(i, REAL) ) != NULL ) 
+            ( obj = read_object(i, REAL) ) != NULL )
           obj_to_char( obj, pLastMob );
         break;
 
@@ -4738,11 +4737,11 @@ void ReadTextZone( FILE *fl)
         if( i >= 0 && ( j == 0 || obj_index[i].number < j ) && pLastMob &&
             ( obj = read_object(i, REAL) ) != NULL )
         {
-          if( !pLastMob->equipment[k] ) 
+          if( !pLastMob->equipment[k] )
           {
             equip_char( pLastMob, obj, k);
-          } 
-          else 
+          }
+          else
           {
             mudlog( LOG_ERROR, "eq error - zone %d, item %d, mob %d, loc %d",
                     zone, obj_index[ i ].iVNum,
@@ -4753,7 +4752,7 @@ void ReadTextZone( FILE *fl)
 
       case 'D': /* set state of door */
         rp = real_roomp( i );
-        if( rp && rp->dir_option[ j ] ) 
+        if( rp && rp->dir_option[ j ] )
         {
           if( !IS_SET( rp->dir_option[ j ]->exit_info, EX_ISDOOR ) )
           {
@@ -4762,7 +4761,7 @@ void ReadTextZone( FILE *fl)
             SET_BIT( rp->dir_option[ j ]->exit_info, EX_ISDOOR );
           }
 
-          switch (k) 
+          switch (k)
           {
           case 0:
             REMOVE_BIT(rp->dir_option[j]->exit_info, EX_LOCKED);
@@ -4778,7 +4777,7 @@ void ReadTextZone( FILE *fl)
             break;
           }
         }
-        else 
+        else
         {
           /* that exit doesn't exist anymore */
           mudlog( LOG_ERROR, "Exit error - zone %d, loc %d",
@@ -4827,7 +4826,7 @@ void ConvertPlayerFile( void )
     {
       struct char_file_u stChar;
       int nReaden;
-      if( ( nReaden = fread( &stChar, 1, sizeof( stChar ), pPlayersFile ) ) == 
+      if( ( nReaden = fread( &stChar, 1, sizeof( stChar ), pPlayersFile ) ) ==
           sizeof( stChar ) )
       {
         FILE *pCharFile;
@@ -4853,7 +4852,7 @@ void ConvertPlayerFile( void )
       }
       else
       {
-        mudlog( LOG_ERROR, "Letti %d caratteri invece di %d del player file.", 
+        mudlog( LOG_ERROR, "Letti %d caratteri invece di %d del player file.",
                 nReaden, sizeof( stChar ) );
       }
     }
@@ -4866,7 +4865,7 @@ void ConvertPlayerFile( void )
 
 void clean_playerfile()
 {
-  struct junk 
+  struct junk
   {
     struct char_file_u dummy;
     bool AXE;
@@ -4888,11 +4887,11 @@ void clean_playerfile()
 
 #if defined( EMANUELE )
   ConvertPlayerFile();
-  
+
   if( ( dir = opendir( PLAYERS_DIR ) ) != NULL )
   {
     struct dirent *ent;
-    while( ( ent = readdir( dir ) ) != NULL ) 
+    while( ( ent = readdir( dir ) ) != NULL )
     {
       FILE *pFile;
       char szFileName[ 40 ];
@@ -4907,7 +4906,7 @@ void clean_playerfile()
       {
         grunt.AXE = FALSE;
 
-        if( fread( &grunt.dummy, 1, sizeof( grunt.dummy ), pFile ) == 
+        if( fread( &grunt.dummy, 1, sizeof( grunt.dummy ), pFile ) ==
             sizeof( grunt.dummy ) )
         {
           num_processed++;
@@ -4932,7 +4931,7 @@ void clean_playerfile()
             if( !grunt.AXE && timeH - grunt.dummy.last_logon >
                 (long) RENT_INACTIVE * ( SECS_PER_REAL_DAY * 30 ) )
             {
-              mudlog( LOG_PLAYERS, 
+              mudlog( LOG_PLAYERS,
                       "Purging rent file for %s, inactive for %d month.",
                        grunt.dummy.name, RENT_INACTIVE );
               sprintf( buf, "rm %s/%s", RENT_DIR, lower( grunt.dummy.name ) );
@@ -4947,7 +4946,7 @@ void clean_playerfile()
               grunt.AXE = TRUE;
               mudlog( LOG_PLAYERS, "%s deleted after %d months of inactivity.",
                        grunt.dummy.name, j );
-            }  
+            }
 
             /* even the no_deletes get deleted after a time */
             if( IS_SET( grunt.dummy.user_flags, NO_DELETE ) )
@@ -4957,7 +4956,7 @@ void clean_playerfile()
               {
                 num_deleted++;
                 grunt.AXE = TRUE;
-                mudlog( LOG_PLAYERS, 
+                mudlog( LOG_PLAYERS,
                         "%s deleted after %d months of inactivity (NO_DELETE).",
                          grunt.dummy.name,j );
               }
@@ -4970,14 +4969,14 @@ void clean_playerfile()
             {
               num_deleted++;
               grunt.AXE = TRUE;
-              mudlog( LOG_PLAYERS, "%s deleted (TOOHIGHLEVEL).", 
+              mudlog( LOG_PLAYERS, "%s deleted (TOOHIGHLEVEL).",
                       grunt.dummy.name );
             }
             else if( timeH - grunt.dummy.last_logon >
                      (long) SECS_PER_REAL_DAY * 30 )
             {
               num_demoted++;
-              mudlog( LOG_PLAYERS, 
+              mudlog( LOG_PLAYERS,
                       "%s demoted from %d to %d due to inactivity.",
                       grunt.dummy.name, max, max - 1 );
               grunt.dummy.last_logon = timeH; /* so it doesn't happen twice */
@@ -5018,32 +5017,32 @@ void clean_playerfile()
   {
     mudlog( LOG_ERROR, "Error opening dir %s.", PLAYERS_DIR );
   }
-      
+
 
 
 #else
 
-  if (!(f = fopen(PLAYER_FILE, "rb+")))        
+  if (!(f = fopen(PLAYER_FILE, "rb+")))
   {
     perror("clean player file");
     exit(0);
   }
 
-  if (!(f2 = fopen("temp", "w+")))        
+  if (!(f2 = fopen("temp", "w+")))
   {
     perror("clean player file");
     exit(0);
   }
 
 
-  for(; !feof( f ); ) 
+  for(; !feof( f ); )
   {
     fread( &grunt.dummy, sizeof( struct char_file_u ), 1, f );
-    if( !feof( f ) ) 
+    if( !feof( f ) )
     {           /* we have someone */
       num_processed++;
       grunt.AXE = FALSE;
-      if(!str_cmp(grunt.dummy.name,"111111")) 
+      if(!str_cmp(grunt.dummy.name,"111111"))
       {
         mudlog( LOG_PLAYERS,"%s was deleted (111111 name hopefully).",
                 grunt.dummy.name);
@@ -5051,7 +5050,7 @@ void clean_playerfile()
         num_deleted++;
         grunt.AXE = TRUE;
       }
-      else 
+      else
       {
         for( j = 0, max = 0; j < MAX_CLASS; j++ )
           if( grunt.dummy.level[ j ] > max )
@@ -5072,7 +5071,7 @@ void clean_playerfile()
 #ifndef STRANGE_WACK
 
            /* Purge rent files! after inactivity of 1 month */
-          if( !grunt.AXE && timeH - grunt.dummy.last_logon > 
+          if( !grunt.AXE && timeH - grunt.dummy.last_logon >
                             (long) RENT_INACTIVE * ( SECS_PER_REAL_DAY * 30 ) )
           {
             char uname[50];
@@ -5080,7 +5079,7 @@ void clean_playerfile()
             sprintf(uname,"%s",grunt.dummy.name);
             uname[0]=tolower(uname[0]);
 
-            muflog( LOG_PLAYERS, 
+            muflog( LOG_PLAYERS,
                     "Purging rent file for %s, inactive for %d month.",
                     uname, RENT_INACTIVE );
             sprintf( buf, "rm %s/%s", RENT_DIR, uname );
@@ -5093,7 +5092,7 @@ void clean_playerfile()
 #endif
 
 #ifndef STRANGE_WACK
-          if( !grunt.AXE && timeH - grunt.dummy.last_logon > 
+          if( !grunt.AXE && timeH - grunt.dummy.last_logon >
                             (long) j * ( SECS_PER_REAL_DAY * 30 ) &&
               !IS_SET( grunt.dummy.user_flags, NO_DELETE ) )
           {
@@ -5105,19 +5104,19 @@ void clean_playerfile()
 
           if( IS_SET( grunt.dummy.user_flags, NO_DELETE ) )
           {
-            if( timeH - grunt.dummy.last_logon > 
+            if( timeH - grunt.dummy.last_logon >
                 (long) ( j * 2 ) * ( SECS_PER_REAL_DAY * 30 ) )
             {
               num_deleted++;
               grunt.AXE = TRUE;
-              mudlog( LOG_PLAYERS, 
+              mudlog( LOG_PLAYERS,
                       "%s deleted after %d months of inactivity (NO_DELETE).",
                        grunt.dummy.name,j );
             }
           }
 #endif
         }
-        else if(max > LOW_IMMORTAL) 
+        else if(max > LOW_IMMORTAL)
         {
 #ifndef STRANGE_WACK
           /* delete people with levels greater than BIG_GUY */
@@ -5129,7 +5128,7 @@ void clean_playerfile()
                           "(TOOHIGHLEVEL)",
                      grunt.dummy.name, j );
           }
-          else if( timeH - grunt.dummy.last_logon > 
+          else if( timeH - grunt.dummy.last_logon >
                    (long) SECS_PER_REAL_DAY * 30 )
           {
             num_demoted++;
@@ -5139,15 +5138,15 @@ void clean_playerfile()
             max--;
             max = MAX( 51, max ); /* should not be necessary */
                         /* 6 */
-            for( j = 0; j < MAX_CLASS; j++ ) 
+            for( j = 0; j < MAX_CLASS; j++ )
               grunt.dummy.level[ j ] = max;
 
           }
 #endif
         } /* level < LOW_IMMORT */
-#ifdef STRANGE_WACK 
+#ifdef STRANGE_WACK
 
-        /* used to clear up corrupted players files, bogus chars in the 
+        /* used to clear up corrupted players files, bogus chars in the
          * name... etc.. */
 
         for( i = 0; i < strlen( grunt.dummy.name ); i++ )
@@ -5155,7 +5154,7 @@ void clean_playerfile()
           if( !( toupper( grunt.dummy.name[ i ] ) >= 'A' &&
                  toupper( grunt.dummy.name[ i ] ) <= 'Z' ) )
           {
-            mudlog( LOG_PLAYERS, "%s was deleted (strange name).", 
+            mudlog( LOG_PLAYERS, "%s was deleted (strange name).",
                     grunt.dummy.name );
             grunt.AXE = 1;
             break;
