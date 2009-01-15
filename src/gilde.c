@@ -196,7 +196,7 @@ void RemoveFromGuildList( int nIndex, char *szNomeMembro )
 
 int IsGuildGuardRoomFP( int room, void *tgt_room )
 {
-  return (int *)room == (int *)tgt_room;
+	return room == *(int *)tgt_room;
 }
 
 /****************************************************************************
