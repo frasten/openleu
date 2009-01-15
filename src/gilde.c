@@ -196,7 +196,7 @@ void RemoveFromGuildList( int nIndex, char *szNomeMembro )
 
 int IsGuildGuardRoomFP( int room, void *tgt_room )
 {
-  return room == (int)tgt_room;
+  return (int *)room == (int *)tgt_room;
 }
 
 /****************************************************************************
@@ -345,6 +345,7 @@ int PlayersGuildGuard( struct char_data *pCh, int nCmd, char *pArg,
     }
     else if( pMob->in_room != pDatiGilde[ nIndex ].nGuardiaRoom )
     {
+			// Cerca di tornare alla gilda
       int iDir;
       
       iDir = find_path( pMob->in_room, IsGuildGuardRoomFP,
