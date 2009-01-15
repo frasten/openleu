@@ -1,0 +1,32 @@
+#3008
+La Reception~
+  $$c0011 Sei alla reception. $$c0001 Un piccolo cartello spicca sul banco.
+Una scala conduce giu' alla locanda, ad est si intravede l'ufficio dello $$c0012 scriba.
+$$c0001 Un qualche Dio burlone ha cominciato ad editare le stanze.
+$$c0009 Usando il comando REDIT nella stessa locazione.
+$$c0014 Ma e' solo una prova... $$c0010 Per ritornare allo stato iniziale
+bastera' fare un semplice reboot col comando shutdown.
+Per editare definitivamente dovremo por mano al Sacro codice.
+~
+23 92 0
+D1
+Un corridio verso l'Ufficium Scriptoris
+~
+~
+0 -1 3065 -1
+D5
+L'incresso alla locanda
+~
+~
+0 -1 3006 -1
+E
+sign cartello~
+Ottime stanze per gli avventurieri usate:
+
+   Offer - per vedere quanto vi costa al giorno
+   Rent  - per salvare la vostra roba ed uscire dal gioco
+
+Attenti a non finire i soldi o vi svegliate direttamente sul marciapiede nudi
+come i vermi!!!
+~
+S

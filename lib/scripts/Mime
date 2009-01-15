@@ -1,0 +1,29 @@
+emote mima il fatto di essere intreppolato in una scatola di vetro.
+noop 3
+emote batte una mano sualla tua spalla.
+noop 2
+emote comincia a giocare con le sue palle.
+drop ball\
+frown
+shrug
+emote ti guarda.
+emote ti fa l'occhiolino.
+stare
+emote fa finta di scalare una parete.
+noop 3
+yawn
+goto $fido
+pat fido
+emote fa finta di giocare con le palle (le aveva posate, ricordi?)
+noop 2
+scream
+' dannazione, che sto a fare su un MUD?
+smirk
+emote si lecca.
+emote brontola qualcosa circa il fatto che i mimi non parlano.
+noop 2
+goto $loki
+lick loki\
+goto 3006
+noop 2
+end

@@ -1,0 +1,28 @@
+- [Silence] in create.obj.c alla linea 885 messo tra commenti il controllo
+   /*    if(update>32000)
+      update=0;*/
+  che non permetteva di inserire gli exra affect oltre il sedicesimo bit del bitmask 
+
+- [Trick] in gilde.c, aggiunto un messaggio di errore nel syslog se non trova il
+  file delle gilde.
+
+- [Trick] in fight.c, in DamageEpilog(), tolto l'invio del messaggio di aumento di
+  esperienza agli immortali, che stampava caratteri casuali, andando in overflow.
+
+- [Trick] a tempo perso: comm.c: alcuni messaggi del syslog tradotti in italiano
+
+- [Trick] in act.info.c, in do_look(), impostato il colore del nome della room, in modo da
+  migliorare la lettura.
+
+- sistemato il bug del quit grazie a Andrea Piccinelli
+    Nel file act.other.c alla fine della funzione void do_quit(struct char_data *ch, char *argument, int cmd)
+    aggiunta la funzione do_save(ch,"",0);
+
+- reso leu compilabile con  g versione 4.1.2 del gcc grazie a Andrea/Silence
+  la stra grande maggioranza dei problemi era dovuta ai propotipi dei puntatori 
+  a funzione che differivano da dei pointer a struttura a dei pointer a void
+  Per sisolverli ho aggiunto delle define CASTVF... 
+  Sono un po arrugginito e non mi ricordo di define ma se si vuole tornare come prima
+  basta mettere queste define sotto ifdef.
+
+

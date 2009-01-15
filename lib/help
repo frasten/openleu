@@ -1,0 +1,24 @@
+Help Generale:
+-------------------------------------------------------------------------
+Comunicazione:                  | Movimento:
+  say ('), shout, tell,         |   north, south, east, west, up, down,
+  emote (:), ask, whisper,      |   enter, exits, follow, mount, ride,
+  deafen, gossip, auction,      |   dismount, stand, rest, sit, sleep
+  nogossip, noauction, sign,    |   wake, unlock, lock, open, close
+  gtell, report, notell         |
+-------------------------------------------------------------------------
+Oggetti:                        | Combattimento:
+  get, put, drop, wear,         |   kill, hit, backstab, kick, bash,
+  wield, hold, grab, give,      |   flee, cast, wimp, assist, memorize, 
+  look, examine, eat, drink,    |   recall (sorcer cast),berserk,
+  sip, taste, remove, pour,     |   bellow, warcry, blast, shoot, stopfight,
+  quaff                         |   resque
+-------------------------------------------------------------------------
+Informazioni/Inventario:        | Varie:  
+  score, attribute, world,      |   save, quit, !, brief, compact,
+  news, info, inv, read, status |   typo, bug, idea, allspells, skill,
+  time, wizlist, display        |   prac, gain
+-------------------------------------------------------------------------
+Usa HELP <parola> per l'HELP specifico sui vari comandi.
+Prova anche l'help sui seguenti comandi: 
+SOCIAL   SHOPS   INNS   MAGIC   CLERIC   WARRIOR   THIEF  ALLSPELLS

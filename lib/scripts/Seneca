@@ -1,0 +1,44 @@
+goto 3005
+noop 4
+ponder
+noop
+tap
+east
+up
+' Tenete quegli animali fuori della citta`!
+noop 3
+yawn
+down
+west
+yawn
+rest
+noop 4
+stand
+sneer
+south
+east
+east
+east
+west
+cackle
+west
+west
+north
+south
+west
+giggle
+west
+west
+cackle
+east
+east
+glare
+east
+bounce
+south
+shrug
+north
+north
+' Ho finalmente fatto pulizia!
+noop 4
+end

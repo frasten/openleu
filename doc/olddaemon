@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+while true; do
+	
+	/home/frasten/leu/src/leu
+done
+
+exit 0

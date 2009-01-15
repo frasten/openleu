@@ -1,0 +1,71 @@
+Modifiche del 27 Ottobre 1995
+
+  o Modificato l'incantesimo dei druidi 'creeping death'. Adesso non attacca
+    piu` vegetali, non morti e creature immuni alle armi non magiche.
+    
+  o Modifiche ad alcuni oggetti. La lion skin, l'ebony kris e l'halberd non
+    si troveranno piu` su LeU. Al loro posto troverete la pelle del Leone,
+    il kris d'ebano e l'alabarda nera con caratteristiche leggermente
+    modificate. Rinominati mercury's boots e crystal rings in stivali di
+    Mercurio ed anello di cristallo. Quest'ultimo paghera` il rent.
+    Altre modifiche minori.
+    
+  o Il Primo Albero non vi inseguira` piu` se fuggite dopo che lo avete
+    attaccato. Sempre che riusciate a fuggire con tutte quelle radici li`
+    intorno :).
+    
+  o Tolti alcuni bugs che causavano il crash del mud.
+  
+  o Le creature schiave della creatura contro cui state combattendo, non vi
+    colpiranno piu` se stanno in una locazione differente dalla vostra.
+    
+Modifiche del 6 Ottobre 1995
+
+  o Modificato l'incantesimo 'Creeping death'. Adesso la massa di insetti si
+    disperde se ai allontana per piu` di 3 locazioni dal caster. 
+    Inoltre non vede chi e` invisibile agli animali.
+    $c0015ATTENZIONE! La massa di insetti puo` ancora uccidere i giocatori!
+  
+  o Reso + efficace l'incantesimo Protection from evil.
+  
+  o Quando si indossa una luce in una stanza buia, non serve uscire e
+    rientrare nella stanza per illuminarla.
+    
+  o Modificate alcune serrature a Lythcantropia (quelle che portano alla
+    stanza del Count Boarish).
+    
+  o Corretti alcuni problemi che mandavano il mud in crash, come quello del
+    $c0009fireshield$c0007 e del disarm.
+    
+  o Quando entrate in LeU, verra` visualizzato un messaggio se avete
+    posta in attesa dallo scriba.
+    
+Versione 1.5  (24 Settembre 1995)
+
+  o Ottimizzazione dei codici ANSI. Adesso l'uso dei colori non dovrebbe
+    essere piu` cosi` lento con i modem a bassa velocita`.
+    
+  o Il first aid funziona come da specifice (ossia 1d4+livello) anche per
+    Paladine e Ranger.
+    
+  o L'incantesimo reincarnate dei druidi non tramuta piu` in una razza
+    impossibile per la combinazione classi/livelli attualmente raggiunti dal
+    giocatore oggetto dell'incantesimo.
+    
+  o  I drow maghi e stregoni, adesso possono diventare immortali (prima erano
+     limitati al 50^ livello per una svista).
+     
+Modifiche del 13 Settembre 1995
+
+  o Mi sono munito di un profiler per vedere dove il mud e` meno efficiente.
+    Il risultato e` questa nuova versione ottimizzata nelle procedure piu`
+    pesanti. Speriamo che serva ad avere meno lag.
+    I cambiamenti, dal punto di vista dei giocatori, sono minimi, e 
+    riguardano quasi esclusivamente il criterio di scelta del PC da attaccare,
+    adottato dalle creature agressive.
+    
+  o Ho trovato altri due errori nel programma che potevano essere causa di
+    crash.
+    
+     
+  Buon divertimento.

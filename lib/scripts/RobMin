@@ -1,0 +1,100 @@
+stand
+goto $robin
+follow robin
+smile
+emote riscalda la voce
+emote canta "do re me fa so la si do"
+emote canta "Bravely bold Sir Robin, went forth from camelot"
+emote canta "He was not afraid to die, Bold, brave Sir Robin"
+emote canta "He was not at all afraid to be killed in nasty ways"
+emote canta "Brave brave brave brave Sir Robin"
+grins
+emote canta "He was not in the least bit scared to be mashed into a pulp"
+emote canta "Or to have his eyes gouged out, and his elbows broken"
+emote canta "To have his kneecaps split, and his body burned away"
+emote canta "And his limbs all hacked and mangled, brave Sir Robin"
+snickers
+act 74
+emote canta "His head caved in and his heart cut out"
+emote canta "And his liver removed and his bowels unplugged"
+emote canta "And his nostrils raped and his bottom burned off"
+emote canta "And his peni---  The minstrel is interrupted.
+pout
+sigh
+emote guarda al suo spartito
+say Penso che questo script sia inaccurato.
+noop
+noop
+noop
+noop
+noop
+noop
+twiddle
+noop
+noop
+yawn
+noop
+giggle
+noop
+noop
+emote abbraccia se stesso
+noop
+noop
+emote riscalda la sua voce
+emote canta "Brave Sir Robin ran away!"
+emote canta "Bravely ran away, away!"
+emote canta "When danger reared its ugly head"
+emote canta "He bravely turned his tail and fled"
+emote canta "As brave Sir Robin turned about; He rather seemly chickened out"
+emote canta "Bravely taking his defeat; He beat a very brave retreat"
+emote canta "Oh the tales of brave Sir Robin"
+smile
+bow
+chuckle
+noop
+noop
+noop
+frown
+say Dannazione... odia quando ho degli scripts non accurati
+say Voglio dire, che sto a fare su un MUD?
+say beh... perche` la gente deve uccidermi senza una ragione.
+pout
+say Ok... sono pronto. Puoi uccidermi adesso.
+say Addio mondo crudele.
+emote saluta al mondo crudele.
+say Questa e` la fine della prima facciata. Per favore qualcuno giri il disco.
+noop
+noop
+say Te l'ho gia` detto questa e` la fine...
+noop
+noop
+say veramente vorrei che te ne andassi, non c'e` piu` nulla
+say un questo scripts
+say davvero
+noop
+twiddle
+noop
+yawn
+emote si rompe il collo
+emote muove impaziente i piedi
+emote to colpisce molto forte!
+giggle
+say stavo solo scherzando
+noop
+noop
+noop
+noop
+noop
+noop
+emote prova a rubarti alcune monete, ma fallisce miseramente.
+chuckle
+say scherzavo di nuovo!
+noop
+noop
+noop
+noop
+noop
+noop
+end
+
+

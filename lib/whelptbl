@@ -1,0 +1,516 @@
+#
+EMPTY SLOT
+#
+"ROOM TELEPORT"
+
+some new things for teleport rooms:
+
+
+edit tele <time> <room> <flags> [<countdown>]
+
+flags =
+1     LOOK    (do a look when you get teleported
+2     COUNT   (this is a countdown room)
+4     RANDOM  (after the first teleport, this room will teleport in random
+                time)
+8     SPIN    (Not implemented yet)
+
+
+Some things to note:
+
+ if you are going to set the COUNT flag, then leave the <time> = 0
+
+ COUNT, RANDOM and SPIN are more or less mutually exclusive.
+
+
+Esempi
+
+   edit tele 30 1000 1       ;  teleport fires every 30 ticks, goes to room
+                                1000, does a look
+
+   edit tele  0 1000 3 30    ; 30 ticks after a player enters this room,
+                                they will be teleported to room 1000, and
+                                they will do a look.
+
+   edit tele  0 1000 2 30    ; 30 ticks after a player enters this room,
+                                they will be teleported to room 1000, and they
+                                will NOT do a look
+
+Any questions, post them on the board
+
+The random time will be between 10 and 100 ticks
+
+(so roughly between 7.5 seconds and 75 seconds)
+
+Note, this is a god command, mortals can't do it.
+
+#
+"AUTHORIZE AUTH"
+
+
+  auth Newbie No        (lets them into the game)
+  auth Newbie no         (denies them from the game)
+
+  auth Newbie anything else  (a message to the Newbie)
+#
+"HOUSES HOUSE"
+
+Le case consentono ai personaggi che le possiedono di affittarle gratis.
+Il personaggio entra nella casa e scrive RENT, come nelle locande.
+Nessun altro puo' entrare nella casa, solo il proprietario.
+Case con piu' stanze sono legali.
+Attenzione: niente cancelli astrali e roba simile, le case devono essere
+geograficamente corrette.
+
+#
+"SECTOR TYPES"
+ 0  indoors
+ 1  city/road
+ 2  fields
+ 3  forest
+ 4  hills
+ 5  mountains
+ 6  water (swimmable)
+ 7  river (non-swimmable)
+ 8  air
+ 9  water
+10  desert
+11  inside tree (for druid tree travel)
+12  dark city/road
+
+#
+STRING
+Per cambiare la stringa di testo associata con oggetti e personaggi.
+Il formato e':
+
+string <type> <name> <field> [<string> | <keyword>]
+
+Type e' 'obj' or 'char'.
+Field e' uno dei seguenti (possono essere abbreviati)
+Name                  (il nome dell'oggetto/personaggio)
+Short                 (nome per l'inventario(oggetti) o azioni(personaggi))
+Long                  (descrizione per quando un oggetto/personaggio e' in
+                       una stanza)
+Title                 (per i giocatori)
+Description           (Per look at. Per oggetti, deve essere seguito da una
+                       keyword)
+Delete-description    (solo per oggetti. Deve essere seguito da una keyword)
+
+Quando una stringa e' l'ultimo argomento, un carattere di ritorno linea
+ti fara' entrare in string mode, e il gioco ti chiedera' nuove linee
+di stringa finche' non raggiungi la massima lunghezza per la stringa
+o forzi la fine con '@'.
+#
+LOAD
+For loading new objects or characters from the database. The format is:
+  load <type> <number>
+Where <type> is either 'obj' or 'char', and number is the number of the object
+or character you wish to create.
+#
+THINK
+What people are supposed to do before they do something.  Gods also have
+the uncanny ability to let other gods know what they are thinking via
+this command. Abbreviabile con "
+#
+NOHASSLE
+A god may (is supposed to) set this upon themselves to prevent mobiles
+from attacking them.
+#
+STEALTH
+Gods use this to sneak into a room withoout their bamfin and and bamfout
+messages apprearing.  Mortals usually wish they could do this, but so
+far none have been able to.
+#
+BAMFIN
+Bamfin <bamf definition>
+ Additional arguments can include ~N for where you
+ Want your name (if you want your name).  If you use
+ ~H, it puts in either his or her depending on your
+ sex.  If you use the keyword 'def' for your bamf,
+ it turns on the default bamf.
+#
+BAMFOUT
+Bamfout <bamf definition>
+  Additional arguments can include ~N for where you
+  Want your name (if you want your name). If you use
+  ~H, it puts in either his or her depending on your
+  sex.  If you use the keyword 'def' for your bamf,
+  it turns on the default bamf.
+#
+SETSEV
+This command will set a god's severity levels.  Basically, at 0 you get
+all wiz messages.  As you increase your severity level, you get fewer and
+fewer of the log messages until they are filtered out completely.
+Non implementato correttamente.
+#
+PURGE
+Un modo di rendere il mondo un po' piu' pulito.
+Sintassi:
+  purge                         Svuota una stanza di mostri e oggetti
+  purge <personaggio>           Elimina una cosa viva. Cancella un personaggio.
+  purge <oggetto>               Secondo te che cosa fa ?
+#
+USERS
+Ti dice chi e' nel gioco e da dove sta giocando.
+#
+ADVANCE
+
+Per avanzare un giocatore ad un livello maggiore dell'attuale.
+Il default e' l'avanzamento di un livello. Un giocatore di livello
+0 puo' essere fatto avanzare solo di un livello.
+La sintassi e`:
+advance <player} <class> <level>
+
+#
+WIZHELP
+Visualizza una lista dei comandi privilegiati a te disponibili.
+Puo' essere utilizzata solo dagli immortali.
+#
+NOSHOUT
+Elimina la visualizzazione dei messaggi emessi dagli altri con il
+comando SHOUT. Puo' essere usato anche con un nome per argomento, nel
+qual caso fa si' che quel particolare giocatore non legga piu' gli SHOUT.
+Puo' essere utilizzato solo da certi esseri superiori :-))
+
+#
+RESTORE
+Se usato su un mortale il comando resettera' il mana ed i punti vita.
+Se usato su un immortale vari valori saranno resettati ai loro normali
+valori.
+
+#
+EDIT
+Edit allows you to edit rooms.  The room you are currently in is
+the one that is edited.  You can edit any room, but the changes will
+not be permanent.  However, using the rsave, and rload commands, you
+can save your changes into a file, and reload them later into the
+game, (if it crashes, for Esempio).
+
+NOTE: If you are confused by this, and try it anyway, you may crash
+    the game.  Please be very sure that you know what you are doing.
+    Also, try to avoid making too many changes to the existent areas
+    for the moment.
+
+Also note: You need to have an area, before you start editing it. this
+does not create rooms, only edits them.  Contact Loki if you want an
+area.  Also ask him any questions that you have about room editing.
+
+
+The fields work as follows:
+
+ edit <field> <attributes>
+
+   field is one of the following:
+
+        name     :  changes the name of the room.
+        desc     :  changes the room description.
+        exit     :  adds, deletes or modifies a room's exits
+        fs       :  changes the Flags, and Sector type.
+        exdsc    :  adds, changes or deletes an exit description
+        extra    :  adds an extra description to a room.
+        riv      :  adds special parameters for rivers.
+        tele     :  makes the room a teleport room.
+        tunn     :  makes the room a tunnel room.
+
+   attributes:
+
+        name  <name of room>
+        desc  <enter>  (it will prompt you for text)
+        exit  <dir> <door flags> <key> <to_room>
+        fs    <flags> <sector_type>
+        exdsc <dir> <enter>  (prompts you for text)
+        extra <keywords> <enter>  (prompts you for text)
+        riv   <speed> <dir>
+        tele  <time> <to_room> <look-flag>
+        tunn  <mob_lim>
+
+<dir>         0 = N, 1 = E, 2 = S, 3 = W, 4 = U, 5= D.
+<door flags>  1 = DOOR, 2 = CLOSED, 4 = LOCKED, 8 = SECRET, 16 = RS_LOCKED, 
+              32 = PICKPROOF, 64 = CLIMB, 128 = MALE
+<key> item    # that opens door, ( if no door, use 0 )
+<to_room>     The room # that the exit goes to.
+<flags>       type help roomflags.
+<sector_type> Type help sector_type
+<time>        The time interval between teleports.  Must be a multiple of 10
+              10 is very fast.  60 is much slower.
+<look-flag>   whether to do a look when the characters are teleported.
+              if this number is 0, they won't konw they've been teleported
+              unless they look on their own.  if the number is not 0, each
+              time they are teleported, they are forced to look.
+<keywords>    which things will trigger info.. for Esempio if the keyword is
+              'case' then if you type look at case, the text will be 
+              displayed.
+<speed>       must be a multiple of 15. if you do not want the river to flow,
+              speed should be 0.
+<mob_lim>     A number, indicating the number of mobiles that can be in the
+              room at one time.  The TUNNEL roomflag must be set, although
+              use of edit tunn X  automatically sets the flag.
+
+#
+ROOMFLAGS
+   DARK           1
+   DEATH          2
+   NO_MOB         4
+   INDOORS        8
+   PEACEFUL      16  No fighting
+   NOSTEAL       32  No Thieving
+   NO_SUM        64  No summoning of creatures in these rooms
+   NO_MAGIC     128  Does not work yet
+   TUNNEL       256  only X people in room (X set by edit tunn)
+   PRIVATE      512  no teleport to this room, no goto when more than 2 people
+   SAVE_ROOM   1024  Il contenuto della stanza viene salvato e ricaricato ad
+                     ogni reboot. Fino a 200 oggetti.
+   NO_MIND     2048  In questa locazione non e possibile usare i poteri 
+                     mentali degli psionisti.
+#
+FORCE
+Non documentata, chiedi ad altri wizard.
+#
+TRANSFER
+
+Questo comando privilegiato dei wizard muove un personaggio nella
+stessa stanza del wizard. Puo' essere usato anche per trasferire
+mostri, ma stai attento nel farlo con mostri aggressivi. Far uccidere
+un giocatore non e' cosa buona.
+
+#
+GOTO
+
+Questo comando privilegiato dei wizard ti consente di mouverti senza
+camminare. Tu puoi fornire come argomento sia un numero di stanza che
+un nome di giocatore o di mostro o di oggetto.
+Il trasferimento sara' immediato.
+
+Se una stanza e' PRIVATE e c'e' piu' di una persona dentro, altre
+persone non potranno usare questo comando per entrarvi. Dovrai
+chiedere a qualcuno all'interno di usare TRANSFER per entrare.
+
+Vedi anche: TRANSFER
+
+#
+IMMUNITY RESISTANCE SUSCEPTIBILITY
+
+Di seguito sono elencati i valori dei bit per rendere una creatura immune,
+resistente o suscettibile a qualcosa.
+
+IMM_FIRE         1   fuoco
+IMM_COLD         2   freddo
+IMM_ELEC         4   elettricita` (lightning bolt, ad esempio)
+IMM ENERGY       8   energia
+IMM_BLUNT       16   tutti i danni che non tagliano: BLUDGEON, HIT, CRUSH, BITE,
+                     SMASH, SMITE, BLAST ed i calci dei guerrieri.
+IMM_PIERCE      32   tutti i danni che bucano: PIERCE, STING, STAB, backstab e
+                     le armi da lancio.
+IMM_SLASH       64   tutti i danni da taglio: SLASH, WHIP, CLEAVE, CLAW.
+IMM_ACID       128   acidi
+IMM_POISON     256   veleni
+IMM_DRAIN      512   perdita di livelli/xp
+IMM_SLEEP     1024   incantesimi di sonno
+IMM_CHARM     2048   ipnosi
+IMM_HOLD      4096   paralisi e simili
+IMM_NONMAG    8192   armi non magiche
+IMM_PLUS1    16384   armi con meno di tohit +1
+IMM_PLUS2    32768   armi con meno di tohit +2
+IMM_PLUS3    65536   armi con meno di tohit +3
+IMM_PLUS4   131072   armi con meno di tohit +4
+
+Vedi anche: DANNI
+#
+DANNI
+
+Questo e` l'elenco del tipo di danno che puo` fare un'arma: Questo numero va
+nel 4^ dei "value" dell'oggetto.
+
+TYPE_SMITE     0 Colpire
+TYPE_STAB      1 Pugnalare
+TYPE_WHIP      2 Frustare
+TYPE_SLASH     3 Tagliare
+TYPE_SMASH     4 Fracassare
+TYPE_CLEAVE    5 Fendere
+TYPE_CRUSH     6 Schiacciare
+TYPE_BLUDGEON  7 Randellare
+TYPE_CLAW      8 Dilaniare
+TYPE_BITE      9 Mordere
+TYPE_STING    10 Pungere
+TYPE_PIERCE   11 Forare
+TYPE_BLAST    12 Far esplodere.
+
+#
+RACE RAZZA
+
+Vari mostri appartengono a razze diverse.
+Per esempio:
+  Llama e conigli sono della stessa razza perche' erbivori.
+  orcs, gnolls, ogres, giants sono tutti della razza 'giant class'.
+  lycanthropes.
+  predators (animals that hunt for food)
+  undead
+  snakes
+  reptiles
+  insects
+  spiders
+  demons
+  devils
+  humans, elves, etc...
+
+Vedi ALLRACE per i valori delle razze
+
+#
+ALLRACE ALLRACES
+
+|       Razza       | Numero |
+|-------------------|--------|
+ RACE_HALFBREED           0
+ RACE_HUMAN               1
+ RACE_ELVEN               2
+ RACE_DWARF               3
+ RACE_HALFLING            4
+ RACE_GNOME               5
+ RACE_REPTILE             6
+ RACE_SPECIAL             7
+ RACE_LYCANTH             8
+ RACE_DRAGON              9
+ RACE_UNDEAD             10
+ RACE_ORC                11
+ RACE_INSECT             12
+ RACE_ARACHNID           13
+ RACE_DINOSAUR           14
+ RACE_FISH               15
+ RACE_BIRD               16
+ RACE_GIANT              17
+ RACE_PREDATOR           18
+ RACE_PARASITE           19
+ RACE_SLIME              20
+ RACE_DEMON              21
+ RACE_SNAKE              22
+ RACE_HERBIV             23
+ RACE_TREE               24
+ RACE_VEGGIE             25
+ RACE_ELEMENT            26
+ RACE_PLANAR             27
+ RACE_DEVIL              28
+ RACE_GHOST              29
+ RACE_GOBLIN             30
+ RACE_TROLL              31
+ RACE_VEGMAN             32
+ RACE_MFLAYER            33
+ RACE_PRIMATE            34
+ RACE_ENFAN              35
+ RACE_DROW               36
+ RACE_GOLEM              37
+ RACE_SKEXIE             38
+ RACE_TROGMAN            39
+ RACE_PATRYN             40
+ RACE_LABRAT             41
+ RACE_SARTAN             42
+ RACE_TYTAN              43
+ RACE_SMURF              44
+ RACE_ROO                45
+ RACE_HORSE              46
+ RACE_DRAAGDIM           47
+ RACE_ASTRAL             48
+ RACE_GOD                49
+ RACE_GIANT_HILL         50
+ RACE_GIANT_FROST        51
+ RACE_GIANT_FIRE         52
+ RACE_GIANT_CLOUD        53
+ RACE_GIANT_STORM        54
+ RACE_GIANT_STONE        55
+ RACE_DRAGON_RED         56
+ RACE_DRAGON_BLACK       57
+ RACE_DRAGON_GREEN       58
+ RACE_DRAGON_WHITE       59
+ RACE_DRAGON_BLUE        60
+ RACE_DRAGON_SILVER      61
+ RACE_DRAGON_GOLD        62
+ RACE_DRAGON_BRONZE      63
+ RACE_DRAGON_COPPER      64
+ RACE_DRAGON_BRASS       65
+ RACE_UNDEAD_VAMPIRE     66
+ RACE_UNDEAD_LICH        67
+ RACE_UNDEAD_WIGHT       68
+ RACE_UNDEAD_GHAST       69
+ RACE_UNDEAD_SPECTRE     70
+ RACE_UNDEAD_ZOMBIE      71
+ RACE_UNDEAD_SKELETON    72
+ RACE_UNDEAD_GHOUL       73
+ RACE_HALF_ELVEN         74
+ RACE_HALF_OGRE          75
+ RACE_HALF_ORC           76
+ RACE_HALF_GIANT         77
+ RACE_REPTILE_LIZARDMAN  78
+ 
+Vedi anche RACE
+
+#
+STRING
+Per cambiare la stringa di testo associata con oggetti e personaggi.
+Il formato e':
+
+string <type> <name> <field> [<string> | <keyword>]
+
+Type e' 'obj' or 'char'.
+Field e' uno dei seguenti (possono essere abbreviati)
+Name                  (il nome dell'oggetto/personaggio)
+Short                 (nome per l'inventario(oggetti) o azioni(personaggi))
+Long                  (descrizione per quando un oggetto/personaggio e' in
+                       una stanza)
+Title                 (per i giocatori)
+Description           (Per look at. Per oggetti, deve essere seguito da una
+                       keyword)
+Delete-description    (solo per oggetti. Deve essere seguito da una keyword)
+
+Quando una stringa e' l'ultimo argomento, un carattere di ritorno linea
+ti fara' entrare in string mode, e il gioco ti chiedera' nuove linee
+di stringa finche' non raggiungi la massima lunghezza per la stringa
+o forzi la fine con '@'.
+#
+OLOAD
+For loading new objects from the database. The format is:
+  oload <numberorname>
+Numberorname is the number or name of the object or character you wish to create.
+#
+MLOAD
+For loading new characters from the database. The format is:
+  mload <numberorname>
+Numberorname is the number or name of the character you wish to create.
+#
+THINK
+What people are supposed to do before they do something.  Gods also have
+the uncanny ability to let other gods know what they are thinking via
+this command.
+
+Puoi abbreviarlo con "
+#
+NOHASSLE
+A god may (is supposed to) set this upon themselves to prevent mobiles
+from attacking them.
+#
+STEALTH
+Gods use this to sneak into a room withoout their bamfin and and bamfout
+messages apprearing.  Mortals usually wish they could do this, but so
+far none have been able to.
+#
+BAMFIN
+Bamfin <bamf definition>
+ Additional arguments can include ~N for where you
+ Want your name (if you want your name).  If you use
+ ~H, it puts in either his or her depending on your
+ sex.  If you use the keyword 'def' for your bamf,
+ it turns on the default bamf.
+#
+BAMFOUT
+Bamfout <bamf definition>
+  Additional arguments can include ~N for where you
+  Want your name (if you want your name). If you use
+  ~H, it puts in either his or her depending on your
+  sex.  If you use the keyword 'def' for your bamf,
+  it turns on the default bamf.
+#
+SETSEV
+This command will set a god's severity levels.  Basically, at 0 you get
+all wiz messages.  As you increase your severity level, you get fewer and
+fewer of the log messages until they are filtered out completely.
+#~
+
+

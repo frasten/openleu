@@ -1,0 +1,22 @@
+cry
+' Lo so! Lo so!
+' Ho provato a dirgli "non prestate soldi a New Thalos!"
+' Non mi ascoltano MAI!
+cry
+' La banca di Alma e` senza soldi!
+cry
+' Il mondo si avvia alla fine!
+flee
+cry
+' La banca e` fallita!
+cry
+gosssip AAARRRGGGHHH!!!
+sigh
+' Come potremo mai uscirne?
+cry
+' La banca e` fallita!
+' fortunatamente siamo assicurati!
+: sogghigna soddisfatto.
+sigh
+noop 4
+end

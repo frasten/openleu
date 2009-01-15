@@ -1,0 +1,141 @@
+                         Benvenuti su Lumen et Umbra
+
+   Qui di seguito ci sono alcune informazioni per riuscire a giocare meglio.
+
+Comandi di base
+_______________ 
+
+  Usa il nome delle direzioni per muoverti in stanze differenti.
+
+  HELP       Da una lista dei comandi principali. Con 'HELP <comando>' si
+             ottengono informazioni piu` dettagliate sul comando desiderato.
+  LOOK       Per visualizzare il mondo intorno a voi. Con 'look <argomento>'
+             si ottengono informazioni piu` dettagliate su uno specifico
+             oggetto, NPC (non plauer character), giocatore, ecc.
+             Usa 'look in <contenitore> per guardare dentro una borsa, 
+             bichiere, ecc.
+  EXIT       Visualizza le uscite dalla stanza in cui siete.
+  CONSIDER   Prima di ogni combattimento, dai il comando 'consider <NPC>'
+             per verificare la forza del NPC che vuoi uccidere.
+  KILL       Usa 'kill <NPC>' per uccidere un NPC. Attenzione, il combattimento
+             fra giocatori E` VIETATO. Ogni violazione a questa regola sara`
+             severamente punita.
+  ASSIST     Usa 'assist <giocatore>' per assistere un'altro giocatore in un
+             commattimento.
+  WIMPY      Attiva e disattiva il 'wimpy mode'. Quando questo e` attivo, 
+             fuggirete automaticamente da un combattimento uqando le vostre
+             condizioni diverranno critiche. Attenzione, non sempre funziona.
+  GROUP      Per formare un gruppo. Vista la forza di molti NPC e` 
+             indispensabile aiutarsi fra giocatori. Quando si uccide un NPC
+             l'esperienza sara` divisa fra gli appartenenti al gruppo del
+             giocatore che ha ucciso l'NPC.
+  FOLLOW     Per seguire qualcuno. Per essere ammessi ad un gruppo e` 
+             indispensabile seguirne il leader.
+  WORLD      Da informazioni dul mondo di Lumen et Umbra. Compresa la versione
+             del BenemMUD, il programma che gestisce il MUD.
+  WHO        Per conoscere i giocatori in linea.
+  WHOZONE    Per sapere quali sono i giocatori nella tua zona.
+  ATTRIBUTE  Da informazioni sul proprio personaggio (da un certo livello in
+             poi).
+  NEWS       Visualizza gli aggiornamenti che vengono fatti al MUD
+  SET ANSI   Utilizza il comando 'set ansi enable' per attivare la grafica a
+             colori. Hai bisogno di un emulatore VT100 od ANSI per goderne i
+             vantaggi (i principali programmi di telecomunicazione hanno tali
+             emulatori).
+  SAVE       Memorizza lo stato del personaggio, in modo da riprenderlo la
+             prossima volta.
+  RENT       Usabile solo nelle locande, vi permette di depositare il vostro
+             equipaggiamento ed uscire dal gioco. Questo ha un costo.
+  QUIT       Uscite dal gioco, ma perdete tutto il vostro equipaggiamento.
+
+  I comandi 'quit' e 'rent' effettuano automaticamente il 'save'.
+
+  Tutti i comandi possono essere abbreviati.
+
+Posti interessanti
+------------------
+
+  Per iniziare vi diamo alcune informazioni su alcuni posti utili.
+  La strada viene sempre indicata a partire dal Foro Imperiale.
+
+  Stanza delle regole  NU     Leggi attentamente le regole di comportamento da
+                              tenersi su Lumet et Umbra.
+  Alimentari           SWN    Anche su Lumen et Umbra come nella vita reale
+                              bisogna mangiare per vivere.
+  Bazaar               SEN    Torce, borse ed altri oggetti utili.
+  Armiere              SWS    Gli NPC non si lasceranno uccidere senza 
+                              difendersi. Un buona armatura puo` essere utile.
+  Armaiolo             SEEN   Sara` difficile combattere a mani nuode.
+  Magic Shop           SWWN   Con gli oggetti magici anche un non mago 
+                              potra` usufruire della potenza della magia.
+  Colosseum            SSSWWW Un buon posto dove iniziare i combattimenti.
+
+Informazioni generali
+---------------------
+
+  Il combattimento fra giocatori ed il multi-Playing (giocare con piu` di un
+  personaggio contemporaneamente) non sono permessi.
+  Compreso lo shiavizzare (charm) altri giocatori, derubarli, derubarne i 
+  corpi, ecc.
+  Sono previste pene molto severe  per chi viola queste regole.
+
+  Alcuni oggetti possono essere usati solo oltre un determinato livello, solo
+  da alcune razze, solo da chi ha un determinato allineamento, ecc.
+  Insomma non potrete usare tutti gli oggetti che incontrerete nelle vostre
+  esplorazioni.
+
+  Il vostro allineamento cambiera' a seconda di come vi comportate. Ossia
+  se uccidete solo NPC cattivi diventerete buoni e viceversa. Aiutare altri
+  giocatori vi rendera` piu buoni.
+
+  Mostri della stessa razza di aiutano tra loro. Questo significa che se
+  combattete contro un leone, gli eventuali altri leoni che sono nella stessa
+  stanza vi attaccheranno.
+
+  Ci sono 50 livelli mortali.
+
+  L'equipaggiamento puo' essere danneggiato in battaglia.
+
+  Vi sono alcuni NPC immuni alle armi fino a +5 (to hit).
+
+  I Druidi devono rimanere neutrali ed i Paladini buoni.
+
+  Guerrieri, ladri, monk, e druidi non possono leggere le
+  pergamene finche' non imparano a leggere le scritture magiche.
+
+Gilde e passaggi di livello
+---------------------------
+
+  Una volta accumulata l'esperienza necessaria, dovrette passare di livello
+  per sfruttarne i vantaggi. Il passaggio viene effettuato nelle 'gilde' 
+  della classe a cui appartenete, usando il comando  'gain'.
+  Nelle gilde potrete anche imparare gli skill e gli spell della vostra
+  classe con il comando 'practice'.
+
+  Le gilde per la maggior parte delle classi sono ad Alma. Le eccezioni sono
+  i druidi, i barbari ed i monaci.
+  La gilda dei druidi la trovate nella foresta ad ovest di Alma.
+  Cercate a sud della capanna di John.
+  La gilda dei Barbari e all'angolo NE delle mura esterne di Alma.
+  Quella dei monaci e` a N di Shire.
+
+  Le gilde di Alma vi permettono di raggiungere il livello 10, poi
+  dovrete andare alla citta' CASTRUM NOVUM (per il momento si chiama
+  ancora New Thalos) che vi permettera' di arrivare al livello 20.
+  Altre gilde, per i livelli piu' alti sono a:
+ 	Warrior - Rhyodin			Mage   - Mages Tower
+	Thief   - Moria				Cleric - Prydain
+  I Paladini passano di livello sempre ad Alma fino al 50.
+
+Informazioni sul combattimento
+
+  I guerrieri ottengono attacchi multipli avanzando di livello secondo questo
+  schema:
+	7+  3 attacchi ogni 2 turni
+       13+  2 attacchi ogni turno
+       25+  5 attacchi ogni 2 turni
+
+                            ------------
+                            Buona caccia
+                            ------------
+

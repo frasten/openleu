@@ -1,0 +1,2 @@
+rm leusrc.tar.gz
+tar -czvf leusrc.tar.gz *.c *.h makefile tar.* tag t2s tab2spc
