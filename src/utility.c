@@ -643,7 +643,8 @@ int str_cmp(char *arg1, char *arg2)
  */
 int str_cmp2(char *arg1, char *arg2)
 {
-  int chk, i;
+  int chk;
+	unsigned int i;
   
   if( !arg2 || !arg1 || strlen( arg1 ) == 0 )
     return 1;
@@ -1502,7 +1503,8 @@ void down_river( int pulse )
 void do_WorldSave(struct char_data *ch, char *argument, int cmd)
 {
   char temp[2048], buf[128];
-  long rstart, rend, i, j, k, x;
+  long rstart, rend, i, j, x;
+	unsigned long k;
   struct extra_descr_data *exptr;
   FILE *fp;
   struct room_data     *rp;
@@ -1677,7 +1679,8 @@ void do_WorldSave(struct char_data *ch, char *argument, int cmd)
 void RoomSave(struct char_data *ch, long start, long end)
 {
   char fn[80], temp[2048], dots[500];
-  int rstart, rend, i, j, k, x;
+  int rstart, rend, i, x;
+	unsigned int k, j;
   struct extra_descr_data *exptr;
   FILE *fp;
   struct room_data     *rp;

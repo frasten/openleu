@@ -2809,7 +2809,8 @@ void do_who(struct char_data *ch, char *argument, int cmd)
         if (OK_NAME(person,name_mask))
         {
           count++;
-          color_cnt = (color_cnt++ % 9);  /* range 1 to 9 */
+					color_cnt = (color_cnt % 9);  /* range 1 to 9 */
+					color_cnt++;
  
           if( cmd == CMD_WHOZONE )
           { /* it's a whozone command */
@@ -2905,7 +2906,8 @@ void do_who(struct char_data *ch, char *argument, int cmd)
   else
   {                                  /* GOD WHO */
  
-    int listed = 0, count, lcount, l, skip = FALSE;
+    int listed = 0, count, lcount, skip = FALSE;
+		unsigned int l;
     char ttbuf[256];
  
     sprintf(buffer,"$c0005Giocatori [God Version -? for Help]\n\r"

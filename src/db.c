@@ -998,7 +998,7 @@ void load_one_room( FILE *fl, struct room_data *rp )
 {
   char chk[ 161 ];
   int   bc=0;
-  unsigned long int     tmp;
+  long int     tmp;
 
   struct extra_descr_data *new_descr;
 

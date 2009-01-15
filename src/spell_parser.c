@@ -1688,7 +1688,7 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
       {      
         if (GetMaxLevel(ch) < LOW_IMMORTAL) 
         {
-          if (GET_MANA(ch) < (unsigned int)USE_MANA(ch, (int)spl) || 
+          if (GET_MANA(ch) < (int)(unsigned int)USE_MANA(ch, (int)spl) || 
               GET_MANA(ch) <=0) 
           {
             send_to_char("You can't summon enough energy!\n\r", ch);

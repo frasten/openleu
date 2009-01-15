@@ -3,7 +3,10 @@
 #include <stdio.h>
 #include <arpa/telnet.h>
 #define __USE_XOPEN 1
+#ifndef __USE_GNU
 #define __USE_GNU
+#endif
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -362,7 +365,7 @@ int old_search_block(char *argument,int begin,int length,char **list,int mode)
   if(mode)
     while ( NOT found AND *(list[guess]) != '\n' )      
       {
-        found=(length==strlen(list[guess]));
+        found=(length==(int)strlen(list[guess]));
         for(search=0;( search < length AND found );search++)
         found=(*(argument+begin+search)== *(list[guess]+search));
         guess++;
@@ -424,7 +427,7 @@ void command_interpreter( struct char_data *ch, char *argument )
       return;
     }
     strcpy(buf, ch->player.name);
-    for (i = 0; i< strlen(buf) && !found; i++) 
+    for (i = 0; i< (int)strlen(buf) && !found; i++) 
     {
       if (buf[i]<65) 
       {
@@ -1570,7 +1573,7 @@ int _check_ass_name(char *name)
     case 3:
       if(strlen(name)<strlen(NAME)) 
         break;
-      for(k=0;k<=strlen(name)-strlen(NAME);k++)
+      for(k=0;k<=(int)(strlen(name)-strlen(NAME));k++)
         if(!strn_cmp(name+k, NAME, strlen(NAME)))
           return 1;
       break;
