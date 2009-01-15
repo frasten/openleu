@@ -2189,7 +2189,7 @@ int cleric_imp(struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
     case 18:      
     case 19:      
     default:
-      act("$n utters the words 'Hurts, doesn't it??'.",1,ch,0,0,TO_ROOM);
+      act("$n utters the words 'Hurts, doesn't it\?\?'.",1,ch,0,0,TO_ROOM);
       cast_harm(GetMaxLevel(ch), ch, "", SPELL_TYPE_SPELL, vict, 0);
       break;
     }

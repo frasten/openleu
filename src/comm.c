@@ -496,7 +496,7 @@ void game_loop(int s)
   char comm[MAX_INPUT_LENGTH];
   char promptbuf[180];
   struct descriptor_data *point, *next_point;
-  int mask;
+  sigset_t signals;
 
   /*  extern struct descriptor_data *descriptor_list; */
   extern int pulse;
@@ -523,10 +523,17 @@ void game_loop(int s)
   /* !! Change if more needed !! */
   avail_descs = getdtablesize() - 2; /* never used, pointless? */
   
-  mask = sigmask(SIGUSR1) | sigmask(SIGUSR2) | sigmask(SIGINT) |
-         sigmask(SIGPIPE) | sigmask(SIGALRM) | sigmask(SIGTERM) |
-         sigmask(SIGURG) | sigmask(SIGXCPU) | sigmask(SIGHUP);
-  
+  sigemptyset (&signals);
+	sigaddset(&signals, SIGUSR1);
+	sigaddset(&signals, SIGUSR2);
+	sigaddset(&signals, SIGINT);
+	sigaddset(&signals, SIGPIPE);
+	sigaddset(&signals, SIGALRM);
+	sigaddset(&signals, SIGTERM);
+	sigaddset(&signals, SIGURG);
+	sigaddset(&signals, SIGXCPU);
+	sigaddset(&signals, SIGHUP);
+	
   /* Main loop */
   while( !mudshutdown )
   {
@@ -595,7 +602,7 @@ void game_loop(int s)
       last_time.tv_sec++;
     }
     
-    sigsetmask(mask);
+		sigprocmask(SIG_SETMASK, &signals, NULL);
 
     if (select(maxdesc + 1, &input_set, &output_set, &exc_set, &null_time) 
         < 0)           
@@ -615,7 +622,8 @@ void game_loop(int s)
       /*assert(0);*/
     }
     
-    sigsetmask(0);
+		sigemptyset (&signals);
+    sigprocmask(SIG_SETMASK, &signals, NULL);
     
     /* Respond to whatever might be happening */
     
