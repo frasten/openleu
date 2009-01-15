@@ -17,8 +17,10 @@
 #include "cmdid.h"
 #include "fight.h"
 
-
+#ifndef __USE_XOPEN
 #define __USE_XOPEN
+#endif
+
 #include <unistd.h>
 
 void switch_light(byte why);
@@ -340,7 +342,7 @@ void do_bamfin(struct char_data *ch, char *arg, int cmd)
    len = 150;
  }
 
- if (ch->specials.poofin && len >= strlen(ch->specials.poofin)) {
+ if (ch->specials.poofin && len >= (int) strlen(ch->specials.poofin)) {
    free(ch->specials.poofin);
    ch->specials.poofin = (char *)malloc(len+1);
  } else { 
@@ -390,7 +392,7 @@ void do_bamfout(struct char_data *ch, char *arg, int cmd)
    len = 150;
  }
 
- if (ch->specials.poofout && len >= strlen(ch->specials.poofout)) {
+ if (ch->specials.poofout && len >= (int) strlen(ch->specials.poofout)) {
    free(ch->specials.poofout);
    ch->specials.poofout = (char *)malloc(len+1);
  } else if (!ch->specials.poofout) {

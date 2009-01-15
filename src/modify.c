@@ -107,7 +107,7 @@ void string_add(struct descriptor_data *d, char *str)
     }
   
   if (!(*d->str))        {
-    if (strlen(str) > d->max_str)          {
+    if ((int) strlen(str) > d->max_str)          {
       send_to_char("String too long - Truncated.\n\r",
                    d->character);
       *(str + d->max_str) = '\0';
@@ -116,7 +116,7 @@ void string_add(struct descriptor_data *d, char *str)
     CREATE(*d->str, char, strlen(str) + 3);
     strcpy(*d->str, str);
   } else        {
-    if (strlen(str) + strlen(*d->str) > d->max_str)        {
+    if ((int) (strlen(str) + strlen(*d->str)) > d->max_str)        {
       send_to_char("String too long. Last line skipped.\n\r",
                    d->character);
       terminator = 1;
@@ -403,7 +403,7 @@ void do_string(struct char_data *ch, char *arg, int cmd)
   }
   
   if (*string) {   /* there was a string in the argument array */ 
-    if (strlen(string) > length[field - 1])        {
+    if ((int) strlen(string) > length[field - 1])        {
       send_to_char("String too long - truncated.\n\r", ch);
       *(string + length[field - 1]) = '\0';
     }
@@ -512,7 +512,7 @@ void do_edit(struct char_data *ch, char *arg, int cmd)
     }
 
     dflags=0;
-    for(i=0;i<strlen(sdflags);i++) {
+    for(i=0;i < (int) strlen(sdflags);i++) {
       switch(sdflags[i]) {
         case '0': case '-': dflags = 0; break;
         case '1': dflags = EX_ISDOOR; break;
@@ -717,7 +717,7 @@ void do_edit(struct char_data *ch, char *arg, int cmd)
   }
   
   if (*string) {   /* there was a string in the argument array */ 
-    if (strlen(string) > room_length[field - 1])        {
+    if ((int) strlen(string) > room_length[field - 1])        {
       send_to_char("String too long - truncated.\n\r", ch);
       *(string + length[field - 1]) = '\0';
     }

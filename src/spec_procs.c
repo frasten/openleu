@@ -5852,4 +5852,4 @@ int nodrop(struct char_data *ch, int cmd, char *arg, struct obj_data *tobj, int 
   return(FALSE);
 }
 
-int andy_wilcox(char_data *, int, char *, char_data *, int) {}
+int andy_wilcox(char_data *, int, char *, char_data *, int) {return FALSE;}
