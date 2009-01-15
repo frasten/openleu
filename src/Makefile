@@ -175,6 +175,8 @@ depend :
 	mv .tmpdepend .depend
 ##	makedepend ${SRCS}
 
+clean :
+	rm -f $(OBJS) leu
 
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
