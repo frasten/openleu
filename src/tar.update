@@ -1,2 +1,2 @@
-rm mudupd.tar.gz
-tar -czvf mudupd.tar.gz --newer $1 *.c *.h makefile
+rm -f mudupd.tar.gz
+tar -czvf mudupd.tar.gz --newer $1 *.c *.h Makefile

@@ -6,16 +6,16 @@ while true; do
 #	cp ./db-repository/rededata.* ./lib
 	
 #	cvs co testmud
-#	cd testmud
+	cd src
+	make
 #	make
-#	make
-#	cd -	
-	/home/frasten/leu/src/leu 2>> /home/frasten/leu/temp_log
+	cd -	
+	src/leu 2>> temp_log
 	
 	DATE=$(date +%Y-%m-%d_[%H:%M:%S])
     LOG_FILE=logLeu_${DATE}.log
 
-    mv /home/frasten/leu/temp_log /home/frasten/leu/logs/$LOG_FILE
+    mv temp_log logs/$LOG_FILE
 #	touch nohup.out 
 done
 
