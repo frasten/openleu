@@ -3,13 +3,13 @@
 # Note per l'avvio di leu        #
 ##################################
 
-= I parametri possibili (ricavati dal codice) =
+== I parametri possibili (ricavati dal codice) ==
 
 ./leu [opzioni] PORTA
 
 La porta di default e` la 7000.
 
-= Opzioni =
+== Opzioni ==
 -l Abilito il Lawful mode. Ovvero se il carico del server e` troppo alto,
    lascio la priorita` a tutto il resto, se il server MUD non e` questione
 	 di vita o di morte.

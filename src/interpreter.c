@@ -2720,7 +2720,7 @@ void nanny(struct descriptor_data *d, char *arg)
       {
         char buf[256];
        
-        mudlog( LOG_PLAYERS, "%s just killed thierself!",
+        mudlog( LOG_PLAYERS, "%s just killed theirself!",
                 GET_NAME( d->character ) );
 #if defined( EMANUELE )
         sprintf( buf, "rm %s/%s.dat", PLAYERS_DIR, 

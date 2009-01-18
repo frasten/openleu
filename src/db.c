@@ -414,11 +414,10 @@ void build_player_index()
       if( ( pFile = fopen( szFileName, "r+" ) ) != NULL )
       {
         struct char_file_u Player;
-
         if( fread( &Player, 1, sizeof( Player ), pFile ) == sizeof( Player ) )
         {
           int max;
-
+					
           top_of_p_table++;
 
           for( j = 0, max = 0; j < MAX_CLASS; j++ )
@@ -3112,10 +3111,10 @@ void char_to_store(struct char_data *ch, struct char_file_u *st)
 
 
 /* create a new entry in the in-memory index table for the player file */
+// NON VIENE MAI CHIAMATA!!!
 int create_entry(char *name)
 {
   int i;
-
   if (top_of_p_table == -1)     {
     CREATE(player_table, struct player_index_element, 1);
     top_of_p_table = 0;
@@ -3127,7 +3126,6 @@ int create_entry(char *name)
         perror("create entry");
         assert(0);
       }
-
   CREATE(player_table[top_of_p_table].name, char , strlen(name) + 1);
 
   /* copy lowercase equivalent of name to table field */
@@ -3929,8 +3927,7 @@ void init_char(struct char_data *ch)
   int i;
 
   /* *** if this is our first player --- he be God *** */
-
-  if (top_of_p_table < 0)
+  if (top_of_p_table <= 0)
   {
 
     mudlog( LOG_CHECK, "Building FIRST CHAR, setting up IMPLEMENTOR STATUS!") ;
@@ -4181,6 +4178,8 @@ void init_char(struct char_data *ch)
 
   for (i = 0; i < 3; i++)
     GET_COND(ch, i) = (GetMaxLevel(ch) > GOD ? -1 : 24);
+		
+	top_of_p_table++;
 }
 
 struct room_data *real_roomp( long lVNum )
