@@ -152,7 +152,6 @@ SRCS = comm.c act.comm.c act.info.c act.move.c act.obj1.c act.obj2.c \
   charlist.c lucertole.c
 
 all: leu
-	chmod g+rw *.o
 
 ##tags: ${SRCS}
 ##  ctags -vtrS *.[ch]
