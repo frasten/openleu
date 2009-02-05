@@ -3933,7 +3933,7 @@ void init_char(struct char_data *ch)
     mudlog( LOG_CHECK, "Building FIRST CHAR, setting up IMPLEMENTOR STATUS!") ;
 
     GET_EXP(ch) = 24000000;
-    GET_LEVEL(ch,0) = IMPLEMENTOR;
+    GET_LEVEL(ch,0) = BIG_GUY;
     ch->points.max_hit = 1000;
 
     /* set all levels */
