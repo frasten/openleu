@@ -828,7 +828,7 @@ void read_object_to_memory( int nVNum)
 
 /* generate index table for object or monster file */
 struct index_data *generate_indices( FILE *fl, int *top, int *sort_top,
-                                     int *alloc_top, char *dirname )
+                                     int *alloc_top, const char *dirname )
 {
   FILE *f;
   DIR *dir;
@@ -3537,7 +3537,7 @@ void free_obj(struct obj_data *obj)
 
 
 /* read contents of a text file, and place in buf */
-int file_to_string(char *name, char *buf)
+int file_to_string(const char *name, char *buf)
 {
   FILE *fl;
   char tmp[100];
