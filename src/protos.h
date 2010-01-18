@@ -1038,13 +1038,13 @@ void PulseMobiles(int type);
 void DoScript(struct char_data *ch);
 int CommandSearch(char *arg);
 void CommandSetup();
-void noop(char *arg, struct char_data *ch);
-void end2(char *arg, struct char_data *ch);
-void sgoto(char *arg, struct char_data *ch);
-void do_act(char *arg, struct char_data *ch);
-void do_jmp(char *arg, struct char_data *ch);
-void do_jsr(char *arg, struct char_data *ch);
-void do_rts(char *arg, struct char_data *ch);
+void noop(const char *arg, struct char_data *ch);
+void end2(const char *arg, struct char_data *ch);
+void sgoto(const char *arg, struct char_data *ch);
+void do_act(const char *arg, struct char_data *ch);
+void do_jmp(const char *arg, struct char_data *ch);
+void do_jsr(const char *arg, struct char_data *ch);
+void do_rts(const char *arg, struct char_data *ch);
 void MobHit(struct char_data *, struct char_data *, int);
  
  

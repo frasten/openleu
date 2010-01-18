@@ -1109,7 +1109,7 @@ int CommandSearch(char *arg)
  return(-1);
 }
 
-void CommandAssign( const char *arg, void (*p)( char *, struct char_data * ) )
+void CommandAssign( const char *arg, void (*p)( const char *, struct char_data * ) )
 {
   if(top_of_comp == 0)
     gpComp = (struct script_com *)malloc(sizeof(struct script_com));
@@ -1134,7 +1134,7 @@ void CommandSetup()
  CommandAssign("stop", end2);
 }
 
-void noop(char *arg, struct char_data *ch)
+void noop(const char *arg, struct char_data *ch)
 {
  int i;
 
@@ -1164,12 +1164,12 @@ void noop(char *arg, struct char_data *ch)
  return; 
 }
 
-void end2(char *arg, struct char_data *ch)
+void end2(const char *arg, struct char_data *ch)
 {
  ch->commandp = 0;
 }  
 
-void sgoto(char *arg, struct char_data *ch)
+void sgoto(const char *arg, struct char_data *ch)
 {
   char *p;
   struct char_data *mob;
@@ -1179,8 +1179,11 @@ void sgoto(char *arg, struct char_data *ch)
   {
     if( *arg == '$' )
     {  /* this is a creature name to follow */
+      char *argument;
       arg++;
-      p = strtok(arg, " ");
+      argument = strdup(arg);
+      p = strtok(argument, " ");
+      free(argument);
       if ((mob = get_char_vis(ch, p)) == NULL) 
       {
         fprintf( stderr, "%s couldn't find mob by name %s\n",                
@@ -1226,7 +1229,7 @@ void sgoto(char *arg, struct char_data *ch)
   ch->commandp++;
 }
 
-void do_act(char *arg, struct char_data *ch)
+void do_act(const char *arg, struct char_data *ch)
 {
   int bits;
   if (arg) 
@@ -1242,7 +1245,7 @@ void do_act(char *arg, struct char_data *ch)
   return;
 }
 
-void do_jmp(char *arg, struct char_data *ch)
+void do_jmp(const char *arg, struct char_data *ch)
 {
  int i;
  char buf[255];
@@ -1266,7 +1269,7 @@ void do_jmp(char *arg, struct char_data *ch)
   ch->commandp++;
 }
 
-void do_jsr(char *arg, struct char_data *ch)
+void do_jsr(const char *arg, struct char_data *ch)
 {
   int i;
   char buf[ 256 ];
@@ -1291,7 +1294,7 @@ void do_jsr(char *arg, struct char_data *ch)
   ch->commandp++;
 }
 
-void do_rts(char *arg, struct char_data *ch)
+void do_rts(const char *arg, struct char_data *ch)
 {
  ch->commandp = ch->commandp2;
  ch->commandp2 = 0;

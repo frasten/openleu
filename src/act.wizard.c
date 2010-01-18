@@ -776,7 +776,7 @@ void do_rload(struct char_data *ch, const char *argument, int cmd)
 {
 
    char i;
-   int start= -1, end = -2; 
+   int start= -1, end = -2, j;
 
    if (IS_NPC(ch))
      return;
@@ -796,13 +796,13 @@ void do_rload(struct char_data *ch, const char *argument, int cmd)
      send_to_char("Hey, end room must be >= start room\r\n", ch);
      return;
    }
-   for (i=0;start>zone_table[i].top&&i<=top_of_zone_table;i++) 
+   for (j=0;start>zone_table[j].top&&i<=top_of_zone_table;j++) 
      ;
-   if (i > top_of_zone_table) {
+   if (j > top_of_zone_table) {
      send_to_char("Strange, start room is outside of any zone.\r\n",ch);
      return;
    }
-   if(end>zone_table[i].top) {
+   if(end>zone_table[j].top) {
      send_to_char("Forget about it, end room is outside of start room zone ;)\r\n",ch);
      return;
    }

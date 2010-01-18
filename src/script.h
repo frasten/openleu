@@ -15,7 +15,7 @@ extern struct scripts *gpScript_data;
 
 struct script_com
 {
-  void (*p) (char *arg, struct char_data *ch);
+  void (*p) (const char *arg, struct char_data *ch);
   char *arg;
 };
 
