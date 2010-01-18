@@ -1291,7 +1291,7 @@ int eric_johnson(struct char_data *ch, int cmd, const char *arg, struct char_dat
 
     switch(state)
     {
-      char *s;
+      const char *s;
      case E_SLEEPING:
       if (time_info.hours>9 && time_info.hours<12)
       {
@@ -1445,7 +1445,7 @@ int eric_johnson(struct char_data *ch, int cmd, const char *arg, struct char_dat
       {
         static struct char_data *andy = 0;
         int        dir;
-        static char        **scan,*shopping_list[] =
+        const char        **scan,*shopping_list[] =
           { "guinness", "harp", "sierra", "2.harp", NULL };
         
         for (temp_char = character_list; temp_char; temp_char = temp_char->next)
@@ -1476,7 +1476,7 @@ int eric_johnson(struct char_data *ch, int cmd, const char *arg, struct char_dat
           for (scan = shopping_list; *scan; scan++) {
             if (NULL == get_obj_in_list_vis(eric, *scan,
                                             eric->carrying)) {
-              char        *s;
+              const char        *s;
               s = (scan[0][1] == '.') ? scan[0]+2 : scan[0];
               sprintf(buf, "buy %s", s);
               command_interpreter(eric, buf);

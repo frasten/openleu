@@ -2128,7 +2128,7 @@ int CountLims(struct obj_data *obj);
 char *lower(char *s);
 int getFreeAffSlot( struct obj_data *obj);
 void SetRacialStuff( struct char_data *mob);
-int check_nomagic(struct char_data *ch, char *msg_ch, char *msg_rm);
+int check_nomagic(struct char_data *ch, const char *msg_ch, const char *msg_rm);
 int check_nomind(struct char_data *ch, const char *msg_ch, const char *msg_rm);
 int NumCharmedFollowersInRoom(struct char_data *ch);
 struct char_data *FindMobDiffZoneSameRace(struct char_data *ch);

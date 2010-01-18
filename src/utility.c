@@ -3591,7 +3591,7 @@ void SetRacialStuff( struct char_data *mob)
   }                   
 }
 
-int check_nomagic(struct char_data *ch, char *msg_ch, char *msg_rm)
+int check_nomagic(struct char_data *ch, const char *msg_ch, const char *msg_rm)
 {
   struct room_data *rp;
 

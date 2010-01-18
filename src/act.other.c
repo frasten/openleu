@@ -162,7 +162,7 @@ void do_set_prompt(struct char_data *ch, const char *argument, int cmd)
   static struct def_prompt 
   {
     int n;
-    char *pr;
+    const char *pr;
   } prompts[] = 
   {
     {1, "Lumen et Umbra> "},
@@ -684,7 +684,7 @@ void do_steal(struct char_data *ch, const char *argument, int cmd)
     }
   }
   
-  if (ohoh && IS_NPC(victim) && AWAKE(victim))
+  if (ohoh && IS_NPC(victim) && AWAKE(victim)) {
     if (IS_SET(victim->specials.act, ACT_NICE_THIEF)) {
       sprintf(buf, "%s is a bloody thief.", GET_NAME(ch));
       do_shout(victim, buf, 0);
@@ -695,6 +695,7 @@ void do_steal(struct char_data *ch, const char *argument, int cmd)
       else if (number(0,1))
         hit(victim, ch, TYPE_UNDEFINED);
     }
+  }
   
 }
 
@@ -1285,7 +1286,7 @@ void do_group(struct char_data *ch, const char *argument, int cmd)
   struct follow_type *f;
   bool found;
 
-  char *rand_groupname[] = 
+  const char *rand_groupname[] = 
   {
     "The Seekers",             
     "The Subclan of Harpers",
