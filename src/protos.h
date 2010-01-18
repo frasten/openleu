@@ -593,7 +593,7 @@ void only_argument(const char *argument, char *dest);
 int fill_word(char *argument);
 int is_abbrev(char *arg1, char *arg2);
 void half_chop(const char *string, char *arg1, char *arg2);
-int special(struct char_data *ch, int cmd, char *arg);
+int special(struct char_data *ch, int cmd, const char *arg);
 void assign_command_pointers ();
 int find_name(char *name);
 int _parse_name(const char *arg, char *name);

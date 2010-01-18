@@ -136,7 +136,7 @@ int lizardman_shaman( struct char_data *ch, int cmd, const char *arg,
 int village_woman( struct char_data *ch, int cmd, const char *arg, 
                    struct char_data *mob, int type )
 {
-  char *aszInvocazioni[ 10 ] =
+  const char *aszInvocazioni[ 10 ] =
   {
     "Aiuto!",
     "Fermati! Che fai!",

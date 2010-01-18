@@ -186,7 +186,7 @@ int RawMove( struct char_data *ch, int dir, int bCheckSpecial )
   bool has_boat;
   struct room_data *from_here, *to_here;
   
-  int special(struct char_data *ch, int dir, char *arg);
+  int special(struct char_data *ch, int dir, const char *arg);
 
   SetStatus( "RawMove started.", NULL, ch );
   if( bCheckSpecial )

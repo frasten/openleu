@@ -91,7 +91,7 @@ struct index_data
   int iVNum;      /* virtual number of this mob/obj           */
   long pos;       /* file position of this field              */
   int number;     /* number of existing units of this mob/obj        */
-  int (*func)( struct char_data *, int, char *, void*, int );  
+  int (*func)( struct char_data *, int, const char *, void*, int );  
                   /* special procedure for this mob/obj       */
   void *data;
   char *name;
@@ -99,7 +99,7 @@ struct index_data
   char *long_desc;
 };
 
-#define CASTVF (int(*)(struct char_data*,int,char*,void*,int))
+#define CASTVF (int(*)(struct char_data*,int,const char*,void*,int))
 
 /* for queueing zones for update   */
 struct reset_q_element

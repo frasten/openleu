@@ -835,7 +835,7 @@ void half_chop(const char *string, char *arg1, char *arg2)
 
 
 
-int special(struct char_data *ch, int cmd, char *arg)
+int special(struct char_data *ch, int cmd, const char *arg)
 {
   register struct obj_data *i;
   register struct char_data *k;
