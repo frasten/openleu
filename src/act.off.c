@@ -53,8 +53,9 @@ void do_hit(struct char_data *ch, const char *argument, int cmd)
         }
         if( GET_POS(ch)>=POSITION_STANDING && !ch->specials.fighting )
         {
-          if( hit(ch, victim, TYPE_UNDEFINED) != SubjectDead ) 
+          if( hit(ch, victim, TYPE_UNDEFINED) != SubjectDead ) {
             WAIT_STATE(ch, PULSE_VIOLENCE+2);
+          }
           
         }
         else
@@ -1071,8 +1072,9 @@ void do_kick(struct char_data *ch, const char *argument, int cmd)
       if (!HasClass(ch, CLASS_MONK) || IS_NPC(ch)) /* so guards use fighter dam */
         dam=dam>>1;
       kick_messages(ch,victim,dam);
-      if( damage( ch, victim, dam, SKILL_KICK ) != VictimDead )
+      if( damage( ch, victim, dam, SKILL_KICK ) != VictimDead ) {
         WAIT_STATE(victim, PULSE_VIOLENCE);
+      }
     }
   }
   WAIT_STATE(ch, PULSE_VIOLENCE*3);
@@ -1418,14 +1420,16 @@ void do_springleap(struct char_data *ch, const char *argument, int cmd)
       kick_messages( ch, victim, GET_LEVEL(ch, BestFightingClass(ch)) >> 1 );
       if (GET_POS(victim) > POSITION_DEAD)
         if( damage( ch, victim, GET_LEVEL(ch, BestFightingClass(ch)) >> 1, 
-                    SKILL_KICK ) != VictimDead )
+                    SKILL_KICK ) != VictimDead ) {
           WAIT_STATE(victim, PULSE_VIOLENCE);
+        }
     } 
     else 
     {
       kick_messages(ch, victim, 0);
-      if( damage( ch, victim, 0, SKILL_KICK ) != VictimDead )
+      if( damage( ch, victim, 0, SKILL_KICK ) != VictimDead ) {
         WAIT_STATE( victim, PULSE_VIOLENCE );
+      }
     }
   }
   WAIT_STATE(ch, PULSE_VIOLENCE*1);
@@ -1755,7 +1759,7 @@ void throw_weapon( struct obj_data *o, int dir, struct char_data *targ,
   int broken=FALSE;
   char buf[MAX_STRING_LENGTH];
   struct char_data *spud, *next_spud;
-  char *dir_name[] = 
+  const char *dir_name[] = 
   {
     "da nord",
     "da est",
