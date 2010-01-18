@@ -154,7 +154,7 @@ void string_add(struct descriptor_data *d, char *str)
 #undef MAX_STR
 
 /* interpret an argument for do_string */
-void quad_arg(char *arg, int *type, char *name, int *field, char *string)
+void quad_arg(const char *arg, int *type, char *name, int *field, char *string)
 {
   char buf[MAX_STRING_LENGTH];
 
@@ -189,7 +189,7 @@ void quad_arg(char *arg, int *type, char *name, int *field, char *string)
 
 
 /* modification of malloc'ed strings in chars/objects */
-void do_string(struct char_data *ch, char *arg, int cmd)
+void do_string(struct char_data *ch, const char *arg, int cmd)
 {
   
   char name[MAX_STRING_LENGTH], string[MAX_STRING_LENGTH];
@@ -421,7 +421,7 @@ void do_string(struct char_data *ch, char *arg, int cmd)
 
 
 
-void bisect_arg(char *arg, int *field, char *string)
+void bisect_arg(const char *arg, int *field, char *string)
 {
   char buf[MAX_INPUT_LENGTH];
 
@@ -439,7 +439,7 @@ void bisect_arg(char *arg, int *field, char *string)
 }
 
 
-void do_edit(struct char_data *ch, char *arg, int cmd)
+void do_edit(struct char_data *ch, const char *arg, int cmd)
 {
   int field, dflags, dir, exroom, dkey, rspeed, rdir, open_cmd,
   tele_room, tele_time, tele_mask, moblim, tele_cnt;
@@ -739,7 +739,7 @@ void do_edit(struct char_data *ch, char *arg, int cmd)
 ********************************************************************** */
 
 
-void do_setskill(struct char_data *ch, char *arg, int cmd)
+void do_setskill(struct char_data *ch, const char *arg, int cmd)
 {
         send_to_char("This routine is disabled untill it fitts\n\r", ch);
         send_to_char("The new structures (sorry Quinn) ....Bombman\n\r", ch);
@@ -878,7 +878,7 @@ void page_string(struct descriptor_data *d, char *str, int keep_internal)
   show_string(d, "");
 }
 
-char *ParseAnsiColors(int UsingAnsi, char *txt);
+char *ParseAnsiColors(int UsingAnsi, const char *txt);
 
 void show_string( struct descriptor_data *d, char *input )
 {

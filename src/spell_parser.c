@@ -428,7 +428,7 @@ void spello( int nr, byte beat, byte pos,
              byte mlev, byte clev, byte dlev, 
              byte slev, byte plev, byte rlev, byte ilev,
              ubyte mana, sh_int tar, void (*func)( byte, struct char_data *, 
-                                                   char *, int, 
+                                                   const char *, int, 
                                                    struct char_data *, 
                                                    struct obj_data * ),
                                                    sh_int sf )
@@ -1327,7 +1327,7 @@ bool ImpSaveSpell(struct char_data *ch, sh_int save_type, int mod)
 
 
 
-char *skip_spaces(char *string)
+const char *skip_spaces(const char *string)
 {
   for(;*string && (*string)==' ';string++);
 
@@ -1337,12 +1337,14 @@ char *skip_spaces(char *string)
 
 
 /* Assumes that *argument does start with first letter of chopped string */
-void do_cast(struct char_data *ch, char *argument, int cmd)
+void do_cast(struct char_data *ch, const char *argument, int cmd)
 {
   struct obj_data *tar_obj;
   struct char_data *tar_char;
   char name[MAX_INPUT_LENGTH];
   char ori_argument[256];     /* make a copy of argument for log */ 
+  char *arg; /* FIXME: freearlo al momento giusto, altrimenti se returno prima
+                della fine ho un memory leak. */
   int qend, spl, i;
   bool target_ok;
   
@@ -1398,17 +1400,17 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
   }
   
   /* Locate the last quote && lowercase the magic words (if any) */
+  arg = strdup(argument);
+  for (qend=1; *(arg+qend) && (*(arg+qend) != '\'') ; qend++)
+    *(arg+qend) = LOWER(*(arg+qend));
   
-  for (qend=1; *(argument+qend) && (*(argument+qend) != '\'') ; qend++)
-    *(argument+qend) = LOWER(*(argument+qend));
-  
-  if( *( argument + qend ) != '\'') 
+  if( *( arg + qend ) != '\'') 
   {
     send_to_char("Magic must always be enclosed by the holy magic symbols : '\n\r",ch);
     return;
   }
   
-  spl = old_search_block( argument, 1, qend - 1, spells, 0);
+  spl = old_search_block( arg, 1, qend - 1, spells, 0);
   
   if (!spl) 
   {
@@ -1499,8 +1501,8 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
           return;
         }
       }
-      argument+=qend+1;        /* Point to the last ' */
-      for(;*argument == ' '; argument++);
+      arg+=qend+1;        /* Point to the last ' */
+      for(;*arg == ' '; arg++);
       
       /* **************** Locate targets **************** */
       
@@ -1520,7 +1522,7 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
       }
       if( !IS_SET( spell_info[spl].targets, TAR_IGNORE ) ) 
       {
-        argument = one_argument(argument, name);
+        arg = (char *) one_argument(arg, name);
         
         if( *name ) 
         {
@@ -1874,7 +1876,7 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
 
         send_to_char("Ok.\n\r",ch);
         ((*spell_info[spl].spell_pointer)( GET_LEVEL(ch, BestMagicClass( ch ) ),
-                                           ch, argument, SPELL_TYPE_SPELL,
+                                           ch, arg, SPELL_TYPE_SPELL,
                                            tar_char, tar_obj ) );
         cost = (int)USE_MANA(ch, (int)spl);
         if (cmd == CMD_RECALL) /* recall */ 
@@ -1887,6 +1889,7 @@ void do_cast(struct char_data *ch, char *argument, int cmd)
         }
       }
     }        /* if GET_POS < min_pos */
+    free(arg);
     return;
   }
   

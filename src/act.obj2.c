@@ -86,7 +86,7 @@ void name_to_drinkcon(struct obj_data *obj,int type)
 
 
 
-void do_drink(struct char_data *ch, char *argument, int cmd)
+void do_drink(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[255];
   struct obj_data *temp;
@@ -199,7 +199,7 @@ void do_drink(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_eat(struct char_data *ch, char *argument, int cmd)
+void do_eat(struct char_data *ch, const char *argument, int cmd)
 {
         char buf[100];
         int j, num;
@@ -259,7 +259,7 @@ void do_eat(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_pour(struct char_data *ch, char *argument, int cmd)
+void do_pour(struct char_data *ch, const char *argument, int cmd)
 {
   char arg1[132];
   char arg2[132];
@@ -384,7 +384,7 @@ void do_pour(struct char_data *ch, char *argument, int cmd)
   return;
 }
 
-void do_sip(struct char_data *ch, char *argument, int cmd)
+void do_sip(struct char_data *ch, const char *argument, int cmd)
 {
   struct affected_type af;
   char arg[MAX_STRING_LENGTH];
@@ -468,7 +468,7 @@ void do_sip(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_taste(struct char_data *ch, char *argument, int cmd)
+void do_taste(struct char_data *ch, const char *argument, int cmd)
 {
   struct affected_type af;
   char arg[80];
@@ -1279,7 +1279,7 @@ void wear(struct char_data *ch, struct obj_data *obj_object, long keyword)
 }
 
 
-void do_wear(struct char_data *ch, char *argument, int cmd) 
+void do_wear(struct char_data *ch, const char *argument, int cmd) 
 {
   char arg1[MAX_INPUT_LENGTH];
   char arg2[MAX_INPUT_LENGTH];
@@ -1434,7 +1434,7 @@ void do_wear(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_wield(struct char_data *ch, char *argument, int cmd) 
+void do_wield(struct char_data *ch, const char *argument, int cmd) 
 {
   char arg1[MAX_INPUT_LENGTH];
   char arg2[MAX_INPUT_LENGTH];
@@ -1463,7 +1463,7 @@ void do_wield(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_grab(struct char_data *ch, char *argument, int cmd)
+void do_grab(struct char_data *ch, const char *argument, int cmd)
 {
   char arg1[128];
   char arg2[128];
@@ -1495,7 +1495,7 @@ void do_grab(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_remove(struct char_data *ch, char *argument, int cmd)
+void do_remove(struct char_data *ch, const char *argument, int cmd)
 {
   char arg1[128],*T,*P;
   char buffer[256];

@@ -1007,7 +1007,7 @@ void PrintLimitedItems()
 
 
 
-int receptionist(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int receptionist(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct obj_cost cost;
   struct char_data *recep = 0;

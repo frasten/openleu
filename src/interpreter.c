@@ -308,8 +308,8 @@ const int dark_elf_class_choice[]=
   0
 };
 
-void do_cset(struct char_data *ch, char *arg, int cmd);
-void do_auth(struct char_data *ch, char *arg, int cmd); /* jdb 3-1 */
+void do_cset(struct char_data *ch, const char *arg, int cmd);
+void do_auth(struct char_data *ch, const char *arg, int cmd); /* jdb 3-1 */
 
 
 char *fill[]=
@@ -350,7 +350,7 @@ int search_block(char *arg, char **list, bool exact)
 }
 
 
-int old_search_block(char *argument,int begin,int length,char **list,int mode)
+int old_search_block(const char *argument,int begin,int length,char **list,int mode)
 {
   int guess, found, search;
   
@@ -381,7 +381,7 @@ int old_search_block(char *argument,int begin,int length,char **list,int mode)
   return ( found ? guess : -1 ); 
 }
 
-void command_interpreter( struct char_data *ch, char *argument )
+void command_interpreter( struct char_data *ch, const char *argument )
 {
   char buf[200];
   extern int no_specials;        
@@ -604,7 +604,7 @@ void command_interpreter( struct char_data *ch, char *argument )
 #endif
 }
 
-void argument_interpreter(char *argument,char *first_arg,char *second_arg )
+void argument_interpreter(const char *argument,char *first_arg,char *second_arg )
 {
   int look_at, begin;
   
@@ -642,7 +642,7 @@ void argument_interpreter(char *argument,char *first_arg,char *second_arg )
   while( fill_word(second_arg));
 }
 
-void ThreeArgumentInterpreter( char *pchArgument, char *pchFirstArg, 
+void ThreeArgumentInterpreter( const char *pchArgument, char *pchFirstArg, 
                                char *pchSecondArg, char *pchThirdArg )
 {
   int nLookAt, nBegin;
@@ -723,7 +723,7 @@ int is_number( char *str )
  * little time... If anyone feels pissed, I'm sorry.. Anyhow, the code is
  * snatched from the old one, so it outta work..
     
- * void one_argument(char *argument,char *first_arg )
+ * void one_argument(const char *argument,char *first_arg )
  * {
  *   static char dummy[MAX_STRING_LENGTH];
  *   
@@ -736,7 +736,7 @@ int is_number( char *str )
 /* find the first sub-argument of a string, return pointer to first char in
  *  primary argument, following the sub-arg  
  */
-char *one_argument(char *argument, char *first_arg )
+const char *one_argument(const char *argument, char *first_arg )
 {
   int begin,look_at;
   
@@ -761,7 +761,7 @@ char *one_argument(char *argument, char *first_arg )
   return(argument+begin);
 }
 
-char *OneArgumentNoFill( char *argument, char *first_arg )
+const char *OneArgumentNoFill( const char *argument, char *first_arg )
 {
   int begin,look_at;
   
@@ -784,7 +784,7 @@ char *OneArgumentNoFill( char *argument, char *first_arg )
 }
 
 
-void only_argument(char *argument, char *dest)
+void only_argument(const char *argument, char *dest)
 {
   while (*argument && isspace(*argument))
     argument++;
@@ -820,7 +820,7 @@ int is_abbrev(char *arg1, char *arg2)
 
 
 /* return first 'word' plus trailing substring of input string */
-void half_chop(char *string, char *arg1, char *arg2)
+void half_chop(const char *string, char *arg1, char *arg2)
 {
   for (; isspace(*string); string++);
   
@@ -1461,7 +1461,7 @@ int find_name(char *name)
 }
 
 
-int _parse_name(char *arg, char *name)
+int _parse_name(const char *arg, char *name)
 {
   int i;
   

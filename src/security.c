@@ -4,7 +4,7 @@
 
 /* ATTENZIONE Controllare che corrispondano con i valori definiti in structs.h
    ed in utility.c */
-void mudlog( unsigned uType, char *szString, ... );
+void mudlog( unsigned uType, const char *szString, ... );
 #define LOG_CHECK    0x0002
 
 int SecCheck(char *arg, char *site)

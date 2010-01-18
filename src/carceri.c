@@ -18,7 +18,7 @@ extern struct index_data *mob_index;
   Minicius cerca di raggiungere la piazza principale di Alma. Una volta
   arrivato li, si comporta come specificato nei flag act.
 *****************************************************************************/
-int Minicius( struct char_data *pChar, int nCmd, char *szArg, 
+int Minicius( struct char_data *pChar, int nCmd, const char *szArg, 
               struct char_data *pMob, int nType )
 {
   if( nType == EVENT_TICK && pMob->generic == 0 )
@@ -41,7 +41,7 @@ int Minicius( struct char_data *pChar, int nCmd, char *szArg,
   Chiunque veda il Verme della Morte, viene addormentato dal suo sguardo
   ipnotico, a meno con non azzecchi un tiro salvezza contro paralisi.
 *****************************************************************************/
-int VermeDellaMorte( struct char_data *pChar, int nCmd, char *szArg, 
+int VermeDellaMorte( struct char_data *pChar, int nCmd, const char *szArg, 
                      struct char_data *pMob, int nType )
 {
   if( nType == EVENT_TICK && AWAKE( pMob ) )
@@ -97,7 +97,7 @@ int VermeDellaMorte( struct char_data *pChar, int nCmd, char *szArg,
   mantenuta dalle funzioni in 'charlist.c'.
 *****************************************************************************/
 
-int KyussSon( struct char_data *pChar, int nCmd, char *szArg, 
+int KyussSon( struct char_data *pChar, int nCmd, const char *szArg, 
               struct char_data *pMob, int nType )
 {
   struct char_data *pTar;
@@ -166,7 +166,7 @@ int KyussSon( struct char_data *pChar, int nCmd, char *szArg,
   non viene aggiurnato, e` quindi la piovra avra` sempre meno tentacoli.
 *****************************************************************************/
 #define TENTACOLI 320
-int Piovra( struct char_data *pChar, int nCmd, char *szArg,
+int Piovra( struct char_data *pChar, int nCmd, const char *szArg,
             struct char_data *pMob, int nType )
 {
   struct room_data *pRoom;
@@ -264,7 +264,7 @@ int Piovra( struct char_data *pChar, int nCmd, char *szArg,
 *****************************************************************************/
 #define NANODELLECOLLINE 314
 
-int Moribondo( struct char_data *pChar, int nCmd, char *szArg,
+int Moribondo( struct char_data *pChar, int nCmd, const char *szArg,
                struct char_data *pMob, int nType )
 {
   if( pMob == NULL || pChar == NULL )

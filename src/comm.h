@@ -14,4 +14,4 @@
 
 #define PLAYER_AUTH 0
 
-char *ParseAnsiColors( int UsingAnsi, char *txt );
+char *ParseAnsiColors( int UsingAnsi, const char *txt );

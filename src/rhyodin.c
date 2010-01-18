@@ -28,7 +28,7 @@ extern struct char_data *character_list;
   Chiama altri fantasmi se attaccato.
 ****************************************************************************/
 
-int keystone( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int keystone( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
               int type )
 {
   struct char_data *ghost, *t, *master;
@@ -100,13 +100,13 @@ int keystone( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
   Chiama altri fantasmi se attaccato.
 ****************************************************************************/
 
-int ghostsoldier( struct char_data *ch, int cmd, char *arg, 
+int ghostsoldier( struct char_data *ch, int cmd, const char *arg, 
                   struct char_data *mob, int type)
 {
   struct char_data *tch, *good, *master;
   int max_good;
-  int (*gs)( struct char_data *, int, char *, struct char_data *, int );
-  int (*gc)( struct char_data *, int, char *, struct char_data *, int );
+  int (*gs)( struct char_data *, int, const char *, struct char_data *, int );
+  int (*gc)( struct char_data *, int, const char *, struct char_data *, int );
 
   gs = ghostsoldier;
   gc = keystone;
@@ -175,7 +175,7 @@ int ghostsoldier( struct char_data *ch, int cmd, char *arg,
   return FALSE;
 }
 
-char *quest_one[] = 
+const char *quest_one[] = 
 {
   "'Il secondo oggetto che devi trovare e` l'anello di Tlanic.",
   "Tlanic era un guerriero elfo che lascio` Rhyodin cinque anni",
@@ -186,7 +186,7 @@ char *quest_one[] =
   "\n"  
 };
 
-char *quest_two[] = 
+const char *quest_two[] = 
 {
   "'Devi sapere che molte lune dalla partenza di Tlanic, suo fratello",
   "Evistar ando` in sua ricerca.",
@@ -198,7 +198,7 @@ char *quest_two[] =
   "\n"
 };
 
-char *quest_three[] = 
+const char *quest_three[] = 
 {
   "'Purtroppo, nemmeno Evistar fece mai ritorno, e passarono anni prima che",
   "un potente mago decise di cercare la via verso il nord.",
@@ -208,7 +208,7 @@ char *quest_three[] =
   "\n"
 };
 
-char *necklace[] = 
+const char *necklace[] = 
 {
   "'Mi hai riportato tutti gli oggetti degli eroi morti nella",
   "ricerca della via di uscita dal reame.",
@@ -221,7 +221,7 @@ char *necklace[] =
   "\n"
 };
 
-char *nonecklace[] = 
+const char *nonecklace[] = 
 {
   "'Mi hai riportato tutti gli oggetti degli eroi morti nella",
   "ricerca della via di uscita dal reame di Rhyodin.",
@@ -234,7 +234,7 @@ char *nonecklace[] =
   "\n"
 };
 
-char *quest_intro[] = 
+const char *quest_intro[] = 
 {
   "'Vuoi conoscere la storia di Rhyodin ? Bene. Devi sapere",
   "che Rhyodin e` un reame a sudest dell'Alpes Oppidum.",
@@ -247,7 +247,7 @@ char *quest_intro[] =
   "\n"
 };
 
-void SayQuest( struct char_data *pCh, char *apchQuest[] )
+void SayQuest( struct char_data *pCh, const char *apchQuest[] )
 {
   int i;
   char buf[ 100 ];
@@ -260,7 +260,7 @@ void SayQuest( struct char_data *pCh, char *apchQuest[] )
   }
 }
 
-int Valik( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int Valik( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
            int type )
 {
   
@@ -602,7 +602,7 @@ void FreeGuardianList( struct GuardianListNames *pGList )
     mudlog( LOG_SYSERR, "pGList == NULL in FreeGuardianList(rhyodin)" );
 }
 
-int guardian( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int guardian( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
               int type)
 {
 #define RHYODIN_FILE "rhyodin"
@@ -822,7 +822,7 @@ int guardian( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
   Viene attaccata al ragno nella cava dei trigloditi.
 ****************************************************************************/
 
-int web_slinger( struct char_data *ch, int cmd, char *arg, 
+int web_slinger( struct char_data *ch, int cmd, const char *arg, 
                  struct char_data *mob, int type )
 {
   struct char_data *vict;
@@ -864,7 +864,7 @@ int web_slinger( struct char_data *ch, int cmd, char *arg,
   so don't have a lot of wandering NPCs around it. 
 ***************************************************************************/
 
-int trapper( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int trapper( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
              int type )
 {
   struct char_data *tch;
@@ -923,7 +923,7 @@ int trapper( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
   Inoltre, se non stanno combattendo, attaccano il piu` buono nella stanza.
 ***************************************************************************/
 
-int troguard( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int troguard( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
               int type)
 {
   struct char_data *tch, *good;
@@ -984,7 +984,7 @@ int troguard( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
   Il cuoco dei trogloditi se trova un animale lo attacca. Se c'e` un corpo
   lo mette nella pentola.
 *****************************************************************************/
-int trogcook( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int trogcook( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
               int type)
 {
   struct char_data *tch;
@@ -1031,7 +1031,7 @@ int trogcook( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
 #define DEITY 21124
 #define DEITY_NAME "golgar"
 
-int shaman( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int shaman( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
             int type )
 {
   struct char_data *god, *tch;
@@ -1080,7 +1080,7 @@ int shaman( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
 
 #define SHAMAN_NAME "shaman"
 
-int golgar( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int golgar( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
             int type )
 {
   struct char_data *shaman, *tch;
@@ -1145,7 +1145,7 @@ int golgar( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
   sera, mangiare all'ora di pranzo ecc...
 *****************************************************************************/
 
-char *lattimore_descs[] = 
+const char *lattimore_descs[] = 
 {
   "A small orc cerca di scassinare un armadietto.\n\r",
   "A small orc cammina risoluto per la stanza.\n\r",
@@ -1177,7 +1177,7 @@ char *lattimore_descs[] =
 #define CrowBar   21114
 #define PostKey   21150
 
-int lattimore( struct char_data *pChar, int nCmd, char *szArg, 
+int lattimore( struct char_data *pChar, int nCmd, const char *szArg, 
                struct char_data *pMob, int nType )
 {
   struct char_data *pTarget;
@@ -1578,7 +1578,7 @@ int lattimore( struct char_data *pChar, int nCmd, char *szArg,
   ice storm. Meglio evitarlo.
 ****************************************************************************/
 
-int coldcaster( struct char_data *ch, int cmd, char *arg, 
+int coldcaster( struct char_data *ch, int cmd, const char *arg, 
                 struct char_data *mob, int type)
 {
   struct char_data *vict;

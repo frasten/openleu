@@ -20,7 +20,7 @@ extern long SystemFlags;
  *   $C1411 would be bold, blue back, light yellow fore 
  */    
 
-char *ansi_parse(char *code )
+char *ansi_parse(const char *code )
 {
   char m[ 10 ], b[ 10 ],f[ 10 ];
   static char szResult[ 256 ];

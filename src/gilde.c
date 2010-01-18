@@ -210,7 +210,7 @@ int IsGuildGuardRoomFP( int room, void *tgt_room )
  * la chiave tenuta.
  ****************************************************************************/
 
-int PlayersGuildGuard( struct char_data *pCh, int nCmd, char *pArg,
+int PlayersGuildGuard( struct char_data *pCh, int nCmd, const char *pArg,
                        struct char_data *pMob, int nType )
 {
   int nIndex;
@@ -408,7 +408,7 @@ int PlayersGuildGuard( struct char_data *pCh, int nCmd, char *pArg,
  ****************************************************************************/
 
 void GuildDeposit( struct char_data *pCh, struct char_data *pMob, 
-                   char *pArg, int nIndex )
+                   const char *pArg, int nIndex )
 {
   
   char szBuffer[ 256 ];
@@ -515,7 +515,7 @@ void GuildBalance( struct char_data *pCh, struct char_data *pMob,
  ****************************************************************************/
 
 void GuildWithdraw( struct char_data *pCh, struct char_data *pMob, 
-                    char *pArg, int nIndex )
+                    const char *pArg, int nIndex )
 {
   struct char_data *pGuildMaster;
 
@@ -596,7 +596,7 @@ void GuildWithdraw( struct char_data *pCh, struct char_data *pMob,
  *
  *************************************************************************/
 
-int GuildBanker( struct char_data *pCh, int nCmd, char *pArg, 
+int GuildBanker( struct char_data *pCh, int nCmd, const char *pArg, 
                  struct char_data *pMob, int nType )
 {
 
@@ -770,7 +770,7 @@ int GuildBalanceXP( struct char_data *pChar, struct char_data *pMob,
  * Procedura di servizio per GuildXPBanker.
  ****************************************************************************/
 
-int GuildDepositXP( struct char_data *pChar,  char *szArg, 
+int GuildDepositXP( struct char_data *pChar,  const char *szArg, 
                     struct char_data *pMob, int nIndex )
 {
   if( !IsInList( (CharElem *)pMob->act_ptr, pChar ) )
@@ -869,7 +869,7 @@ int GuildDepositXP( struct char_data *pChar,  char *szArg,
  * Procedura di servizio per GuildXPBanker.
  ****************************************************************************/
 
-int GuildWithdrawXP( struct char_data *pChar,  char *szArg,
+int GuildWithdrawXP( struct char_data *pChar,  const char *szArg,
                      struct char_data *pMob, int nIndex )
 {
   long lXP = -1;
@@ -993,7 +993,7 @@ int GuildWithdrawXP( struct char_data *pChar,  char *szArg,
  *         prelevato negli ultimi 3 giorni.
  ****************************************************************************/
 
-int GuildXPBanker( struct char_data *pChar, int nCmd, char *szArg,
+int GuildXPBanker( struct char_data *pChar, int nCmd, const char *szArg,
                    struct char_data *pMob, int nType )
 {
   if( pMob == NULL )
@@ -1086,7 +1086,7 @@ int GuildXPBanker( struct char_data *pChar, int nCmd, char *szArg,
  * read <nomelibro> (quest'ultimo comando non e` limitato al solo capogilda).
  * *************************************************************************/
 
-int GuildMemberBook( struct char_data *pChar, int nCmd, char *szArg,
+int GuildMemberBook( struct char_data *pChar, int nCmd, const char *szArg,
                      struct obj_data *pObj, int nType )
 {
   if( pObj == NULL )
@@ -1253,7 +1253,7 @@ int GuildMemberBook( struct char_data *pChar, int nCmd, char *szArg,
  * stanza ed un oggetto.
  * *************************************************************************/
 
-void AssignMob( int vnum, int (*proc)( struct char_data *, int, char *, 
+void AssignMob( int vnum, int (*proc)( struct char_data *, int, const char *, 
                                        struct char_data *, int ) )
 {
   
@@ -1273,7 +1273,7 @@ void AssignMob( int vnum, int (*proc)( struct char_data *, int, char *,
   }
 }
         
-void AssignRoom( int vnum, int (*proc)( struct char_data *, int, char *,
+void AssignRoom( int vnum, int (*proc)( struct char_data *, int, const char *,
                                         struct room_data *, int ) )
 {
   
@@ -1293,7 +1293,7 @@ void AssignRoom( int vnum, int (*proc)( struct char_data *, int, char *,
   }
 }
 
-void AssignObj( int vnum, int (*proc)( struct char_data *, int, char *,
+void AssignObj( int vnum, int (*proc)( struct char_data *, int, const char *,
                                        struct obj_data *, int ) )
 {
   

@@ -27,12 +27,12 @@ extern struct int_app_type int_app[26];
 int TotalMaxCanMem(struct char_data *ch);
 int TotalMemorized(struct char_data *ch);
 
-void do_gain(struct char_data *ch, char *argument, int cmd)
+void do_gain(struct char_data *ch, const char *argument, int cmd)
 {
 
 }
 
-void do_guard(struct char_data *ch, char *argument, int cmd)
+void do_guard(struct char_data *ch, const char *argument, int cmd)
 {
   if (!IS_NPC(ch) || IS_SET(ch->specials.act, ACT_POLYSELF)) {
     send_to_char("Sorry. you can't just put your brain on autopilot!\n\r",ch);
@@ -73,7 +73,7 @@ void do_guard(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_junk(struct char_data *ch, char *argument, int cmd)
+void do_junk(struct char_data *ch, const char *argument, int cmd)
 {
   char arg[100], buf[100], newarg[100];
   struct obj_data *tmp_object;
@@ -151,13 +151,13 @@ void do_junk(struct char_data *ch, char *argument, int cmd)
   return;
 }
 
-void do_qui(struct char_data *ch, char *argument, int cmd)
+void do_qui(struct char_data *ch, const char *argument, int cmd)
 {
   send_to_char("You have to write quit - no less, to quit!\n\r",ch);
   return;
 }
 
-void do_set_prompt(struct char_data *ch, char *argument, int cmd)
+void do_set_prompt(struct char_data *ch, const char *argument, int cmd)
 {
   static struct def_prompt 
   {
@@ -234,9 +234,10 @@ void do_set_prompt(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_title(struct char_data *ch, char *argument, int cmd)
+void do_title(struct char_data *ch, const char *argument, int cmd)
 {
    char buf[512];
+   char *title;
 
 
 /*   char *strdup(char *source); */
@@ -248,20 +249,20 @@ void do_title(struct char_data *ch, char *argument, int cmd)
   for(;isspace(*argument); argument++)  ;
 
   if (*argument) {
-
-    if (strlen(argument) > 150) {
+    title = strdup(argument);
+    if (strlen(title) > 150) {
       send_to_char("Line too long, truncated\n", ch);
-      *(argument + 151) = '\0';
+      *(title + 151) = '\0';
     }
-    sprintf(buf, "Your title has been set to : <%s>\n\r", argument);
+    sprintf(buf, "Your title has been set to : <%s>\n\r", title);
     send_to_char(buf, ch);
     free(ch->player.title);
-    ch->player.title = strdup(argument);
+    ch->player.title = title;
   }      
 
 }
 
-void do_quit(struct char_data *ch, char *argument, int cmd)
+void do_quit(struct char_data *ch, const char *argument, int cmd)
 {
   
   if (IS_NPC(ch) || !ch->desc || IS_AFFECTED(ch, AFF_CHARM))
@@ -289,7 +290,7 @@ void do_quit(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_save(struct char_data *ch, char *argument, int cmd)
+void do_save(struct char_data *ch, const char *argument, int cmd)
 {
   struct obj_cost cost;
   struct char_data *tmp;
@@ -384,13 +385,13 @@ void do_save(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_not_here(struct char_data *ch, char *argument, int cmd)
+void do_not_here(struct char_data *ch, const char *argument, int cmd)
 {
   send_to_char( "Mi dispiace, ma non puoi farlo qui!\n\r",ch);
 }
 
 
-void do_sneak(struct char_data *ch, char *argument, int cmd)
+void do_sneak(struct char_data *ch, const char *argument, int cmd)
 {
   struct affected_type af;
   byte percent;
@@ -467,7 +468,7 @@ void do_sneak(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_hide(struct char_data *ch, char *argument, int cmd)
+void do_hide(struct char_data *ch, const char *argument, int cmd)
 {
   byte percent;
   
@@ -515,7 +516,7 @@ void do_hide(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_steal(struct char_data *ch, char *argument, int cmd)
+void do_steal(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   struct obj_data *obj;
@@ -697,7 +698,7 @@ void do_steal(struct char_data *ch, char *argument, int cmd)
   
 }
 
-void do_practice(struct char_data *ch, char *arg, int cmd) 
+void do_practice(struct char_data *ch, const char *arg, int cmd) 
 {
   char buf[MAX_STRING_LENGTH*2], buffer[MAX_STRING_LENGTH*2], temp[20];
   int i;
@@ -1093,7 +1094,7 @@ void do_practice(struct char_data *ch, char *arg, int cmd)
 
 
 
-void do_idea(struct char_data *ch, char *argument, int cmd)
+void do_idea(struct char_data *ch, const char *argument, int cmd)
 {
         FILE *fl;
         char str[MAX_INPUT_LENGTH+20];
@@ -1130,7 +1131,7 @@ void do_idea(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_typo(struct char_data *ch, char *argument, int cmd)
+void do_typo(struct char_data *ch, const char *argument, int cmd)
 {
         FILE *fl;
         char str[MAX_INPUT_LENGTH+20];
@@ -1165,7 +1166,7 @@ void do_typo(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_bug(struct char_data *ch, char *argument, int cmd)
+void do_bug(struct char_data *ch, const char *argument, int cmd)
 {
         FILE *fl;
         char str[MAX_INPUT_LENGTH+20];
@@ -1197,7 +1198,7 @@ void do_bug(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_brief(struct char_data *ch, char *argument, int cmd)
+void do_brief(struct char_data *ch, const char *argument, int cmd)
 {
   if( IS_NPC( ch ) )
   {
@@ -1221,7 +1222,7 @@ void do_brief(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_compact(struct char_data *ch, char *argument, int cmd)
+void do_compact(struct char_data *ch, const char *argument, int cmd)
 {
   if (IS_NPC(ch))
     return;
@@ -1277,7 +1278,7 @@ char *Tiredness(struct char_data *ch)
   return(p);
   
 }
-void do_group(struct char_data *ch, char *argument, int cmd)
+void do_group(struct char_data *ch, const char *argument, int cmd)
 {
   char name[256], buf[256];
   struct char_data *victim, *k;
@@ -1430,7 +1431,7 @@ void do_group(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_group_name(struct char_data *ch, char *arg, int cmd)
+void do_group_name(struct char_data *ch, const char *arg, int cmd)
 {
   int count;
   struct follow_type *f;
@@ -1464,7 +1465,7 @@ void do_group_name(struct char_data *ch, char *arg, int cmd)
   
 }
 
-void do_quaff(struct char_data *ch, char *argument, int cmd)
+void do_quaff(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[100];
   struct obj_data *temp;
@@ -1541,7 +1542,7 @@ void do_quaff(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_recite(struct char_data *ch, char *argument, int cmd)
+void do_recite(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[100];
   struct obj_data *scroll, *obj;
@@ -1647,7 +1648,7 @@ void do_recite(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_use(struct char_data *ch, char *argument, int cmd)
+void do_use(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[100];
   struct char_data *tmp_char;
@@ -1734,7 +1735,7 @@ void do_use(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_plr_noshout(struct char_data *ch, char *argument, int cmd)
+void do_plr_noshout(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[128];
   
@@ -1757,7 +1758,7 @@ void do_plr_noshout(struct char_data *ch, char *argument, int cmd)
   
 }
 
-void do_plr_nogossip(struct char_data *ch, char *argument, int cmd)
+void do_plr_nogossip(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[128];
   
@@ -1780,7 +1781,7 @@ void do_plr_nogossip(struct char_data *ch, char *argument, int cmd)
   
 }
 
-void do_plr_noauction(struct char_data *ch, char *argument, int cmd)
+void do_plr_noauction(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[128];
   
@@ -1803,7 +1804,7 @@ void do_plr_noauction(struct char_data *ch, char *argument, int cmd)
   
 }
 
-void do_plr_notell(struct char_data *ch, char *argument, int cmd)
+void do_plr_notell(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[128];
   
@@ -1827,7 +1828,7 @@ void do_plr_notell(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_alias(struct char_data *ch, char *arg, int cmd)
+void do_alias(struct char_data *ch, const char *arg, int cmd)
 {
   char buf[512], buf2[512];
   char *p, *p2;
@@ -1930,7 +1931,7 @@ void Dismount(struct char_data *ch, struct char_data *h, int pos)
 
 }
 
-void do_mount(struct char_data *ch, char *arg, int cmd)
+void do_mount(struct char_data *ch, const char *arg, int cmd)
 {
   char name[112];
   int check;
@@ -2043,7 +2044,7 @@ int CheckContempMemorize( struct char_data *pChar )
 }
 #endif
 
-void do_memorize(struct char_data *ch, char *argument, int cmd)
+void do_memorize(struct char_data *ch, const char *argument, int cmd)
 {
 
   int spl,qend;
@@ -2052,7 +2053,8 @@ void do_memorize(struct char_data *ch, char *argument, int cmd)
 #else
   float duration;
 #endif
-  struct affected_type af;        
+  struct affected_type af;
+  char *arg;
   
   if (IS_NPC(ch) && (!IS_SET(ch->specials.act, ACT_POLYSELF)))
     return;
@@ -2186,17 +2188,18 @@ void do_memorize(struct char_data *ch, char *argument, int cmd)
     return;
   }
   
-  for( qend = 1; *(argument + qend) && ( *(argument + qend) != '\'' ) ; qend++ )
-    *(argument + qend) = LOWER( *(argument + qend) );
+  arg = strdup(argument);
+  for( qend = 1; *(arg + qend) && ( *(arg + qend) != '\'' ) ; qend++ )
+    *(arg + qend) = LOWER( *(arg + qend) );
   
-  if( *(argument + qend) != '\'') 
+  if( *(arg + qend) != '\'') 
   {
     send_to_char( "Gli incantesimi vanno circondati dal simbolo sacro: '\n\r",
                   ch );
     return;
   }
   
-  spl = old_search_block( argument, 1, qend-1, spells, 0 );
+  spl = old_search_block( arg, 1, qend-1, spells, 0 );
   
   if( !spl )
   {
@@ -2271,6 +2274,7 @@ void do_memorize(struct char_data *ch, char *argument, int cmd)
     send_to_char( "Sfogli il tuo libro ed inizi a leggere e meditare.\n\r",
                   ch );
   }
+  free(arg);
 
   return;
 } /* end memorize */
@@ -2324,7 +2328,7 @@ void check_memorize(struct char_data *ch, struct affected_type *af)
   }
 }
 
-void do_set_afk( struct char_data *ch, char *argument, int cmd )
+void do_set_afk( struct char_data *ch, const char *argument, int cmd )
 {
   if (!ch)
     return;
@@ -2339,7 +2343,7 @@ void do_set_afk( struct char_data *ch, char *argument, int cmd )
 
 #define RACE_WAR_MIN_LEVEL 11
 /* this is the level a user can turn race war ON */
-void do_set_flags(struct char_data *ch, char *argument, int cmd)
+void do_set_flags(struct char_data *ch, const char *argument, int cmd)
 {
   char type[255],field[255];
  
@@ -2499,7 +2503,7 @@ void do_set_flags(struct char_data *ch, char *argument, int cmd)
   }        
 }
 
-void do_finger(struct char_data *ch, char *argument, int cmd)
+void do_finger(struct char_data *ch, const char *argument, int cmd)
 {
  char name[128],buf[254];
  struct char_data *finger;

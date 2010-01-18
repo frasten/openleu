@@ -6,7 +6,7 @@ typedef struct command_node NODE;
  
 struct command_node {
    char *name;
-   void (*func)(struct char_data *ch, char *arg, int cmd);
+   void (*func)(struct char_data *ch, const char *arg, int cmd);
    int number;
    byte min_pos;
    byte min_level;

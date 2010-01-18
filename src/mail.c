@@ -97,7 +97,7 @@ extern struct index_data *mob_index;
 extern struct obj_data *object_list;
 extern int        no_mail;
 int        find_name(char *name);
-int        _parse_name(char *arg, char *name);
+int        _parse_name(const char *arg, char *name);
 
 mail_index_type                *mail_index = 0; /* list of recs in the mail file  */
 position_list_type         *free_list = 0;  /* list of free positions in file */
@@ -133,7 +133,7 @@ long        pop_free_list(void)
 
 
 
-mail_index_type *find_char_in_index(char *searchee)
+mail_index_type *find_char_in_index(const char *searchee)
 {
    mail_index_type * temp_rec;
 
@@ -528,7 +528,7 @@ struct char_data *find_mailman(struct char_data *ch)
 }
 
 
-void        postmaster_send_mail(struct char_data *ch, int cmd, char *arg)
+void        postmaster_send_mail(struct char_data *ch, int cmd, const char *arg)
 {
    struct char_data *mailman;
    char        buf[200], recipient[100], *tmp;
@@ -589,7 +589,7 @@ void        postmaster_send_mail(struct char_data *ch, int cmd, char *arg)
 }
 
 
-void        postmaster_check_mail(struct char_data *ch, int cmd, char *arg)
+void        postmaster_check_mail(struct char_data *ch, int cmd, const char *arg)
 {
    struct char_data *mailman;
    char        buf[200], recipient[100], *tmp;
@@ -611,7 +611,7 @@ void        postmaster_check_mail(struct char_data *ch, int cmd, char *arg)
 }
 
 
-void        postmaster_receive_mail(struct char_data *ch, int cmd, char *arg)
+void        postmaster_receive_mail(struct char_data *ch, int cmd, const char *arg)
 {
    struct char_data *mailman;
    char        buf[200], recipient[100], *tmp;

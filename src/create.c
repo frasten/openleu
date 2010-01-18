@@ -71,10 +71,10 @@ char *aszExitName[] =
   "down"
 };
  
-void ChangeExitKeyword( struct room_data *rp, struct char_data *ch, char *arg, 
+void ChangeExitKeyword( struct room_data *rp, struct char_data *ch, const char *arg, 
                         int type);
 
-void ChangeRoomFlags(struct room_data *rp, struct char_data *ch, char *arg, int type)
+void ChangeRoomFlags(struct room_data *rp, struct char_data *ch, const char *arg, int type)
 {
   int i, row, update;
   char buf[255];
@@ -124,7 +124,7 @@ void ChangeRoomFlags(struct room_data *rp, struct char_data *ch, char *arg, int 
 }
  
  
-void do_redit(struct char_data *ch, char *arg, int cmd)
+void do_redit(struct char_data *ch, const char *arg, int cmd)
 {
   struct room_data *rp;
 
@@ -185,7 +185,7 @@ void UpdateRoomMenu(struct char_data *ch)
 }
  
  
-void RoomEdit(struct char_data *ch, char *arg)
+void RoomEdit(struct char_data *ch, const char *arg)
 {
   if(ch->specials.edit == MAIN_MENU) 
   {
@@ -290,7 +290,7 @@ void RoomEdit(struct char_data *ch, char *arg)
 }
  
  
-void ChangeRoomName( struct room_data *rp, struct char_data *ch, char *arg, 
+void ChangeRoomName( struct room_data *rp, struct char_data *ch, const char *arg, 
                      int type )
 {
   char buf[255];
@@ -324,7 +324,7 @@ void ChangeRoomName( struct room_data *rp, struct char_data *ch, char *arg,
 } 
  
  
-void ChangeRoomDesc(struct room_data *rp, struct char_data *ch, char *arg, int type)
+void ChangeRoomDesc(struct room_data *rp, struct char_data *ch, const char *arg, int type)
 {
   char buf[255];
  
@@ -351,7 +351,7 @@ void ChangeRoomDesc(struct room_data *rp, struct char_data *ch, char *arg, int t
 } 
  
  
-void ChangeRoomType(struct room_data *rp, struct char_data *ch, char *arg, int type)
+void ChangeRoomType(struct room_data *rp, struct char_data *ch, const char *arg, int type)
 {
   int i, row, update;
   char buf[255];
@@ -433,7 +433,7 @@ void ChangeRoomType(struct room_data *rp, struct char_data *ch, char *arg, int t
 }
  
  
-void ChangeExitDir( struct room_data *rp, struct char_data *ch, char *arg, 
+void ChangeExitDir( struct room_data *rp, struct char_data *ch, const char *arg, 
                     int type)
 {
   int update;
@@ -487,7 +487,7 @@ void ChangeExitDir( struct room_data *rp, struct char_data *ch, char *arg,
 }
  
  
-void AddExitToRoom( struct room_data *rp, struct char_data *ch, char *arg, 
+void AddExitToRoom( struct room_data *rp, struct char_data *ch, const char *arg, 
                     int type)
 {
   int update, dir, row, i = 0;
@@ -556,7 +556,7 @@ void AddExitToRoom( struct room_data *rp, struct char_data *ch, char *arg,
 }
  
  
-void ChangeExitNumber(struct room_data *rp, struct char_data *ch, char *arg, int type)
+void ChangeExitNumber(struct room_data *rp, struct char_data *ch, const char *arg, int type)
 {
   int dir, update;
   char buf[255];
@@ -597,7 +597,7 @@ void ChangeExitNumber(struct room_data *rp, struct char_data *ch, char *arg, int
 }
  
  
-void ChangeKeyNumber( struct room_data *rp, struct char_data *ch, char *arg, 
+void ChangeKeyNumber( struct room_data *rp, struct char_data *ch, const char *arg, 
                       int type )
 {
   int dir;
@@ -641,19 +641,21 @@ void ChangeKeyNumber( struct room_data *rp, struct char_data *ch, char *arg,
   send_to_char( buf, ch );
 }
 
-void ChangeExitKeyword( struct room_data *rp, struct char_data *ch, char *arg, 
+void ChangeExitKeyword( struct room_data *rp, struct char_data *ch, const char *arg, 
                         int type)
 {
   char buf[ 255 ];
+  char *argument;
   int dir = ch->specials.edit - CHANGE_EXIT_KEYWORD_NORTH;
 
   if( rp->dir_option[ dir ]->keyword )
     free( rp->dir_option[ dir ]->keyword );
 
-  if( *arg == '\n' || *arg == '\r' )
-    *arg = '\0';
+  argument = strdup(arg);
+  if( *argument == '\n' || *argument == '\r' )
+    *argument = '\0';
 
-  rp->dir_option[dir]->keyword = (char *)strdup( arg );
+  rp->dir_option[dir]->keyword = argument;
 
   sprintf(buf, VT_HOMECLR);
   send_to_char(buf, ch);
@@ -677,7 +679,7 @@ void ChangeExitKeyword( struct room_data *rp, struct char_data *ch, char *arg,
 }
 
 
-void DeleteExit( struct room_data *rp, struct char_data *ch, char *arg, 
+void DeleteExit( struct room_data *rp, struct char_data *ch, const char *arg, 
                  int type)
 {
   ch->specials.edit = MAIN_MENU;

@@ -410,7 +410,7 @@
 struct spell_info_type
 {
         void (*spell_pointer) 
-               (byte level, struct char_data *ch, char *arg, int type,
+               (byte level, struct char_data *ch, const char *arg, int type,
                 struct char_data *tar_ch, struct obj_data *tar_obj);
         byte minimum_position;  /* Position for caster                         */
         ubyte min_usesmana;     /* Amount of mana used by a spell         */

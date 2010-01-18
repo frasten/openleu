@@ -587,7 +587,7 @@ void DisplayGroupMove(struct char_data *ch, int dir, int was_in, int total)
 }
 
 
-void do_move(struct char_data *ch, char *argument, int cmd)
+void do_move(struct char_data *ch, const char *argument, int cmd)
 {
   SetStatus( "do_move started", GET_NAME_DESC( ch ), ch );
 
@@ -1014,7 +1014,7 @@ int canScythe( struct char_data *ch )
     return FALSE;
 }
 
-void do_open_exit(struct char_data *ch, char *argument, int cmd)
+void do_open_exit(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char type[MAX_INPUT_LENGTH], dir[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
@@ -1185,7 +1185,7 @@ void do_open_exit(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_open(struct char_data *ch, char *argument, int cmd)
+void do_open(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char type[MAX_INPUT_LENGTH], dir[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
@@ -1251,7 +1251,7 @@ void do_open(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_close(struct char_data *ch, char *argument, int cmd)
+void do_close(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char type[MAX_INPUT_LENGTH], dir[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
@@ -1416,7 +1416,7 @@ void raw_lock_door( struct char_data *ch,
   }
 }
 
-void do_lock(struct char_data *ch, char *argument, int cmd)
+void do_lock(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char type[MAX_INPUT_LENGTH], dir[MAX_INPUT_LENGTH];
@@ -1480,7 +1480,7 @@ void do_lock(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_unlock(struct char_data *ch, char *argument, int cmd)
+void do_unlock(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char type[MAX_INPUT_LENGTH], dir[MAX_INPUT_LENGTH];
@@ -1543,7 +1543,7 @@ void do_unlock(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_pick(struct char_data *ch, char *argument, int cmd)
+void do_pick(struct char_data *ch, const char *argument, int cmd)
 {
   byte percent;
   int door;
@@ -1632,7 +1632,7 @@ void do_pick(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_enter(struct char_data *ch, char *argument, int cmd)
+void do_enter(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   char buf[MAX_INPUT_LENGTH], tmp[MAX_STRING_LENGTH];
@@ -1672,7 +1672,7 @@ void do_enter(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_leave(struct char_data *ch, char *argument, int cmd)
+void do_leave(struct char_data *ch, const char *argument, int cmd)
 {
   int door;
   struct room_direction_data        *exitp;
@@ -1695,7 +1695,7 @@ void do_leave(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_stand(struct char_data *ch, char *argument, int cmd)
+void do_stand(struct char_data *ch, const char *argument, int cmd)
 {
   /* can't stand while memorizing! */
   if (affected_by_spell(ch,SKILL_MEMORIZE)) 
@@ -1748,7 +1748,7 @@ void do_stand(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_sit(struct char_data *ch, char *argument, int cmd)
+void do_sit(struct char_data *ch, const char *argument, int cmd)
 {
   switch(GET_POS(ch)) 
   {
@@ -1784,7 +1784,7 @@ void do_sit(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_rest(struct char_data *ch, char *argument, int cmd) 
+void do_rest(struct char_data *ch, const char *argument, int cmd) 
 {
   switch(GET_POS(ch)) 
   {
@@ -1825,7 +1825,7 @@ void do_rest(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_sleep(struct char_data *ch, char *argument, int cmd) 
+void do_sleep(struct char_data *ch, const char *argument, int cmd) 
 {
   
   switch(GET_POS(ch)) 
@@ -1856,7 +1856,7 @@ void do_sleep(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_wake(struct char_data *ch, char *argument, int cmd)
+void do_wake(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *tmp_char;
   char arg[MAX_STRING_LENGTH];
@@ -1940,7 +1940,7 @@ void do_wake(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_follow(struct char_data *ch, char *argument, int cmd)
+void do_follow(struct char_data *ch, const char *argument, int cmd)
 {
   char name[160];
   struct char_data *leader;
@@ -1998,7 +1998,7 @@ void do_follow(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_run(struct char_data *ch, char *argument, int cmd)
+void do_run(struct char_data *ch, const char *argument, int cmd)
 {
   char buff[MAX_INPUT_LENGTH];
   int keyno, was_in;

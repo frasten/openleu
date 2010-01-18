@@ -133,7 +133,7 @@ int square_empty(struct room_data *square)
   return TRUE;
 }
   
-int chess_game(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int chess_game(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct room_data *rp = NULL, *crp = real_roomp(ch->in_room);
   struct char_data *ep = NULL;
@@ -358,7 +358,7 @@ int chess_game(struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
   return FALSE;
 }
 
-int AcidBlob(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int AcidBlob(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct obj_data *i;
   
@@ -377,7 +377,7 @@ int AcidBlob(struct char_data *ch, int cmd, char *arg, struct char_data *mob, in
   return(FALSE);
 }
  
-int death_knight(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int death_knight(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 
   if (cmd) return(FALSE);
@@ -390,7 +390,7 @@ int death_knight(struct char_data *ch, int cmd, char *arg, struct char_data *mob
   }
 }
 
-int acid_monster(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int acid_monster(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
  if (cmd)
     return(FALSE);
@@ -404,7 +404,7 @@ int acid_monster(struct char_data *ch, int cmd, char *arg, struct char_data *mob
     
     return(FALSE);
 }
-int avatar_celestian(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int avatar_celestian(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 
   if (cmd) return(FALSE);
@@ -420,7 +420,7 @@ int avatar_celestian(struct char_data *ch, int cmd, char *arg, struct char_data 
 
 
 
-int baby_bear(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int baby_bear(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *t;
   struct room_data *rp;
@@ -446,7 +446,7 @@ int baby_bear(struct char_data *ch, int cmd, char *arg, struct char_data *mob, i
 #define TIMNUSNORTHLIMIT 30
 #define TIMNUSWESTLIMIT 9
 
-int timnus(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int timnus(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   /* north = 1 */
   /* west  = 4 */
@@ -586,7 +586,7 @@ int timnus(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int 
 }
 
 
-int winger(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int winger(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *vict;
 
@@ -624,7 +624,7 @@ int winger(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int 
 }
 
 #define STRAHD_ZOMBIE 30000
-int strahd_zombie(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int strahd_zombie(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
  struct char_data *mobtmp;
  char buf[128];
@@ -669,7 +669,7 @@ int strahd_zombie(struct char_data *ch, int cmd, char *arg, struct char_data *mo
 #define HOLY_ITEM_RAVENLOFT  30751
 #define STRAHD_VAMPIRE       30113        /* mob number of strahd */
 #define STRAHD_RELOCATE_ROOM 30008      /* room to put second strahd */
-int strahd_vampire(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int strahd_vampire(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *mobtmp;
   static struct char_data *tmp;
@@ -847,7 +847,7 @@ int strahd_vampire(struct char_data *ch, int cmd, char *arg, struct char_data *m
   return(magic_user(mob,cmd,arg,mob,type)); 
 } /* end strahd */
 
-int banshee(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int banshee(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 
  struct char_data *tmp;
@@ -897,7 +897,7 @@ int banshee(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int
 
 
 
-int mad_gertruda(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int mad_gertruda(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (cmd) return(FALSE);
   if (!AWAKE(mob)) return(FALSE);
@@ -909,7 +909,7 @@ int mad_gertruda(struct char_data *ch, int cmd, char *arg, struct char_data *mob
   return(FALSE);
 }
 
-int mad_cyrus(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int mad_cyrus(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (cmd) return(FALSE);
   if (!AWAKE(mob)) return(FALSE);
@@ -923,7 +923,7 @@ int mad_cyrus(struct char_data *ch, int cmd, char *arg, struct char_data *mob, i
 
 #define IRON_DIR_STOP  EAST 
 #define IRON_ROOM_STOP 30078
-int raven_iron_golem(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int raven_iron_golem(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *v;
 
@@ -960,7 +960,7 @@ if (cmd)
 
 #if EGO
 
-int EvilBlade(struct char_data *ch, int cmd, char *arg,struct obj_data *tobj, int type)
+int EvilBlade(struct char_data *ch, int cmd, const char *arg,struct obj_data *tobj, int type)
 {
    extern struct str_app_type str_app[];
    struct obj_data *obj, *blade;
@@ -1221,7 +1221,7 @@ sprintf(buf,"You can hear $n's %s almost sing with joy!",obj->short_description)
    return(FALSE);
  }
 
-int GoodBlade(struct char_data *ch, int cmd, char *arg,struct obj_data *tobj, int type)
+int GoodBlade(struct char_data *ch, int cmd, const char *arg,struct obj_data *tobj, int type)
 {
    extern struct str_app_type str_app[];
    struct obj_data *obj, *blade;
@@ -1536,14 +1536,14 @@ sprintf(buf,"You can hear %s almost sing with joy in $n's hands!",obj->short_des
    return(FALSE);
  }
 
-int NeutralBlade(struct char_data *ch, int cmd, char *arg,struct obj_data *tobj, int type)
+int NeutralBlade(struct char_data *ch, int cmd, const char *arg,struct obj_data *tobj, int type)
 {
  return(FALSE);
 }
 
 #endif
 
-int FireBreather(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int FireBreather(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *tar_char;
 
@@ -1564,7 +1564,7 @@ struct char_data *tar_char;
  return(FALSE);
 }
 
-int FrostBreather(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int FrostBreather(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *tar_char;
  if (cmd) 
@@ -1583,7 +1583,7 @@ struct char_data *tar_char;
  return(FALSE);
 }
 
-int AcidBreather(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int AcidBreather(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *tar_char;
  if (cmd) 
@@ -1602,7 +1602,7 @@ struct char_data *tar_char;
  return(FALSE);
 }
 
-int GasBreather(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int GasBreather(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *tar_char;
 
@@ -1623,7 +1623,7 @@ struct char_data *tar_char;
 }
 
 
-int LightningBreather(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int LightningBreather(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 struct char_data *tar_char;
 
@@ -1643,7 +1643,7 @@ struct char_data *tar_char;
  return(FALSE);
 }
 
-int magic_user_imp( struct char_data *ch, int cmd, char *arg, 
+int magic_user_imp( struct char_data *ch, int cmd, const char *arg, 
                     struct char_data *mob, int type)
 {
   struct char_data *vict;
@@ -2039,7 +2039,7 @@ int magic_user_imp( struct char_data *ch, int cmd, char *arg,
 
 
 
-int cleric_imp(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int cleric_imp(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *vict;
   byte lspell, healperc=0;
@@ -2264,7 +2264,7 @@ int cleric_imp(struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
   }
 }   
 
-int lich_church(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int lich_church(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 if (type == EVENT_DEATH) {
          /* add spec procs here for when he dies */
@@ -2277,7 +2277,7 @@ if (type == EVENT_DEATH) {
     else
    return(shadow(ch,cmd,arg,mob,type));
 }
-int medusa(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int medusa(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *tar;
   int i;
@@ -2311,7 +2311,7 @@ int medusa(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int 
 
 
 
-int goblin_sentry(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int goblin_sentry(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *sentrymob;
   
@@ -2342,7 +2342,7 @@ int goblin_sentry(struct char_data *ch, int cmd, char *arg, struct char_data *mo
 }
 
 
-int PostMaster(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int PostMaster(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
 
 /*****************************************************************
@@ -2374,7 +2374,7 @@ int PostMaster(struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
    return(FALSE);
 }
 
-int TreeThrowerMob(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int TreeThrowerMob(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   struct char_data *vict;
 
@@ -2445,7 +2445,7 @@ int TreeThrowerMob(struct char_data *ch, int cmd, char *arg, struct char_data *m
 
 */
 
-int Paladin( struct char_data *ch, int cmd, char *arg, struct char_data *mob, 
+int Paladin( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
              int type) 
 {
 
@@ -2686,7 +2686,7 @@ int Paladin( struct char_data *ch, int cmd, char *arg, struct char_data *mob,
          mobs with same name in room and figure out which one you are!!!
        * add teleport, prob travel, and disguise */
 
-int Psionist(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int Psionist(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   int PML;          /*psi mob's level*/
   int Qmana;        /*psi mob's 1/4 mana*/
@@ -2930,7 +2930,7 @@ int Psionist(struct char_data *ch, int cmd, char *arg, struct char_data *mob, in
 /*-------------------------end Psionist-------------------------*/
 /* church bell for ators zone in town */
 #define PULL        224
-int ChurchBell(struct char_data *ch, int cmd, char *arg, struct room_data *rp, int type)
+int ChurchBell(struct char_data *ch, int cmd, const char *arg, struct room_data *rp, int type)
 {
   if (cmd==PULL)
   {
@@ -2953,7 +2953,7 @@ int ChurchBell(struct char_data *ch, int cmd, char *arg, struct room_data *rp, i
 
 #define SLAV_DEAD_DONE_ROOM        3494                /* where to tel people when he is killed */
 #define SLAV_LIVE_ROOM                3496        /* where he SHOULD live */
-int Slavalis(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int Slavalis(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   
   if (cmd || !AWAKE(mob))
@@ -3005,7 +3005,7 @@ if (type == EVENT_DEATH && ch->in_room == SLAV_LIVE_ROOM) {
 
 /* berserker sword */
 #define BERSERK 329
-int BerserkerItem(struct char_data *ch, int cmd, char *arg, struct obj_data *obj, int type)
+int BerserkerItem(struct char_data *ch, int cmd, const char *arg, struct obj_data *obj, int type)
 {
 
   if( type != EVENT_COMMAND )
@@ -3044,7 +3044,7 @@ int BerserkerItem(struct char_data *ch, int cmd, char *arg, struct obj_data *obj
 
 /* end berserker sword */
 
-int AntiSunItem(struct char_data *ch, int cmd, char *arg, struct obj_data *obj, int type)
+int AntiSunItem(struct char_data *ch, int cmd, const char *arg, struct obj_data *obj, int type)
 {
 
   if( type != EVENT_COMMAND )
@@ -3066,7 +3066,7 @@ int AntiSunItem(struct char_data *ch, int cmd, char *arg, struct obj_data *obj, 
   return FALSE;
 }
 
-int Beholder( struct char_data *ch, int cmd, char *arg, 
+int Beholder( struct char_data *ch, int cmd, const char *arg, 
               struct char_data *mob, int type)
 {
   int action=0;
@@ -3438,7 +3438,7 @@ int archer_hth(struct char_data *ch)
   }
 }
 
-int archer(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int archer(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (cmd || !AWAKE(ch)) 
     return(FALSE);
@@ -3450,7 +3450,7 @@ int archer(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int 
 
 }
 
-int fighter_mage(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int fighter_mage(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (number(1,100) >49)
     return(fighter(ch,cmd,arg,mob,type));
@@ -3458,7 +3458,7 @@ int fighter_mage(struct char_data *ch, int cmd, char *arg, struct char_data *mob
     return(magic_user(ch,cmd,arg,mob,type));
 }
 
-int fighter_cleric(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int fighter_cleric(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (number(1,100) >49)
     return(fighter(ch,cmd,arg,mob,type));
@@ -3466,7 +3466,7 @@ int fighter_cleric(struct char_data *ch, int cmd, char *arg, struct char_data *m
     return(cleric(ch,cmd,arg,mob,type));
 }
 
-int cleric_mage(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int cleric_mage(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   if (number(1,100) >49)
     return(cleric(ch,cmd,arg,mob,type));
@@ -3474,12 +3474,12 @@ int cleric_mage(struct char_data *ch, int cmd, char *arg, struct char_data *mob,
     return(magic_user(ch,cmd,arg,mob,type));
 }
 
-int Ranger(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int Ranger(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
  return(fighter(ch,cmd,arg,mob,type));
 }
 
-int Barbarian(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type)
+int Barbarian(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
  return(fighter(ch,cmd,arg,mob,type));
 }
@@ -3488,7 +3488,7 @@ int Barbarian(struct char_data *ch, int cmd, char *arg, struct char_data *mob, i
   ObjIsOnGround restituisce TRUE se l'oggetto in arg e` nella stanza del
   carattere.
 ***************************************************************************/
-int ObjIsOnGround( struct char_data *ch, char *argument )
+int ObjIsOnGround( struct char_data *ch, const char *argument )
 {
   char arg1[ MAX_STRING_LENGTH ];
   char arg2[ MAX_STRING_LENGTH ];
@@ -3537,7 +3537,7 @@ int ObjIsOnGround( struct char_data *ch, char *argument )
 int SentinelBackHome( struct char_data *pMob );
 
 #define MINVALUETOHEAL 1000
-int PrimoAlbero( struct char_data *ch, int cmd, char *arg, 
+int PrimoAlbero( struct char_data *ch, int cmd, const char *arg, 
                  struct char_data *mob, int type )
 {
   typedef struct tagAvvertiti
@@ -3732,7 +3732,7 @@ int PrimoAlbero( struct char_data *ch, int cmd, char *arg,
                               (ch)->nr == 12021 || (ch)->nr == 12038 || \
                               (ch)->nr == 12045 )
 
-int LegionariV( struct char_data *ch, int cmd, char *arg,
+int LegionariV( struct char_data *ch, int cmd, const char *arg,
                 struct char_data *mob, int type )
 {
   if( type == EVENT_TICK && AWAKE( mob ) )
@@ -3805,7 +3805,7 @@ int LegionariV( struct char_data *ch, int cmd, char *arg,
 #define BALANCE       1605
 #define ALA           1606
 
-int Bilancia( struct char_data *ch, int cmd, char *arg, struct obj_data *obj, 
+int Bilancia( struct char_data *ch, int cmd, const char *arg, struct obj_data *obj, 
               int type )
 {
   char achArgs[ 3 ][ MAX_INPUT_LENGTH ];
@@ -3896,7 +3896,7 @@ int Bilancia( struct char_data *ch, int cmd, char *arg, struct obj_data *obj,
 #define EZ_WAITING2 5
 #define EZ_WAITING3 6
 
-int Ezmerelda( struct char_data *pChar, int iCmd, char *szArg,
+int Ezmerelda( struct char_data *pChar, int iCmd, const char *szArg,
                struct char_data *pMob, int iType )
 {
   char *aszMessStart[] =
@@ -4114,9 +4114,9 @@ int Ezmerelda( struct char_data *pChar, int iCmd, char *szArg,
 /****************************************************************************
   Blocca il passaggio in una certa direzione.
 ****************************************************************************/
-int BlockWay( struct char_data *pChar, int nCmd, char *szArg, 
+int BlockWay( struct char_data *pChar, int nCmd, const char *szArg, 
               struct room_data *pRoom, int nType )
-{  
+{
   if( nType == EVENT_COMMAND )
   {
     if( nCmd != CMD_ENTER )

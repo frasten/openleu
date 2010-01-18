@@ -32,7 +32,7 @@ extern long mob_count;
 
 int str_cmp2(char *arg1, char *arg2);
 
-char *fname(char *namelist)
+char *fname(const char *namelist)
 {
   static char holder[30];
   register char *point;
@@ -1095,9 +1095,9 @@ int apply_ac(struct char_data *ch, int eq_pos)
 
 void equip_char(struct char_data *ch, struct obj_data *obj, int pos)
 {
-  int GoodBlade( struct char_data *ch, int cmd, char *arg,
+  int GoodBlade( struct char_data *ch, int cmd, const char *arg,
                  struct obj_data *tobj, int type);
-  int NeutralBlade( struct char_data *ch, int cmd, char *arg,
+  int NeutralBlade( struct char_data *ch, int cmd, const char *arg,
                     struct obj_data *tobj, int type);
 
   int j;
@@ -2144,7 +2144,7 @@ void extract_char_smarter(struct char_data *ch, long save_room)
    which incorporate the actual player-data.
    *********************************************************************** */
 
-struct char_data *get_char_near_room_vis(struct char_data *ch, char *name, long next_room)
+struct char_data *get_char_near_room_vis(struct char_data *ch, const char *name, long next_room)
 {
   long store_room;
   struct char_data *i;
@@ -2157,7 +2157,7 @@ struct char_data *get_char_near_room_vis(struct char_data *ch, char *name, long 
   return(i);  
 }
 
-struct char_data *get_char_room_vis(struct char_data *ch, char *name)
+struct char_data *get_char_room_vis(struct char_data *ch, const char *name)
 {
   struct char_data *i;
   int j, number;
@@ -2212,7 +2212,7 @@ struct char_data *get_char_room_vis(struct char_data *ch, char *name)
 
 /* get a character from anywhere in the world, doesn't care much about
    being in the same room... */
-struct char_data *get_char_vis_world(struct char_data *ch, char *name,
+struct char_data *get_char_vis_world(struct char_data *ch, const char *name,
                                      int *count)
 {
   struct char_data *i;
@@ -2273,7 +2273,7 @@ struct char_data *get_char_vis_world(struct char_data *ch, char *name,
 }
 
 
-struct char_data *get_char_vis( struct char_data *ch, char *name )
+struct char_data *get_char_vis( struct char_data *ch, const char *name )
 {
   struct char_data *i;
   
@@ -2286,7 +2286,7 @@ struct char_data *get_char_vis( struct char_data *ch, char *name )
 
 
 
-struct obj_data *get_obj_in_list_vis(struct char_data *ch, char *name, 
+struct obj_data *get_obj_in_list_vis(struct char_data *ch, const char *name, 
                                      struct obj_data *list)
 {
   struct obj_data *i;
@@ -2320,7 +2320,7 @@ struct obj_data *get_obj_in_list_vis(struct char_data *ch, char *name,
   return(0);
 }
 
-struct obj_data *get_obj_vis_world(struct char_data *ch, char *name,
+struct obj_data *get_obj_vis_world(struct char_data *ch, const char *name,
                                    int *count)
 {
   struct obj_data *i;
@@ -2364,7 +2364,7 @@ struct obj_data *get_obj_vis_world(struct char_data *ch, char *name,
 }
 
 /*search the entire world for an object, and return a pointer  */
-struct obj_data *get_obj_vis( struct char_data *ch, char *name )
+struct obj_data *get_obj_vis( struct char_data *ch, const char *name )
 {
   struct obj_data *i;
   
@@ -2380,7 +2380,7 @@ struct obj_data *get_obj_vis( struct char_data *ch, char *name )
   return get_obj_vis_world(ch, name, NULL);
 }
 
-struct obj_data *get_obj_vis_accessible(struct char_data *ch, char *name)
+struct obj_data *get_obj_vis_accessible(struct char_data *ch, const char *name)
 {
   struct obj_data *i;
   int j, number;
@@ -2522,7 +2522,7 @@ struct obj_data *create_money( int amount )
 /* The routine returns a pointer to the next word in *arg (just like the  */
 /* one_argument routine).                                                 */
 
-int generic_find(char *arg, int bitvector, struct char_data *ch,
+int generic_find(const char *arg, int bitvector, struct char_data *ch,
                  struct char_data **tar_ch, struct obj_data **tar_obj)
 {
   static char *ignore[] = 

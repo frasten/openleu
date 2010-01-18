@@ -4295,7 +4295,7 @@ int workhours()
   return(0);
 }
 
-void reboot_text(struct char_data *ch, char *arg, int cmd)
+void reboot_text(struct char_data *ch, const char *arg, int cmd)
 {
   struct char_data *p;
   int i;

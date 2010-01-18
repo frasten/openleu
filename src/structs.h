@@ -722,7 +722,7 @@ struct room_data
   long room_flags;             /* DEATH,DARK ... etc                 */ 
   byte light;                  /* Number of lightsources in room     */
   byte dark;
-  int (*funct)( struct char_data *, int, char *, struct room_data *, int);
+  int (*funct)( struct char_data *, int, const char *, struct room_data *, int);
                                /* special procedure                  */
   
   struct obj_data *contents;   /* List of items in room              */
@@ -1639,7 +1639,7 @@ struct chr_app_type
 
 /************************************************************/
 
-typedef void (*funcp)( byte, struct char_data *, char *, int, 
+typedef void (*funcp)( byte, struct char_data *, const char *, int, 
                        struct char_data *, struct obj_data * );
 
 struct breather 

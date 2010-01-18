@@ -20,7 +20,7 @@ extern struct room_data *world;
 extern struct descriptor_data *descriptor_list;
 
 
-void do_say( struct char_data *ch, char *argument, int cmd )
+void do_say( struct char_data *ch, const char *argument, int cmd )
 {
   int i;
   char buf[MAX_INPUT_LENGTH+40];
@@ -45,7 +45,7 @@ void do_say( struct char_data *ch, char *argument, int cmd )
 }
 
 
-void do_report(struct char_data *ch, char *argument, int cmd)
+void do_report(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[100];
 
@@ -81,7 +81,7 @@ void do_report(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_shout(struct char_data *ch, char *argument, int cmd)
+void do_shout(struct char_data *ch, const char *argument, int cmd)
 {
   char buf1[MAX_INPUT_LENGTH+40];
   struct descriptor_data *i;
@@ -157,7 +157,7 @@ void do_shout(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_gossip(struct char_data *ch, char *argument, int cmd)
+void do_gossip(struct char_data *ch, const char *argument, int cmd)
 {
   extern int Silence;
 #if 1
@@ -304,7 +304,7 @@ void do_gossip(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_auction(struct char_data *ch, char *argument, int cmd)
+void do_auction(struct char_data *ch, const char *argument, int cmd)
 {
   char buf1[MAX_INPUT_LENGTH+40];
   struct descriptor_data *i;
@@ -383,7 +383,7 @@ void do_auction(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_commune(struct char_data *ch, char *argument, int cmd)
+void do_commune(struct char_data *ch, const char *argument, int cmd)
 {
   static char buf1[MAX_INPUT_LENGTH];
   struct descriptor_data *i;
@@ -411,7 +411,7 @@ void do_commune(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_tell(struct char_data *ch, char *argument, int cmd)
+void do_tell(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *vict;
   char name[100], message[MAX_INPUT_LENGTH+20],
@@ -498,7 +498,7 @@ void do_tell(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_whisper(struct char_data *ch, char *argument, int cmd)
+void do_whisper(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *vict;
   char name[100], message[MAX_INPUT_LENGTH],
@@ -544,7 +544,7 @@ void do_whisper(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_ask(struct char_data *ch, char *argument, int cmd)
+void do_ask(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *vict;
   char name[100], message[MAX_INPUT_LENGTH],
@@ -595,7 +595,7 @@ void do_ask(struct char_data *ch, char *argument, int cmd)
 
 #define MAX_NOTE_LENGTH 1000      /* arbitrary */
 
-void do_write(struct char_data *ch, char *argument, int cmd)
+void do_write(struct char_data *ch, const char *argument, int cmd)
 {
   struct obj_data *paper = 0, *pen = 0;
   char papername[MAX_INPUT_LENGTH], penname[MAX_INPUT_LENGTH],
@@ -719,7 +719,7 @@ char *RandomWord()
 
 }
 
-void do_sign(struct char_data *ch, char *argument, int cmd)
+void do_sign(struct char_data *ch, const char *argument, int cmd)
 {
   int i;
   char buf[MAX_INPUT_LENGTH+40];
@@ -805,7 +805,7 @@ void do_sign(struct char_data *ch, char *argument, int cmd)
 }
 
         /* speak elvish, speak dwarvish, etc...                    */
-void do_speak(struct char_data *ch, char *argument, int cmd)
+void do_speak(struct char_data *ch, const char *argument, int cmd)
 {
   char buf[255];
   int i;
@@ -864,7 +864,7 @@ void do_speak(struct char_data *ch, char *argument, int cmd)
 }
 
         /* this is where we do the language says */
-void do_new_say(struct char_data *ch, char *argument, int cmd)
+void do_new_say(struct char_data *ch, const char *argument, int cmd)
 {
   int i, learned, skill_num;
   char buf[MAX_INPUT_LENGTH+40];
@@ -1031,7 +1031,7 @@ void do_new_say(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_gtell(struct char_data *ch, char *argument, int cmd)
+void do_gtell(struct char_data *ch, const char *argument, int cmd)
 {
   int i;
   struct char_data *k;
@@ -1120,7 +1120,7 @@ void do_gtell(struct char_data *ch, char *argument, int cmd)
  * and changed it to work with mine :) Heh msw
  */
  
-void do_split(struct char_data *ch, char *argument, int cmd)
+void do_split(struct char_data *ch, const char *argument, int cmd)
 {
 
   bool is_same_group( struct char_data *ach, struct char_data *bch );
@@ -1206,7 +1206,7 @@ void do_split(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_pray( struct char_data *ch, char *argument, int cmd )
+void do_pray( struct char_data *ch, const char *argument, int cmd )
 {
   struct affected_type af;
   static char buf1[MAX_INPUT_LENGTH];
@@ -1278,7 +1278,7 @@ bool is_same_group( struct char_data *ach, struct char_data *bch )
 }
 
 
-void do_telepathy( struct char_data *ch, char *argument, int cmd )
+void do_telepathy( struct char_data *ch, const char *argument, int cmd )
 {
   struct char_data *vict;
   char name[100], message[MAX_INPUT_LENGTH+20],

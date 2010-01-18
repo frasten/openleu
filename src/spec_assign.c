@@ -18,29 +18,29 @@ void assign_the_shopkeepers();
 struct special_proc_entry 
 {
   int vnum;
-  int (*proc)( struct char_data *, int, char *, char_data *, int );
+  int (*proc)( struct char_data *, int, const char *, char_data *, int );
 };
 
 struct RoomSpecialProcEntry 
 {
   int vnum;
-  int (*proc)( struct char_data *, int, char *, struct room_data *, int );
+  int (*proc)( struct char_data *, int, const char *, struct room_data *, int );
 };
 
-int fighter_mage( struct char_data *ch, int cmd, char *arg, 
+int fighter_mage( struct char_data *ch, int cmd, const char *arg, 
                   struct char_data *mob, int type );
-int fighter_cleric( struct char_data *ch, int cmd, char *arg, 
+int fighter_cleric( struct char_data *ch, int cmd, const char *arg, 
                     struct char_data *mob, int type);
-int cleric_mage( struct char_data *ch, int cmd, char *arg, 
+int cleric_mage( struct char_data *ch, int cmd, const char *arg, 
                  struct char_data *mob, int type);
 
-int SputoVelenoso( struct char_data *ch, int cmd, char *arg,
+int SputoVelenoso( struct char_data *ch, int cmd, const char *arg,
                    struct char_data *mob, int type );
 
-int Pungiglione( struct char_data *ch, int cmd, char *arg, 
+int Pungiglione( struct char_data *ch, int cmd, const char *arg, 
                  struct char_data *mob, int type );
 
-int Ezmerelda( struct char_data *pChar, int iCmd, char *szArg,
+int Ezmerelda( struct char_data *pChar, int iCmd, const char *szArg,
                struct char_data *pMob, int itype );
 
 /* ********************************************************************

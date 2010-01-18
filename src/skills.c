@@ -15,9 +15,9 @@ int choose_exit(int in_room, int tgt_room, int dvar);
 
 int remove_trap( struct char_data *ch, struct obj_data *trap);
 
-void do_find_traps( struct char_data *ch, char *arg, int cmd);
-void do_find_food( struct char_data *ch, char *arg, int cmd);
-void do_find_water( struct char_data *ch, char *arg, int cmd);
+void do_find_traps( struct char_data *ch, const char *arg, int cmd);
+void do_find_food( struct char_data *ch, const char *arg, int cmd);
+void do_find_water( struct char_data *ch, const char *arg, int cmd);
 
 bool is_same_group( struct char_data *ach, struct char_data *bch );
 
@@ -48,7 +48,7 @@ int named_object_on_ground(int room, void *c_data);
 **  Disarm:
 */
 
-void do_disarm(struct char_data *ch, char *argument, int cmd)
+void do_disarm(struct char_data *ch, const char *argument, int cmd)
 {
   char name[ MAX_INPUT_LENGTH ];
   int percent;
@@ -236,7 +236,7 @@ int named_mobile_in_room(int room, struct hunting_data *c_data)
   return 0;
 }
 
-void do_track(struct char_data *ch, char *argument, int cmd)
+void do_track(struct char_data *ch, const char *argument, int cmd)
 {
   char name[256], buf[256], found=FALSE;
   int dist, code;
@@ -695,7 +695,7 @@ void ChangeAlignmentDoorBash( struct char_data *pChar, int nAmount )
 /*
  * skill to allow fighters to break down doors
  */
-void do_doorbash( struct char_data *ch, char *arg, int cmd)
+void do_doorbash( struct char_data *ch, const char *arg, int cmd)
 {
   int dir;
   int ok;
@@ -899,7 +899,7 @@ void do_doorbash( struct char_data *ch, char *arg, int cmd)
   skill to allow anyone to move through rivers and underwater
 */
 
-void do_swim( struct char_data *ch, char *arg, int cmd)
+void do_swim( struct char_data *ch, const char *arg, int cmd)
 {
 
   struct affected_type af;
@@ -965,7 +965,7 @@ int SpyCheck( struct char_data *ch )
 
 }
 
-void do_spy( struct char_data *ch, char *arg, int cmd)
+void do_spy( struct char_data *ch, const char *arg, int cmd)
 {
 
   struct affected_type af;
@@ -1055,7 +1055,7 @@ if (ITEM_TYPE(trap)  == ITEM_CONTAINER) {
   }
 }
 
-void do_feign_death( struct char_data *ch, char *arg, int cmd)
+void do_feign_death( struct char_data *ch, const char *arg, int cmd)
 {
   struct room_data *rp;
   struct char_data *t;
@@ -1113,7 +1113,7 @@ if (IS_PC(ch) || IS_SET(ch->specials.act,ACT_POLYSELF))
 }
 
 
-void do_first_aid( struct char_data *ch, char *arg, int cmd )
+void do_first_aid( struct char_data *ch, const char *arg, int cmd )
 {
   struct affected_type af;
   int exp_level = 0;
@@ -1174,7 +1174,7 @@ void do_first_aid( struct char_data *ch, char *arg, int cmd )
 }
 
 
-void do_disguise(struct char_data *ch, char *argument, int cmd)
+void do_disguise(struct char_data *ch, const char *argument, int cmd)
 {
   struct affected_type af;
 
@@ -1222,7 +1222,7 @@ void do_disguise(struct char_data *ch, char *argument, int cmd)
 }
 
 /* Skill for climbing walls and the like -DM */
-void do_climb( struct char_data *ch, char *arg, int cmd)
+void do_climb( struct char_data *ch, const char *arg, int cmd)
 {
   extern char *dirs[];
   int dir;
@@ -1379,7 +1379,7 @@ void slip_in_climb(struct char_data *ch, int dir, int room)
 #define TAN_SLEEVES  72
 #define TAN_HELMET   73
 #define TAN_BAG      14
-void do_tan( struct char_data *ch, char *arg, int cmd)
+void do_tan( struct char_data *ch, const char *arg, int cmd)
 {
   struct obj_data *j=0;
   struct obj_data *hide;
@@ -1883,7 +1883,7 @@ void do_tan( struct char_data *ch, char *arg, int cmd)
 
 #define FOUND_FOOD 21  /* obj that is found if they made it! */
 
-void do_find_food( struct char_data *ch, char *arg, int cmd)
+void do_find_food( struct char_data *ch, const char *arg, int cmd)
 {
   int r_num,percent=0;
   struct obj_data *obj;        
@@ -1940,7 +1940,7 @@ void do_find_food( struct char_data *ch, char *arg, int cmd)
 
 #define FOUND_WATER 13  /* obj found when water found */
 
-void do_find_water( struct char_data *ch, char *arg, int cmd)
+void do_find_water( struct char_data *ch, const char *arg, int cmd)
 {
   int r_num,percent=0;
   struct obj_data *obj;        
@@ -1996,7 +1996,7 @@ void do_find_water( struct char_data *ch, char *arg, int cmd)
   }
 }
 
-void do_find_traps( struct char_data *ch, char *arg, int cmd)
+void do_find_traps( struct char_data *ch, const char *arg, int cmd)
 {
   if (!ch->skills)
         return;
@@ -2021,7 +2021,7 @@ void do_find_traps( struct char_data *ch, char *arg, int cmd)
 }
 
 
-void do_find( struct char_data *ch, char *arg, int cmd)
+void do_find( struct char_data *ch, const char *arg, int cmd)
 {
   char findwhat[30];
   
@@ -2042,7 +2042,7 @@ arg = one_argument(arg,findwhat); /* ACK! find water, call that function! */
     send_to_char("Find what?!?!?\n\r",ch);
 }
 
-void do_bellow( struct char_data *ch, char *arg, int cmd)
+void do_bellow( struct char_data *ch, const char *arg, int cmd)
 {
  struct char_data *vict,*tmp;
  
@@ -2120,7 +2120,7 @@ for (vict=character_list;vict;vict= tmp) {
 }
 
 /* ranger skill */
-void do_carve( struct char_data *ch, char *argument, int cmd)
+void do_carve( struct char_data *ch, const char *argument, int cmd)
 {
     char arg1[MAX_STRING_LENGTH];
     char arg2[MAX_STRING_LENGTH];
@@ -2198,7 +2198,7 @@ void do_carve( struct char_data *ch, char *argument, int cmd)
   
   }
  
-void do_doorway( struct char_data *ch, char *argument, int cmd)
+void do_doorway( struct char_data *ch, const char *argument, int cmd)
 {
    char target_name[140];
    struct char_data *target;
@@ -2284,7 +2284,7 @@ if (GetMaxLevel(target)>=LOW_IMMORTAL) {
  }
 
 
-void do_psi_portal( struct char_data *ch, char *argument, int cmd)
+void do_psi_portal( struct char_data *ch, const char *argument, int cmd)
 {
    char target_name[140];
    struct char_data *target;
@@ -2424,7 +2424,7 @@ if (IS_SET(SystemFlags,SYS_NOPORTAL)) {
 
 
 
-void do_mindsummon( struct char_data *ch, char *argument, int cmd)
+void do_mindsummon( struct char_data *ch, const char *argument, int cmd)
 {
    char target_name[140];
    struct char_data *target;
@@ -2571,7 +2571,7 @@ void do_mindsummon( struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_canibalize( struct char_data *ch, char *argument, int cmd)
+void do_canibalize( struct char_data *ch, const char *argument, int cmd)
 {
     long hit_points,mana_points;  /* hit_points has to be long for storage */
     char number[80];  /* NOTE: the argument function returns FULL argument */
@@ -2670,7 +2670,7 @@ if ((hit_points <1) || (hit_points > 65535)) {                /* bug fix? */
 
 
 
-void do_flame_shroud( struct char_data *ch, char *argument, int cmd)
+void do_flame_shroud( struct char_data *ch, const char *argument, int cmd)
 {
    struct affected_type af;
  
@@ -2730,7 +2730,7 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
 
 
 
-void do_aura_sight( struct char_data *ch, char *argument, int cmd)
+void do_aura_sight( struct char_data *ch, const char *argument, int cmd)
 {
   if (!ch->skills)
     return;
@@ -2783,7 +2783,7 @@ void do_aura_sight( struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_great_sight( struct char_data *ch, char *argument, int cmd)
+void do_great_sight( struct char_data *ch, const char *argument, int cmd)
 {
   if (!ch->skills)
     return;
@@ -2835,7 +2835,7 @@ void do_great_sight( struct char_data *ch, char *argument, int cmd)
  WAIT_STATE(ch, PULSE_VIOLENCE*2);
 }
 
-void do_blast( struct char_data *ch, char *argument, int cmd)
+void do_blast( struct char_data *ch, const char *argument, int cmd)
 {
    struct char_data *victim;
    char name[240];
@@ -3081,7 +3081,7 @@ void do_blast( struct char_data *ch, char *argument, int cmd)
     WAIT_STATE( ch, PULSE_VIOLENCE * 2 ); 
 }
 
-void do_hypnosis( struct char_data *ch, char *argument, int cmd)
+void do_hypnosis( struct char_data *ch, const char *argument, int cmd)
 {
   char target_name[140];
   struct char_data *victim;
@@ -3218,7 +3218,7 @@ void do_hypnosis( struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_scry( struct char_data *ch, char *argument, int cmd)
+void do_scry( struct char_data *ch, const char *argument, int cmd)
 {
    char target_name[140];
    struct char_data *target;
@@ -3286,7 +3286,7 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
 
 
 
-void do_invisibililty( struct char_data *ch, char *argument, int cmd)
+void do_invisibililty( struct char_data *ch, const char *argument, int cmd)
 {
   if (!ch->skills)
     return;
@@ -3338,7 +3338,7 @@ void do_invisibililty( struct char_data *ch, char *argument, int cmd)
  
 
 
-void do_adrenalize( struct char_data *ch, char *argument, int cmd)
+void do_adrenalize( struct char_data *ch, const char *argument, int cmd)
 {
    char target_name[140];
    struct char_data *target;
@@ -3416,7 +3416,7 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
    act ("$n touches you on the forehead lightly, you feel energy ulimited!",TRUE,ch,0,target,TO_VICT);
  }
 
-void do_meditate( struct char_data *ch, char *argument, int cmd)
+void do_meditate( struct char_data *ch, const char *argument, int cmd)
 {
    struct affected_type af;
 
@@ -3497,7 +3497,7 @@ return(FALSE);
 }
 
 #if defined( EMANUELE )
-void do_heroic_rescue( struct char_data *ch, char *arguement, int command )
+void do_heroic_rescue( struct char_data *ch, const char *arguement, int command )
 {
   struct char_data *dude, *enemy;
   int grp = 0, first = 1, rescue, rescued = 0,torescue = 0;
@@ -3610,7 +3610,7 @@ void do_heroic_rescue( struct char_data *ch, char *arguement, int command )
 
 #else
 
-void do_heroic_rescue(struct char_data *ch, char *arguement, int command)
+void do_heroic_rescue(struct char_data *ch, const char *arguement, int command)
 {
   struct char_data *dude, *enemy;
   
@@ -3677,7 +3677,7 @@ void do_heroic_rescue(struct char_data *ch, char *arguement, int command)
   
 #endif
 
-void do_blessing(struct char_data *ch, char *argument, int cmd)
+void do_blessing(struct char_data *ch, const char *argument, int cmd)
  {
    int rating, factor, level;
    struct char_data *test, *dude;
@@ -3806,7 +3806,7 @@ if (affected_by_spell(ch,SKILL_BLESSING)) {
  
  
   
-void do_lay_on_hands (struct char_data *ch, char *argument, int cmd)
+void do_lay_on_hands (struct char_data *ch, const char *argument, int cmd)
  {
    struct char_data *victim;
    struct affected_type af;
@@ -3877,7 +3877,7 @@ if (IS_PC(ch) || IS_SET(ch->specials.act,ACT_POLYSELF))
  }
  
   
-void do_holy_warcry (struct char_data *ch, char *argument, int cmd)
+void do_holy_warcry (struct char_data *ch, const char *argument, int cmd)
 {
   char name[140];
   int dam, dif,level;
@@ -3964,7 +3964,7 @@ if (IS_PC(ch) || IS_SET(ch->specials.act,ACT_POLYSELF))
   
  
  
-void do_psi_shield( struct char_data *ch, char *argument, int cmd)
+void do_psi_shield( struct char_data *ch, const char *argument, int cmd)
 {
    struct affected_type af;
  
@@ -4018,7 +4018,7 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
 
 }
 
-void do_esp( struct char_data *ch, char *argument, int cmd)
+void do_esp( struct char_data *ch, const char *argument, int cmd)
 {
    struct affected_type af;
  
@@ -4069,7 +4069,7 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
    affect_to_char (ch,&af);
 }
 
-void do_sending( struct char_data *ch, char *argument, int cmd)
+void do_sending( struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *target;
   int skill_check=0;
@@ -4160,7 +4160,7 @@ void do_sending( struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_brew( struct char_data *ch, char *argument, int cmd)
+void do_brew( struct char_data *ch, const char *argument, int cmd)
 {
 if (!ch->skills)
         return;

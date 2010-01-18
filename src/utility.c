@@ -615,7 +615,7 @@ int scan_number(char *text, int *rval)
 
 /* returns: 0 if equal, 1 if arg1 > arg2, -1 if arg1 < arg2  */
 /* scan 'till found different or end of both                 */
-int str_cmp(char *arg1, char *arg2)
+int str_cmp(const char *arg1, const char *arg2)
 {
 #if 1 
   int chk, i;
@@ -664,7 +664,7 @@ int str_cmp2(char *arg1, char *arg2)
 
 /* returns: 0 if equal, 1 if arg1 > arg2, -1 if arg1 < arg2  */
 /* scan 'till found different, end of both, or n reached     */
-int strn_cmp(char *arg1, char *arg2, int n)
+int strn_cmp(const char *arg1, const char *arg2, int n)
 {
 #if 1 
   int chk, i;
@@ -750,7 +750,7 @@ void vlog( char *szFmt, ... )
 }
 #endif
 
-void mudlog( unsigned uType, char *szString, ... )
+void mudlog( unsigned uType, const char *szString, ... )
 {
   va_list argptr;
   char szBuffer[ LARGE_BUFSIZE ];
@@ -1500,7 +1500,7 @@ void down_river( int pulse )
   }
 }
 
-void do_WorldSave(struct char_data *ch, char *argument, int cmd)
+void do_WorldSave(struct char_data *ch, const char *argument, int cmd)
 {
   char temp[2048], buf[128];
   long rstart, rend, i, j, x;
@@ -2804,7 +2804,7 @@ void RemAllAffects( struct char_data *ch)
 }
 
 int CheckForBlockedMove
-  (struct char_data *ch, int cmd, char *arg, int room, int dir, int iClass)
+  (struct char_data *ch, int cmd, const char *arg, int room, int dir, int iClass)
 {
   
   char buf[256], buf2[256];

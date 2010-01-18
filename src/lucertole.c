@@ -13,7 +13,7 @@
 #define RESCUE_ROOM    1983
 #define SNAKE_GOD      1953
 
-int Lizardman( struct char_data *pChar, int iCmd, char *szArg,
+int Lizardman( struct char_data *pChar, int iCmd, const char *szArg,
                struct char_data *pMob, int iType )
 {
   if( iType == EVENT_TICK )
@@ -72,7 +72,7 @@ int Lizardman( struct char_data *pChar, int iCmd, char *szArg,
 
           
 
-int lizardman_shaman( struct char_data *ch, int cmd, char *arg, 
+int lizardman_shaman( struct char_data *ch, int cmd, const char *arg, 
                       struct char_data *mob, int type)
 {
   if( type == EVENT_TICK && AWAKE( mob ) )
@@ -133,7 +133,7 @@ int lizardman_shaman( struct char_data *ch, int cmd, char *arg,
 }
 
 #define Abitante 1905
-int village_woman( struct char_data *ch, int cmd, char *arg, 
+int village_woman( struct char_data *ch, int cmd, const char *arg, 
                    struct char_data *mob, int type )
 {
   char *aszInvocazioni[ 10 ] =
@@ -185,7 +185,7 @@ int village_woman( struct char_data *ch, int cmd, char *arg,
   return FALSE;
 }
 
-int snake_avt2( struct char_data *ch, int cmd, char *arg, 
+int snake_avt2( struct char_data *ch, int cmd, const char *arg, 
                 struct char_data *mob, int type )
 {
   if (!AWAKE(ch)) 
@@ -349,7 +349,7 @@ void MakePortal( int iFromRoom, int iToRoom )
 
 
 
-int snake_avt( struct char_data *ch, int cmd, char *arg, 
+int snake_avt( struct char_data *ch, int cmd, const char *arg, 
                struct char_data *mob, int type )
 {
   if( type == EVENT_DEATH && mob->in_room == RESCUE_ROOM )
@@ -383,7 +383,7 @@ int snake_avt( struct char_data *ch, int cmd, char *arg,
 }
 
 
-int virgin_sac(struct char_data *ch, int cmd, char *arg, 
+int virgin_sac(struct char_data *ch, int cmd, const char *arg, 
                struct char_data *mob, int type)
 {
   struct char_data *pPaladino;
@@ -433,7 +433,7 @@ int virgin_sac(struct char_data *ch, int cmd, char *arg,
   return(FALSE);
 }
 
-int snake_guardian( struct char_data *ch, int cmd, char *arg, 
+int snake_guardian( struct char_data *ch, int cmd, const char *arg, 
                      struct char_data *mob, int type)
 {
   if (!AWAKE(ch))
@@ -473,7 +473,7 @@ int snake_guardian( struct char_data *ch, int cmd, char *arg,
 
 #define PRIMO_OGGETTO 1970
 
-int CapannaVillaggio( struct char_data *pChar, int iCmd, char *szArgument,
+int CapannaVillaggio( struct char_data *pChar, int iCmd, const char *szArgument,
                       struct room_data *pRoom, int iType )
 {
   static int bGiaFatto = FALSE;
@@ -522,7 +522,7 @@ int CapannaVillaggio( struct char_data *pChar, int iCmd, char *szArgument,
  * serpente, si finisce incantati da questi E si ha un ritardo di 5 turni.
  * *************************************************************************/
 
-int ColloSerpente( struct char_data *pChar, int iCmd, char *szArgument,
+int ColloSerpente( struct char_data *pChar, int iCmd, const char *szArgument,
                    struct room_data *pRoom, int iType )
 {
   if( iType == EVENT_COMMAND && iCmd == CMD_LOOK )
@@ -564,7 +564,7 @@ int ColloSerpente( struct char_data *pChar, int iCmd, char *szArgument,
  * presi dalle vertigine e si cade verso il basso, anche se si sta volando.
  * *************************************************************************/
            
-int Rampicante( struct char_data *pChar, int iCmd, char *szArgument,
+int Rampicante( struct char_data *pChar, int iCmd, const char *szArgument,
                 struct room_data *pRoom, int iType )
 {  
   if( iType == EVENT_COMMAND && iCmd == CMD_LOOK )

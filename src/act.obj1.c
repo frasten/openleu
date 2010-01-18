@@ -78,7 +78,7 @@ void get( struct char_data *ch, struct obj_data *obj_object,
   }
 }
 
-void do_get(struct char_data *ch, char *argument, int cmd)
+void do_get(struct char_data *ch, const char *argument, int cmd)
 {
   char arg1[MAX_STRING_LENGTH];
   char arg2[MAX_STRING_LENGTH];
@@ -91,7 +91,7 @@ void do_get(struct char_data *ch, char *argument, int cmd)
   char newarg[1000];
   int num, p;
   
-  SetStatus( "Entered in do_get", GET_NAME_DESC( ch ), argument );
+  SetStatus( "Entered in do_get", GET_NAME_DESC( ch ), (void *) argument );
   
   argument_interpreter(argument, arg1, arg2);
   
@@ -499,7 +499,7 @@ void do_get(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_drop(struct char_data *ch, char *argument, int cmd) 
+void do_drop(struct char_data *ch, const char *argument, int cmd) 
 {
   char arg[MAX_INPUT_LENGTH];
   char arg2[ MAX_INPUT_LENGTH ];
@@ -704,7 +704,7 @@ void do_drop(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_put(struct char_data *ch, char *argument, int cmd)
+void do_put(struct char_data *ch, const char *argument, int cmd)
 {
   char buffer[256];
   char arg1[128];
@@ -868,7 +868,7 @@ int newstrlen(char *p)
 
 
 
-void do_give(struct char_data *ch, char *argument, int cmd)
+void do_give(struct char_data *ch, const char *argument, int cmd)
 {
   char obj_name[200], vict_name[80], buf[132];
   char arg[80], newarg[100];

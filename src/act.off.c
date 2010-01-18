@@ -28,7 +28,7 @@ extern struct char_data *character_list;
 
 void StopAllFightingWith( char_data *pChar );
 
-void do_hit(struct char_data *ch, char *argument, int cmd)
+void do_hit(struct char_data *ch, const char *argument, int cmd)
 {
   char arg[80];
   struct char_data *victim;
@@ -95,7 +95,7 @@ void do_hit(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_kill(struct char_data *ch, char *argument, int cmd)
+void do_kill(struct char_data *ch, const char *argument, int cmd)
 {
   static char arg[MAX_INPUT_LENGTH];
   struct char_data *victim;
@@ -125,7 +125,7 @@ void do_kill(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_backstab(struct char_data *ch, char *argument, int cmd)
+void do_backstab(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   char name[256];
@@ -300,7 +300,7 @@ void do_backstab(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_order(struct char_data *ch, char *argument, int cmd)
+void do_order(struct char_data *ch, const char *argument, int cmd)
 {
   char name[100], message[256];
   char buf[256];
@@ -433,7 +433,7 @@ void do_order(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_flee(struct char_data *ch, char *argument, int cmd)
+void do_flee(struct char_data *ch, const char *argument, int cmd)
 {
   int i, attempt, loose, die, percent, charm;
   
@@ -665,7 +665,7 @@ void do_flee(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_bash(struct char_data *ch, char *argument, int cmd)
+void do_bash(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   char name[256];
@@ -794,7 +794,7 @@ void do_bash(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_rescue(struct char_data *ch, char *argument, int cmd)
+void do_rescue(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim, *tmp_ch;
   int percent;
@@ -899,7 +899,7 @@ void do_rescue(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_assist(struct char_data *ch, char *argument, int cmd)
+void do_assist(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim, *tmp_ch;
   char victim_name[240];
@@ -964,7 +964,7 @@ void do_assist(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_kick(struct char_data *ch, char *argument, int cmd)
+void do_kick(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   char name[80];
@@ -1078,7 +1078,7 @@ void do_kick(struct char_data *ch, char *argument, int cmd)
   WAIT_STATE(ch, PULSE_VIOLENCE*3);
 }
 
-void do_wimp(struct char_data *ch, char *argument, int cmd)
+void do_wimp(struct char_data *ch, const char *argument, int cmd)
 {
   
   /* sets the character in wimpy mode.  */
@@ -1116,7 +1116,7 @@ funcp bweapons[] =
 };
 #endif
 
-void do_breath(struct char_data *ch, char *argument, int cmd)
+void do_breath(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   char        name[MAX_STRING_LENGTH];
@@ -1191,7 +1191,7 @@ void do_breath(struct char_data *ch, char *argument, int cmd)
   WAIT_STATE(ch, PULSE_VIOLENCE*2);
 }
 
-void do_shoot(struct char_data *ch, char *argument, int cmd)
+void do_shoot(struct char_data *ch, const char *argument, int cmd)
 {
 #if 0
   char arg[80],dirstr[80],name[80];
@@ -1332,7 +1332,7 @@ if (victim) {
 }
 
 
-void do_springleap(struct char_data *ch, char *argument, int cmd)
+void do_springleap(struct char_data *ch, const char *argument, int cmd)
 {
   struct char_data *victim;
   char name[256];
@@ -1435,7 +1435,7 @@ void do_springleap(struct char_data *ch, char *argument, int cmd)
 }
 
 
-void do_quivering_palm( struct char_data *ch, char *arg, int cmd)
+void do_quivering_palm( struct char_data *ch, const char *arg, int cmd)
 {
   struct char_data *victim;
   struct affected_type af;
@@ -1669,7 +1669,7 @@ void kick_messages(struct char_data *ch, struct char_data *victim, int damage)
   }
 }
 
-void do_berserk( struct char_data *ch, char *arg, int cmd)
+void do_berserk( struct char_data *ch, const char *arg, int cmd)
 {
   int skillcheck=0;
   char argument[100],name[100];
@@ -2006,7 +2006,7 @@ int clearpath(struct char_data *ch, long room, int direc)
   return real_roomp( room )->dir_option[ direc ]->to_room;
 }
 
-void do_weapon_load( struct char_data *ch, char *argument, int cmd )
+void do_weapon_load( struct char_data *ch, const char *argument, int cmd )
 {
   struct obj_data *fw, *ms;
   char arg1[MAX_STRING_LENGTH], arg2[MAX_STRING_LENGTH];
@@ -2074,7 +2074,7 @@ void do_weapon_load( struct char_data *ch, char *argument, int cmd )
   WAIT_STATE( ch, PULSE_VIOLENCE * 3 );
 }
 
-void do_fire(struct char_data *ch, char *argument, int cmd )
+void do_fire(struct char_data *ch, const char *argument, int cmd )
 {
   struct obj_data *fw, *ms;
   char arg[MAX_STRING_LENGTH];
@@ -2144,7 +2144,7 @@ void do_fire(struct char_data *ch, char *argument, int cmd )
                         
 
 
-void do_throw(struct char_data *ch, char *argument, int cmd)
+void do_throw(struct char_data *ch, const char *argument, int cmd)
 {
   struct obj_data *pObjThrow;
   char arg1[100],arg2[100];
@@ -2231,7 +2231,7 @@ void do_throw(struct char_data *ch, char *argument, int cmd)
   }
 }
 
-void do_stopfight( struct char_data *pChar, char *szArgument, int nCmd )
+void do_stopfight( struct char_data *pChar, const char *szArgument, int nCmd )
 {
   if( pChar == NULL )
   {

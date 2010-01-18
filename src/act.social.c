@@ -168,7 +168,7 @@ int find_action(int cmd)
 
 
 
-void do_action(struct char_data *ch, char *argument, int cmd)
+void do_action(struct char_data *ch, const char *argument, int cmd)
 {
   int act_nr;
   char buf[MAX_INPUT_LENGTH];
@@ -224,7 +224,7 @@ void do_action(struct char_data *ch, char *argument, int cmd)
 
 
 
-void do_insult(struct char_data *ch, char *argument, int cmd)
+void do_insult(struct char_data *ch, const char *argument, int cmd)
 {
         static char buf[100];
         static char arg[MAX_STRING_LENGTH];
@@ -301,7 +301,7 @@ void boot_pose_messages()
   fclose(fl);
 }
 
-void do_pose(struct char_data *ch, char *argument, int cmd)
+void do_pose(struct char_data *ch, const char *argument, int cmd)
 {
   int to_pose;
   int counter;

@@ -159,7 +159,7 @@ void CheckObjectExDesc( char *msg )
 
 
 
-void str2ansi( char *p2, char *p1, int start, int stop )
+void str2ansi( char *p2, const char *p1, int start, int stop )
 {
   int i,j;
 
@@ -187,7 +187,7 @@ void str2ansi( char *p2, char *p1, int start, int stop )
   }
 }
 
-char *ParseAnsiColors( int UsingAnsi, char *txt )
+char *ParseAnsiColors( int UsingAnsi, const char *txt )
 {
   static char buf [MAX_STRING_LENGTH ] = "";
   char tmp[20];
@@ -274,7 +274,7 @@ void close_socket_fd( int desc)
 int main (int argc, char **argv)
 {
   int port, pos=1;
-  char *dir;
+  const char *dir;
 
   extern int WizLock;
 
@@ -370,7 +370,7 @@ int main (int argc, char **argv)
     pos++;
   }
   
-  if (pos < argc)
+  if (pos < argc) {
     if (!isdigit(*argv[pos]))
     {
       fprintf(stderr, "Usage: %s [-l] [-s] [-d pathname] [ port # ]\n", 
@@ -382,6 +382,7 @@ int main (int argc, char **argv)
       printf("Illegal port #\n");
       assert(0);
     }
+  }
   
   Uptime = time(0);
   
@@ -1452,7 +1453,7 @@ int process_output(struct descriptor_data *t)
 #endif
 
 #if 1         /* reset to use this code, lets see if it helps */
-int write_to_descriptor(int desc, char *txt)
+int write_to_descriptor(int desc, const char *txt)
 {
   int sofar, thisround, total;
   
@@ -1482,7 +1483,7 @@ int write_to_descriptor(int desc, char *txt)
 #else
 /* merc code */
 #define UMIN(a, b)              ((a) < (b) ? (a) : (b))
-int write_to_descriptor( int desc, char *txt)
+int write_to_descriptor( int desc, const char *txt)
 {
   int iStart;
   int nWrite;
@@ -1862,7 +1863,7 @@ void coma(int s)
 **************************************************************** */
 
 
-void send_to_char( char *messg, struct char_data *ch )
+void send_to_char( const char *messg, struct char_data *ch )
 {
   if (ch)
     if (ch->desc && messg)
@@ -2080,10 +2081,11 @@ void send_to_room_except_two
 /* higher-level communication */
 
 /* ACT */
-void act( char *str, int hide_invisible, struct char_data *ch,
+void act( const char *str, int hide_invisible, struct char_data *ch,
           struct obj_data *obj, void *vict_obj, int type )
 {
-  register char *strp, *point, *i;
+  register char *point, *i;
+  register const char *strp;
   struct char_data *to;
   char buf[MAX_STRING_LENGTH], tmp[5];
 
