@@ -101,6 +101,17 @@ ti fara' entrare in string mode, e il gioco ti chiedera' nuove linee
 di stringa finche' non raggiungi la massima lunghezza per la stringa
 o forzi la fine con '@'.
 #
+AT
+
+at <nome> <comando>
+
+Esegue un comando nella location in cui si trova <nome>, che puo' essere
+un mob piuttosto che un pg, o un oggetto (in questo caso l'oggetto deve
+trovarsi a terra).
+
+Esempio: at seneca kiss seneca
+
+#
 LOAD
 For loading new objects or characters from the database. The format is:
   load <type> <number>
@@ -156,10 +167,16 @@ Ti dice chi e' nel gioco e da dove sta giocando.
 ADVANCE
 
 Per avanzare un giocatore ad un livello maggiore dell'attuale.
-Il default e' l'avanzamento di un livello. Un giocatore di livello
-0 puo' essere fatto avanzare solo di un livello.
+Un giocatore di livello 0 puo' essere fatto avanzare solo di un livello.
 La sintassi e`:
-advance <player} <class> <level>
+advance <player> <class> <level>
+
+Dove class e' una lettera tra M C W T D K B S P R I, e level
+e' il livello al quale si vuole portare il player.
+
+In caso si voglia portare ad immortale un player, bisogna portarlo al
+livello desiderato, e poi dare un restore <player> per sistemare i
+livelli.
 
 #
 WIZHELP
