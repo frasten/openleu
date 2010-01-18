@@ -2525,7 +2525,7 @@ struct obj_data *create_money( int amount )
 int generic_find(const char *arg, int bitvector, struct char_data *ch,
                  struct char_data **tar_ch, struct obj_data **tar_obj)
 {
-  static char *ignore[] = 
+  const char *ignore[] = 
   {
     "the",
     "in",

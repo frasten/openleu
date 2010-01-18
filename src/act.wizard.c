@@ -1237,7 +1237,7 @@ void do_stat(struct char_data *ch, const char *argument, int cmd)
   extern char *drinks[];
   
   /* for rooms */
-  extern char *dirs[];
+  extern const char *dirs[];
 
   extern char *exit_bits[];
   extern char *sector_types[];

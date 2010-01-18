@@ -14,7 +14,7 @@ extern struct char_data *character_list;
 extern struct spell_info_type spell_info[MAX_SPL_LIST];
 extern struct obj_data  *object_list;
 extern int rev_dir[];
-extern char *dirs[]; 
+extern const char *dirs[]; 
 extern int movement_loss[];
 extern struct weather_data weather_info;
 extern struct time_info_data time_info;

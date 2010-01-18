@@ -22,9 +22,9 @@ extern struct char_data *character_list;
 extern struct descriptor_data *descriptor_list; 
 extern struct index_data *obj_index;
 extern int rev_dir[];
-extern char *dirs[]; 
-extern char *dirsFrom[]; 
-extern char *dirsTo[]; 
+extern const char *dirs[]; 
+extern const char *dirsFrom[]; 
+extern const char *dirsTo[]; 
 extern int movement_loss[];
 extern char *exits[];
 
@@ -820,7 +820,7 @@ int find_door(struct char_data *ch, char *type, char *dir)
 {
   char buf[MAX_STRING_LENGTH];
   int door;
-  extern char *dirs[];
+  extern const char *dirs[];
   struct room_direction_data *exitp;
   
   if( *dir )
@@ -2003,7 +2003,7 @@ void do_run(struct char_data *ch, const char *argument, int cmd)
   char buff[MAX_INPUT_LENGTH];
   int keyno, was_in;
   struct room_direction_data *exitdata;
-  static char *keywords[]= 
+  const char *keywords[]= 
   { 
     "north",
     "east",

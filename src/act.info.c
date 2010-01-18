@@ -40,7 +40,7 @@ extern char credits[MAX_STRING_LENGTH];
 extern char news[MAX_STRING_LENGTH];
 extern char info[MAX_STRING_LENGTH];
 extern char wizlist[MAX_STRING_LENGTH];
-extern char *dirsTo[]; 
+extern const char *dirsTo[]; 
 extern char *where[];
 extern char *color_liquid[];
 extern char *fullness[];
@@ -548,7 +548,7 @@ void ShowAltezzaCostituzione( struct char_data *pChar, struct char_data *pTo )
   float fRapp;
   char szBuf[ 256 ];
 
-  char *DescAltezze[] = 
+  const char *DescAltezze[] = 
   {
     "altissim$b",
     "molto alt$b",
@@ -558,7 +558,7 @@ void ShowAltezzaCostituzione( struct char_data *pChar, struct char_data *pTo )
     "molto bass$b"
   };
   
-  char *DescCostituzione[] =
+  const char *DescCostituzione[] =
   {
     "$c0010grass$b$c0007",
     "gross$b",
@@ -1436,7 +1436,7 @@ void do_look(struct char_data *ch, const char *argument, int cmd)
   struct obj_data *tmp_object, *found_object;
   struct char_data *tmp_char;
   char *tmp_desc;
-  static char *keywords[]=
+  static const char *keywords[]=
   { 
     "north",
     "east",
@@ -4718,10 +4718,10 @@ void do_show_skill(struct char_data *ch, const char *arg, int cmd)
 /* to have a command like this. Do what ya want on your on MUD                 */
 void do_scan(struct char_data *ch, const char *argument, int cmd)
 {
-  extern char *dirsTo[];
-  extern char *dirs[];
+  extern const char *dirsTo[];
+  extern const char *dirs[];
 #if 0
-  static char *keywords[]= 
+  const char *keywords[]= 
   { 
     "north",
     "east",
@@ -4732,7 +4732,7 @@ void do_scan(struct char_data *ch, const char *argument, int cmd)
     "\n"
   };
 #endif
-  char *dir_desc[] = 
+  const char *dir_desc[] = 
   {
     "a nord",
     "ad est",
@@ -4741,7 +4741,7 @@ void do_scan(struct char_data *ch, const char *argument, int cmd)
     "in alto",
     "in basso"
   };
-  char *rng_desc[] = 
+  const char *rng_desc[] = 
   {
     "qui",
     "qui accanto",
@@ -4983,7 +4983,7 @@ struct char_data *get_char_linear( struct char_data *ch, const char *arg, int *r
   int range = 0;
   struct char_data *spud;
   char tmpname[ MAX_STRING_LENGTH ];
-  char *keywords[] =
+  const char *keywords[] =
   {
     "north",
     "east",

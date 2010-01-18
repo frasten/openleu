@@ -312,7 +312,7 @@ void do_cset(struct char_data *ch, const char *arg, int cmd);
 void do_auth(struct char_data *ch, const char *arg, int cmd); /* jdb 3-1 */
 
 
-char *fill[]=
+const char *fill[]=
 { 
   "in",
   "from",
@@ -326,7 +326,7 @@ char *fill[]=
 };
 
 
-int search_block(char *arg, char **list, bool exact)
+int search_block(char *arg, const char **list, bool exact)
 {
   register int i,l;
   

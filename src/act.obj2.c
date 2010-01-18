@@ -1287,7 +1287,7 @@ void do_wear(struct char_data *ch, const char *argument, int cmd)
   char buffer[MAX_INPUT_LENGTH];
   struct obj_data *obj_object, *next_obj;
   int keyword;
-  static char *keywords[] = {
+  const char *keywords[] = {
     "finger",
     "neck",
     "body",

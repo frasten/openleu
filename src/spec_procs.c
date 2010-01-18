@@ -35,7 +35,7 @@ extern int RacialMax[][MAX_CLASS];
 
 extern struct title_type titles[MAX_CLASS][ABS_MAX_LVL];
 //extern struct spell_info_type spell_info[];
-extern char *dirs[]; 
+extern const char *dirs[]; 
 
 
 

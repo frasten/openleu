@@ -21,7 +21,7 @@ void do_find_water( struct char_data *ch, const char *arg, int cmd);
 
 bool is_same_group( struct char_data *ach, struct char_data *bch );
 
-extern char *dirsTo[];
+extern const char *dirsTo[];
 extern struct char_data *character_list;
 extern struct room_data *world;
 extern struct dex_app_type dex_app[];
@@ -1224,7 +1224,7 @@ void do_disguise(struct char_data *ch, const char *argument, int cmd)
 /* Skill for climbing walls and the like -DM */
 void do_climb( struct char_data *ch, const char *arg, int cmd)
 {
-  extern char *dirs[];
+  extern const char *dirs[];
   int dir;
   struct room_direction_data *exitp;
   int was_in, roll;

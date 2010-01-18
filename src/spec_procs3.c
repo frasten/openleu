@@ -21,7 +21,7 @@ extern struct int_app_type int_app[26];
 extern struct str_app_type str_app[];
 
 extern struct title_type titles[4][ABS_MAX_LVL];
-extern char *dirs[]; 
+extern const char *dirs[]; 
 
 extern int gSeason;  /* what season is it ? */
 

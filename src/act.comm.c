@@ -812,7 +812,7 @@ void do_speak(struct char_data *ch, const char *argument, int cmd)
 
   #define MAX_LANGS 8 
 
-  char *lang_list[MAX_LANGS] =
+  const char *lang_list[MAX_LANGS] =
   {
     "common",
     "elvish",
@@ -984,7 +984,7 @@ void do_new_say(struct char_data *ch, const char *argument, int cmd)
     /*
       buf2 is now the "corrected" string.
       */
-    if (!*buf2 || !buf2)
+    if (!*buf2 || !*buf2)
     {
       send_to_char("OK, ma cosa hai da dire ?\n\r", ch);
       return;

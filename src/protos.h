@@ -580,7 +580,7 @@ void do_clone(struct char_data *ch, const char *argument, int cmd);
 void do_mforce(struct char_data *ch, const char *argument, int cmd);
  
 void commando(int number, int min_pos, void (*pointer)(), int min_level);
-int search_block(char *arg, char **list, bool exact);
+int search_block(char *arg, const char **list, bool exact);
 int old_search_block(const char *argument,int begin,int length,const char **list,int mode);
 void command_interpreter(struct char_data *ch, const char *argument);
 void argument_interpreter(const char *argument,char *first_arg,char *second_arg );

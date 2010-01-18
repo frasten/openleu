@@ -9,7 +9,7 @@
 
 #include "protos.h"
 
-extern char *dirs[];
+extern const char *dirs[];
 
 
 void mind_use_burn( byte level, struct char_data *ch, const char *arg, int type,
