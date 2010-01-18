@@ -125,20 +125,8 @@ CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE
 ##
 ##
 
-HEADERFILES = structs.h area.h comm.h db.h handler.h hash.h heap.h \
-              interpreter.h limits.h poly.h race.h script.h spells.h trap.h \
-              utils.h vt100c.h wizlist.h parser.h mail.h
-##
-OBJS = comm.o act.comm.o act.info.o act.move.o act.obj1.o act.obj2.o \
-  act.off.o act.other.o act.social.o act.wizard.o handler.o \
-  db.o interpreter.o utility.o spec_assign.o shop.o limits.o mobact.o \
-  fight.o modify.o weather.o spells1.o spells2.o spell_parser.o \
-  reception.o constants.o spec_procs.o signals.o board.o magic.o \
-  magic2.o skills.o Opinion.o Trap.o magicutils.o multiclass.o hash.o \
-  Sound.o Heap.o spec_procs2.o magic3.o security.o spec_procs3.o \
-  create.o bsd.o parser.o ansi_parser.o mail.o mindskills1.o \
-  mind_use1.o create.mob.o create.obj.o rhyodin.o gilde.o carceri.o \
-  charlist.o lucertole.o
+
+
 
 SRCS = comm.c act.comm.c act.info.c act.move.c act.obj1.c act.obj2.c \
   act.off.c act.other.c act.social.c act.wizard.c handler.c \
@@ -147,17 +135,30 @@ SRCS = comm.c act.comm.c act.info.c act.move.c act.obj1.c act.obj2.c \
   reception.c constants.c spec_procs.c signals.c board.c magic.c \
   magic2.c skills.c Opinion.c Trap.c magicutils.c multiclass.c hash.c \
   Sound.c Heap.c spec_procs2.c magic3.c security.c spec_procs3.c \
-  create.c bsd.c parser.c ansi_parser.c mail.o mind_use1.c \
+  create.c bsd.c parser.c ansi_parser.c mail.c mind_use1.c \
   mindskills1.c create.mob.c create.obj.c rhyodin.c gilde.c carceri.c \
   charlist.c lucertole.c
 
+OBJS = $(SRCS:.c=.o)
+
+
+# from Lauri Leukkunen's build system
+ifdef V
+  Q = 
+  P = @printf "" # <- space before hash is important!!!
+else
+  P = @printf "[%s] $@\n" # <- space before hash is important!!!
+  Q = @
+endif
+
+
+
+
+
 all: leu
 
-##tags: ${SRCS}
-##  ctags -vtrS *.[ch]
 
 leu: ${OBJS}
-
 ## if you want to add debugging stuff, uncomment the following, and comment
 ##  out the line after that
 ##  $(LD) -o $@ -g ${OBJS} /local/lib/gnu/gcc-gnulib /usr/lib/debug/malloc.o
@@ -165,7 +166,9 @@ leu: ${OBJS}
 ##	$(LD) -o $@  ${OBJS}
 ##	$(LD) -nostartfiles -o $@ /usr/lib/gcrt0.o -gdb3 ${OBJS} /usr/lib/libgmon.a
 ##	$(LD) $(DEBUGFLAGS) -o $@ ${OBJS}
-	$(LD) $(DEBUGFLAGS) -o $@ ${OBJS} /usr/lib/libcrypt.a
+	$(P)LD
+	$(Q)$(LD) $(DEBUGFLAGS) -o $@ ${OBJS} /usr/lib/libcrypt.a
+
 ##  $(LD) -o $@ -g ${OBJS} -L/usr/local/gnu/lib/gcc-lib/sun4-sunos4.1.1/2.3
 
 depend :
@@ -178,62 +181,10 @@ clean :
 	rm -f $(OBJS) leu
 
 
-# DO NOT DELETE THIS LINE -- make depend depends on it.
+%.o:: %.c
+	$(P)CC
+	$(Q)$(CC) $(CFLAGS) -c -o $@ $<
 
-comm.o: protos.h ${HEADERFILES} version.h status.h fight.h
-act.comm.o: protos.h ${HEADERFILES}
-act.move.o: protos.h ${HEADERFILES} cmdid.h fight.h status.h
-act.off.o: protos.h ${HEADERFILES} fight.h
-act.obj1.o: protos.h ${HEADERFILES} status.h
-act.obj2.o: protos.h ${HEADERFILES}
-act.info.o: protos.h ${HEADERFILES} cmdid.h version.h fight.h
-act.other.o: protos.h ${HEADERFILES} fight.h
-act.social.o: protos.h ${HEADERFILES}
-act.wizard.o: protos.h ${HEADERFILES} cmdid.h fight.h
-handler.o: protos.h ${HEADERFILES} fight.h
-db.o: protos.h ${HEADERFILES} gilde.h status.h fight.h
-interpreter.o: protos.h ${HEADERFILES} cmdid.h
-utility.o: protos.h ${HEADERFILES} fight.h
-spec_assign.o: protos.h ${HEADERFILES} rhyodin.h carceri.h lucertole.h
-shop.o: protos.h ${HEADERFILES}
-limits.o: protos.h ${HEADERFILES} fight.h
-mobact.o: protos.h ${HEADERFILES} cmdid.h status.h fight.h
-fight.o: protos.h ${HEADERFILES}
-modify.o: protos.h ${HEADERFILES}
-weather.o: protos.h ${HEADERFILES}
-spells1.o: protos.h ${HEADERFILES}
-spells2.o: protos.h ${HEADERFILES} fight.h
-spell_parser.o: protos.h ${HEADERFILES} cmdid.h fight.h
-reception.o: protos.h ${HEADERFILES} status.h
-constants.o: protos.h ${HEADERFILES}
-spec_procs.o: protos.h ${HEADERFILES} cmdid.h fight.h
-signals.o: protos.h ${HEADERFILES} status.h
-board.o: protos.h ${HEADERFILES}
-magic.o: protos.h ${HEADERFILES} fight.h
-magic2.o: protos.h ${HEADERFILES} fight.h
-magic3.o: protos.h ${HEADERFILES} fight.h
-magicutils.o: protos.h ${HEADERFILES} fight.h
-multiclass.o: protos.h ${HEADERFILES}
-skills.o: protos.h ${HEADERFILES} fight.h status.h
-Opinion.o: protos.h ${HEADERFILES}
-Trap.o: protos.h ${HEADERFILES} fight.h
-hash.o: protos.h ${HEADERFILES}
-Sound.o: protos.h ${HEADERFILES}
-Heap.o: protos.h ${HEADERFILES}
-spec_procs2.o: protos.h ${HEADERFILES} cmdid.h status.h fight.h
-spec_procs3.o: protos.h ${HEADERFILES} cmdid.h fight.h
-security.o:
-create.o: protos.h ${HEADERFILES}
-bsd.o:
-parser.o: protos.h ${HEADERFILES}
-ansi_parser.o: protos.h ${HEADERFILES}
-mail.o:protos.h ${HEADERFILES}
-mind_use1.o: protos.h ${HEADERFILES}
-mindskills1.o:protos.h ${HEADERFILES} fight.h
-create.mob.o:protos.h ${HEADERFILES}
-create.obj.o:protos.h ${HEADERFILES}
-rhyodin.o:protos.h ${HEADERFILES} rhyodin.h cmdid.h charlist.h fight.h
-gilde.o:protos.h ${HEADERFILES} gilde.h cmdid.h charlist.h
-carceri.o:protos.h ${HEADERFILES} carceri.h cmdid.h charlist.h fight.h
-charlist.o: charlist.h
-lucertole.o:protos.h ${HEADERFILES} lucertole.h cmdid.h fight.h
+
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
