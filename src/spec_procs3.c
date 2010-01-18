@@ -3899,7 +3899,7 @@ int Bilancia( struct char_data *ch, int cmd, const char *arg, struct obj_data *o
 int Ezmerelda( struct char_data *pChar, int iCmd, const char *szArg,
                struct char_data *pMob, int iType )
 {
-  char *aszMessStart[] =
+  const char *aszMessStart[] =
   {
     "Qualcuno qui vicino borbotta 'Accidenti! Ma dove l'avro` messa ?'.\n\r",
     "Qualcuno qui vicino borbotta 'Porca miseria! Non riesco proprio a "
@@ -3908,7 +3908,7 @@ int Ezmerelda( struct char_data *pChar, int iCmd, const char *szArg,
     "qualcuno!'.\n\r"
   };
   
-  char *aszMessPray[] =
+  const char *aszMessPray[] =
   {
     "Vi prego! Mi serve!",
     "Andiamo! Tiratela fuori!",

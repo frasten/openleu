@@ -12,7 +12,7 @@ enum DamageResult
 
 void load_messages();
 void update_pos( struct char_data *victim );
-int check_peaceful(struct char_data *ch, char *msg);
+int check_peaceful(struct char_data *ch, const char *msg);
 void set_fighting(struct char_data *ch, struct char_data *vict);
 void stop_fighting(struct char_data *ch);
 void death_cry(struct char_data *ch);
