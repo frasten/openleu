@@ -733,14 +733,15 @@ void game_loop(int s)
       next_point = point->next;
 
 #ifndef BLOCK_WRITE
-      if (FD_ISSET(point->descriptor, &output_set) && point->output.head)
+      if (FD_ISSET(point->descriptor, &output_set) && point->output.head) {
 #else
-      if (FD_ISSET(point->descriptor, &output_set) && *(point->output))
+      if (FD_ISSET(point->descriptor, &output_set) && *(point->output)) {
 #endif        
         if (process_output(point) < 0)
           close_socket(point);
         else
           point->prompt_mode = 1;
+      }
     }
     
     /* give the people some prompts  */
@@ -938,7 +939,7 @@ int get_from_q(struct txt_q *queue, char *dest)
 
 
 #if 0
-void write_to_q(char *txt, struct txt_q *queue)
+void write_to_q(const char *txt, struct txt_q *queue)
 {
   struct txt_block *new;
   char tbuf[256];
@@ -993,7 +994,7 @@ void write_to_q(char *txt, struct txt_q *queue)
 }
 #endif
 
-void write_to_q(char *txt, struct txt_q *queue)
+void write_to_q(const char *txt, struct txt_q *queue)
 {
   struct txt_block *pNew;
   char tbuf[256];

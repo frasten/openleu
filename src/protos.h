@@ -392,9 +392,9 @@ void game_loop(int s);
 int get_from_q(struct txt_q *queue, char *dest);
 
 #if BLOCK_WRITE
-void write_to_output(char *txt, struct descriptor_data *t);
+void write_to_output(const char *txt, struct descriptor_data *t);
 #else
-void write_to_q(char *txt, struct txt_q *queue);
+void write_to_q(const char *txt, struct txt_q *queue);
 #endif
 
 void construct_prompt( char *buf, struct char_data *ch );
