@@ -3639,13 +3639,14 @@ void zm_init_combat(struct char_data *zmaster, struct char_data *target)
   for (fwr = zmaster->followers; fwr; fwr = fwr->next)
     if (IS_AFFECTED(fwr->follower, AFF_CHARM) &&
         fwr->follower->specials.fighting==NULL &&
-        fwr->follower->in_room == target->in_room)
+        fwr->follower->in_room == target->in_room) {
       if (GET_POS(fwr->follower) == POSITION_STANDING) {
         hit(fwr->follower, target, TYPE_UNDEFINED);
       } else if (GET_POS(fwr->follower)>POSITION_SLEEPING &&
                  GET_POS(fwr->follower)<POSITION_FIGHTING) {
         do_stand(fwr->follower, "", -1);
       }
+    }
 }
 
 int zm_kill_fidos(struct char_data *zmaster)
@@ -5742,10 +5743,10 @@ int nodrop(struct char_data *ch, int cmd, const char *arg, struct obj_data *tobj
   }
 
   /* Look in the room first, in get case */
-  if(cmd == 10)
-    for (i=real_roomp(ch->in_room)->contents,j=1;i&&(j<=num);i=i->next_content)
-      if (i->item_number>=0)
-        if (do_all || isname(name, i->name))
+  if(cmd == 10) {
+    for (i=real_roomp(ch->in_room)->contents,j=1;i&&(j<=num);i=i->next_content) {
+      if (i->item_number>=0) {
+        if (do_all || isname(name, i->name)) {
           if(do_all || j == num) {
             if (obj_index[i->item_number].func == CASTVF knowdrop) {
               obj = i;
@@ -5753,14 +5754,18 @@ int nodrop(struct char_data *ch, int cmd, const char *arg, struct obj_data *tobj
             }
           }
           else ++j;
+        }
+      }
+    }
+  }
   
   /* Check the character's inventory for give, drop, steal. */
-  if(!obj)
+  if(!obj) {
     /* Don't bother with get anymore */
     if(cmd == 10) return(FALSE);
-    for (i = ch->carrying,j=1;i&&(j<=num);i=i->next_content)
-      if (i->item_number>=0)
-        if (do_all || isname(name, i->name))
+    for (i = ch->carrying,j=1;i&&(j<=num);i=i->next_content) {
+      if (i->item_number>=0) {
+        if (do_all || isname(name, i->name)) {
           if(do_all || j == num) {
             if (obj_index[i->item_number].func == CASTVF knowdrop) {
               obj = i;
@@ -5769,6 +5774,10 @@ int nodrop(struct char_data *ch, int cmd, const char *arg, struct obj_data *tobj
             else if(!do_all) return(FALSE);
           }
           else ++j;
+        }
+      }
+    }
+  }
   
   /* Musta been something else */
   if(!obj)

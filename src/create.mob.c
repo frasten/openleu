@@ -38,7 +38,7 @@ extern const char *RaceName[];
 extern const char *immunity_names[];
  
  
-char *mob_edit_menu = "    1) Name                    2) Short description\n\r"
+const char *mob_edit_menu = "    1) Name                    2) Short description\n\r"
                       "    3) Long description        4) Description\n\r"
                       "    5) Action flags            6) Affect flags\n\r"
                       "    7) Alignment               8) Maximum hitpoints\n\r"

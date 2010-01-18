@@ -173,7 +173,7 @@ void init_string_block(struct string_block *sb)
   *sb->data = '\0';
 }
 
-void append_to_string_block(struct string_block *sb, char *str)
+void append_to_string_block(struct string_block *sb, const char *str)
 {
   int        len;
   len = strlen(sb->data) + strlen(str) + 1;

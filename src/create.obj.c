@@ -44,7 +44,7 @@ extern const char *apply_types[];
 extern const char *immunity_names[];
  
  
-char *obj_edit_menu = "    1) Name                    2) Short description\n\r"
+const char *obj_edit_menu = "    1) Name                    2) Short description\n\r"
                       "    3) Description             4) Type\n\r"
                       "    5) Wear positions          6) Extra flags\n\r"
                       "    7) Weight                  8) Value\n\r"

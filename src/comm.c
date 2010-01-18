@@ -2307,7 +2307,7 @@ void act( const char *str, int hide_invisible, struct char_data *ch,
   }
 }
 
-void raw_force_all( char *to_force)
+void raw_force_all( const char *to_force)
 {
   struct descriptor_data *i;
   char buf[400];

@@ -94,7 +94,7 @@ void do_whisper(struct char_data *ch, const char *argument, int cmd);
 void do_ask(struct char_data *ch, const char *argument, int cmd);
 void do_write(struct char_data *ch, const char *argument, int cmd);
 void do_pray(struct char_data *ch, const char *argument, int cmd);
-char *RandomWord();
+const char *RandomWord();
 void do_sign(struct char_data *ch, const char *argument, int cmd);
 void do_move(struct char_data *ch, const char *argument, int cmd);
 void do_enter(struct char_data *ch, const char *argument, int cmd);
@@ -427,7 +427,7 @@ void send_to_room_except_two( const char *messg, int room, struct char_data *ch1
                               struct char_data *ch2);
 void act( const char *str, int hide_invisible, struct char_data *ch,
           struct obj_data *obj, void *vict_obj, int type);
-void raw_force_all( char *to_force );
+void raw_force_all( const char *to_force );
  
  
 /* From constants.c */
@@ -497,7 +497,7 @@ int split_string(char *str, char *sep, char **argv);
 int isname(const char *str, const char *namelist);
 int isname2(const char *str, const char *namelist);
 void init_string_block(struct string_block *sb);
-void append_to_string_block(struct string_block *sb, char *str);
+void append_to_string_block(struct string_block *sb, const char *str);
 void page_string_block(struct string_block *sb, struct char_data *ch);
 void destroy_string_block(struct string_block *sb);
 void affect_modify(struct char_data *ch,byte loc, long mod, long bitv,bool add);

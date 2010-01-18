@@ -660,9 +660,9 @@ void do_write(struct char_data *ch, const char *argument, int cmd)
   }
 }
 
-char *RandomWord()
+const char *RandomWord()
 {
-  static char *string[50] = {
+  const char *string[50] = {
     "argle",
     "bargle",
     "glop",
