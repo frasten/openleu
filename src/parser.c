@@ -21,7 +21,7 @@ byte HashTable[256];
  
  
 /* Adds a command to the Command List radix. */
-void AddCommand(char *name, void (*func)( struct char_data *, const char *, int ), 
+void AddCommand(const char *name, void (*func)( struct char_data *, const char *, int ), 
                 int number, int min_pos, int min_lev)
 {
   NODE *n;

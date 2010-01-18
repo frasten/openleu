@@ -3077,8 +3077,9 @@ void do_blast( struct char_data *ch, const char *argument, int cmd)
         break;
     }
   }
-  if( damage( ch, victim, dam, SKILL_PSIONIC_BLAST ) != SubjectDead )
-    WAIT_STATE( ch, PULSE_VIOLENCE * 2 ); 
+  if( damage( ch, victim, dam, SKILL_PSIONIC_BLAST ) != SubjectDead ) {
+    WAIT_STATE( ch, PULSE_VIOLENCE * 2 );
+  }
 }
 
 void do_hypnosis( struct char_data *ch, const char *argument, int cmd)
@@ -3446,9 +3447,9 @@ if (affected_by_spell(ch,SPELL_FEEBLEMIND)) {
      return;
    }
 
-   if (  ch->specials.conditions[FULL] == 0  /*hungry or*/
-       | ch->specials.conditions[THIRST] == 0  /*thirsty or*/
-       | ch->specials.conditions[DRUNK] > 0)     /*alcohol in blood*/
+   if (  (ch->specials.conditions[FULL] == 0)  /*hungry or*/
+       | (ch->specials.conditions[THIRST] == 0)  /*thirsty or*/
+       | (ch->specials.conditions[DRUNK] > 0))     /*alcohol in blood*/
    {
      send_to_char ("Your body has certain needs that have to be met before you can meditate.\n\r",ch);
      return;
@@ -3730,8 +3731,8 @@ if (affected_by_spell(ch,SKILL_BLESSING)) {
    rating = (int)((level)*(GET_ALIGNMENT(ch))/1000)+factor;
    factor=0;
    for (test=real_roomp(ch->in_room)->people;test;test=test->next)  {
-     if (test!=ch)
-       if (ch->master)       {
+     if (test!=ch) {
+       if (ch->master) {
           if (circle_follow(ch->master,test))
             factor++;
        }
@@ -3739,6 +3740,7 @@ if (affected_by_spell(ch,SKILL_BLESSING)) {
          if (circle_follow(ch,test))
            factor++;
      }
+   }
    rating += MIN(factor,3);
    if (rating<0)
      {

@@ -1494,7 +1494,7 @@ int check_falling( struct char_data *ch);
 void check_drowning( struct char_data *ch);
 void check_falling_obj( struct obj_data *obj, int room);
 int check_nature( struct char_data *i);
-void AddCommand( char *name, void (*func)( struct char_data *, const char *, int ), 
+void AddCommand( const char *name, void (*func)( struct char_data *, const char *, int ), 
                  int number, int min_pos, int min_lev );
  
  
@@ -2129,7 +2129,7 @@ char *lower(char *s);
 int getFreeAffSlot( struct obj_data *obj);
 void SetRacialStuff( struct char_data *mob);
 int check_nomagic(struct char_data *ch, char *msg_ch, char *msg_rm);
-int check_nomind(struct char_data *ch, char *msg_ch, char *msg_rm);
+int check_nomind(struct char_data *ch, const char *msg_ch, const char *msg_rm);
 int NumCharmedFollowersInRoom(struct char_data *ch);
 struct char_data *FindMobDiffZoneSameRace(struct char_data *ch);
 int NoSummon(struct char_data *ch);
