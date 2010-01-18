@@ -452,6 +452,6 @@ struct spell_info_type
 /* Attacktypes with grammar */
 
 struct attack_hit_type {
-  char *singular;
-  char *plural;
+  const char *singular;
+  const char *plural;
 };

@@ -301,7 +301,7 @@ void dsearch(char *string, char *tmp)
        buf[j] = '\0';
        strcpy(buf3, (string+j+2));
        sprintf(tmp, "%s%s%s" ,buf, buf2, buf3);
-       sprintf(string, tmp);
+       sprintf(string, "%s", tmp);
 
      }
   }
@@ -4464,7 +4464,7 @@ void do_show(struct char_data *ch, const char *argument, int cmd)
 
     for( zone = 0; zone<=top_of_zone_table; zone++ )
     {
-      char *mode;
+      const char *mode;
 
       zd = zone_table+zone;
       switch(zd->reset_mode)

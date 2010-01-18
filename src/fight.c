@@ -111,7 +111,7 @@ void WeaponSpell( struct char_data *c, struct char_data *v,
 int GetFormType(struct char_data *ch);
 int MonkDodge( struct char_data *ch, struct char_data *v, int *dam);
 
-char *replace_string( char *str, char *weapon, char *weapon_s,
+char *replace_string( const char *str, char *weapon, char *weapon_s,
                       char *location_hit, char *location_hit_s);
 
  /* Weapon attack texts */
@@ -1306,8 +1306,8 @@ void group_gain( struct char_data *ch,struct char_data *victim )
   }
 }
 
-char *replace_string(char *str, char *weapon, char *weapon_s,
-                                char *location_hit, char *location_hit_s)
+char *replace_string(const char *str, const char *weapon, const char *weapon_s,
+                                const char *location_hit, const char *location_hit_s)
 {
   static char buf[256];
   char *cp;
@@ -1357,9 +1357,9 @@ void dam_message(int dam, struct char_data *ch, struct char_data *victim,
   int snum,hitloc;
   
   static struct dam_weapon_type {
-    char *to_room;
-    char *to_char;
-    char *to_victim;
+    const char *to_room;
+    const char *to_char;
+    const char *to_victim;
   } dam_weapons[] = {
     
     {
@@ -4766,7 +4766,7 @@ int range_hit( struct char_data *ch, struct char_data *targ, int rng, struct
   /* Does the roll, damage, messages, and everything */
  
   int calc_thaco, i, dam = 0, diceroll, victim_ac;
-  char *dir_name[] = 
+  const char *dir_name[] = 
   {
     "da nord",
     "da est",
