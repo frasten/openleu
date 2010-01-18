@@ -3237,7 +3237,7 @@ void check_affected(char *msg)
       for(hjp=c->affected;hjp;hjp=hjp->next)
         if(hjp->type > MAX_EXIST_SPELL || hjp->type < 0) {
           sprintf(buf,"bogus hjp->type for (%s).", GET_NAME(c));
-          fprintf(f,buf);
+          fprintf(f, "%s", buf);
 /*          abort();    in test site this will be ok.. */
         }
  

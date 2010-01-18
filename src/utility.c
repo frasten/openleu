@@ -623,12 +623,14 @@ int str_cmp(const char *arg1, const char *arg2)
   if( !arg2 || !arg1 )
     return(1);
 
-  for( i = 0; *(arg1 + i) || *(arg2 + i); i++)
-    if( ( chk = LOWER( *( arg1 + i ) ) - LOWER( *( arg2 + i ) ) ) != 0 )
+  for( i = 0; *(arg1 + i) || *(arg2 + i); i++) {
+    if( ( chk = LOWER( *( arg1 + i ) ) - LOWER( *( arg2 + i ) ) ) != 0 ) {
       if (chk < 0)
         return (-1);
       else 
         return (1);
+    }
+  }
   return(0);
 #else
  return(strcmp(arg1,arg2));
@@ -669,12 +671,14 @@ int strn_cmp(const char *arg1, const char *arg2, int n)
 #if 1 
   int chk, i;
   
-  for (i = 0; (*(arg1 + i) || *(arg2 + i)) && (n>0); i++, n--)
-    if( ( chk = LOWER( *( arg1 + i ) ) - LOWER( *( arg2 + i ) ) ) != 0 )
+  for (i = 0; (*(arg1 + i) || *(arg2 + i)) && (n>0); i++, n--) {
+    if( ( chk = LOWER( *( arg1 + i ) ) - LOWER( *( arg2 + i ) ) ) != 0 ) {
       if (chk < 0)
         return (-1);
       else 
         return (1);
+    }
+  }
   
   return(0);
 #else
@@ -816,7 +820,7 @@ void sprintbit(unsigned long vektor, char *names[], char *result)
   
   for(nr=0; vektor; vektor>>=1)
     {
-      if (IS_SET(1, vektor))
+      if (IS_SET(1, vektor)) {
         if (*names[nr] != '\n') {
           strcat(result,names[nr]);
           strcat(result," ");
@@ -826,6 +830,7 @@ void sprintbit(unsigned long vektor, char *names[], char *result)
         }
       if (*names[nr] != '\n')
         nr++;
+      }
     }
   
   if (!*result)

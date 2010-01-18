@@ -493,7 +493,7 @@ void InsertMobile( struct char_data *pMob, int nVNum );
 /* From handler.c */
  
 char *fname(const char *namelist);
-int split_string(char *str, char *sep, char **argv);
+int split_string(char *str, const char *sep, char **argv);
 int isname(const char *str, const char *namelist);
 int isname2(const char *str, const char *namelist);
 void init_string_block(struct string_block *sb);
@@ -1060,7 +1060,7 @@ void do_setskill(struct char_data *ch, const char *arg, int cmd);
 char *one_word(char *argument, char *first_arg );
 struct help_index_element *build_help_index(FILE *fl, int *num);
 void page_string(struct descriptor_data *d, const char *str, int keep_internal);
-void show_string(struct descriptor_data *d, char *input);
+void show_string(struct descriptor_data *d, const char *input);
 void night_watchman();
 void check_reboot();
  

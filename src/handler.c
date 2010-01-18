@@ -51,7 +51,7 @@ char *fname(const char *namelist)
 }
 
 
-int split_string(char *str, char *sep, char **argv)
+int split_string(char *str, const char *sep, char **argv)
      /* str must be writable */
 {
   char        *s;
@@ -2393,36 +2393,44 @@ struct obj_data *get_obj_vis_accessible(struct char_data *ch, const char *name)
     return(0);
   
   /* scan items carried */
-  for (i = ch->carrying, j=1; i && j<=number; i = i->next_content)
-    if (isname(tmp, i->name) && CAN_SEE_OBJ(ch, i))
+  for (i = ch->carrying, j=1; i && j<=number; i = i->next_content) {
+    if (isname(tmp, i->name) && CAN_SEE_OBJ(ch, i)) {
       if (j == number)
         return(i);
       else
         j++;
+    }
+  }
   
   for( i = real_roomp(ch->in_room)->contents; i && j<=number; 
-       i = i->next_content )
-    if (isname(tmp, i->name) && CAN_SEE_OBJ(ch, i))
+       i = i->next_content ) {
+    if (isname(tmp, i->name) && CAN_SEE_OBJ(ch, i)) {
       if (j==number)
         return(i);
       else
         j++;
+    }
+  }
 
   /* scan items carried */
-  for (i = ch->carrying, j=1; i && j<=number; i = i->next_content)
-    if (isname2(tmp, i->name) && CAN_SEE_OBJ(ch, i))
+  for (i = ch->carrying, j=1; i && j<=number; i = i->next_content) {
+    if (isname2(tmp, i->name) && CAN_SEE_OBJ(ch, i)) {
       if (j == number)
         return(i);
       else
         j++;
+    }
+  }
   
   for( i = real_roomp(ch->in_room)->contents; i && j<=number; 
-       i = i->next_content )
-    if (isname2(tmp, i->name) && CAN_SEE_OBJ(ch, i))
+       i = i->next_content ) {
+    if (isname2(tmp, i->name) && CAN_SEE_OBJ(ch, i)) {
       if (j==number)
         return(i);
       else
         j++;
+    }
+  }
 
   return 0;
 }

@@ -2120,7 +2120,7 @@ void cast_knock( byte level, struct char_data *ch, const char *arg, int type,
 
    argument_interpreter(arg, otype, dir);
 
-   if (!otype) {
+   if (!*otype) {
       send_to_char("Knock on what?\n\r",ch);
       return;
    }

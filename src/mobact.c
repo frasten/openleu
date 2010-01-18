@@ -1109,7 +1109,7 @@ int CommandSearch(char *arg)
  return(-1);
 }
 
-void CommandAssign( char *arg, void (*p)( char *, struct char_data * ) )
+void CommandAssign( const char *arg, void (*p)( char *, struct char_data * ) )
 {
   if(top_of_comp == 0)
     gpComp = (struct script_com *)malloc(sizeof(struct script_com));

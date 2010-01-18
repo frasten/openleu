@@ -880,7 +880,7 @@ void page_string(struct descriptor_data *d, const char *str, int keep_internal)
 
 char *ParseAnsiColors(int UsingAnsi, const char *txt);
 
-void show_string( struct descriptor_data *d, char *input )
+void show_string( struct descriptor_data *d, const char *input )
 {
   char buffer[ MAX_STRING_LENGTH ], buf[ MAX_INPUT_LENGTH ];
   register char *scan;

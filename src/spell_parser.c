@@ -1742,7 +1742,7 @@ void do_cast(struct char_data *ch, const char *argument, int cmd)
               EqWBits( ch, ITEM_ANTI_PSI ) ) &&             
 
             ( spell_info[ spl ].min_level_druid >
-              GET_LEVEL( ch, DRUID_LEVEL_IND ) |
+              GET_LEVEL( ch, DRUID_LEVEL_IND ) ||
               EqWBits( ch, ITEM_ANTI_DRUID ) ) )
         {
 #if 0          
