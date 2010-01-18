@@ -30,7 +30,7 @@ void PrintStatus()
   mudlog( LOG_SYSERR | LOG_SILENT, "  Last Name '%s'", gszName );
 }
 
-void SetStatus( const char *szStatus, char *szString, void *pGeneric )
+void SetStatus( const char *szStatus, const char *szString, void *pGeneric )
 {
   if( szStatus )
   {

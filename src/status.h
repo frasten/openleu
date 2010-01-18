@@ -29,5 +29,5 @@
 #define STATUS_MAX             25
 
 
-void SetStatus( const char *szStatus, char *szString = NULL, 
+void SetStatus( const char *szStatus, const char *szString = NULL, 
                 void *pGeneric = NULL );

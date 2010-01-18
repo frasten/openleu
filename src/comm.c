@@ -97,7 +97,7 @@ struct affected_type  *Check_hjp, *Check_old_af;
 struct char_data *Check_c;
 char *Check_p = NULL;
 
-void CheckCharAffected( char *msg )
+void CheckCharAffected( const char *msg )
 {
 
   Check_p = strdup( "a simple test in CheckCharAffected blank text meaning"
@@ -135,7 +135,7 @@ void CheckCharAffected( char *msg )
   return;
 }
 
-void CheckObjectExDesc( char *msg )
+void CheckObjectExDesc( const char *msg )
 {
   struct obj_data *pObj = NULL;
   struct extra_descr_data *pExDesc = NULL;

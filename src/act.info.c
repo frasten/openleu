@@ -4865,7 +4865,7 @@ void do_scan(struct char_data *ch, const char *argument, int cmd)
   WAIT_STATE( ch, swt * PULSE_VIOLENCE );
 }
 
-void CheckCharAffected( char *msg );
+void CheckCharAffected( const char *msg );
 
 void list_groups( struct char_data *ch, const char *szArg, int iCmd )
 {
