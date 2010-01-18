@@ -350,7 +350,7 @@ int search_block(char *arg, char **list, bool exact)
 }
 
 
-int old_search_block(const char *argument,int begin,int length,char **list,int mode)
+int old_search_block(const char *argument,int begin,int length,const char **list,int mode)
 {
   int guess, found, search;
   
@@ -804,7 +804,7 @@ int fill_word(char *argument)
 
 
 /* determine if a given string is an abbreviation of another */
-int is_abbrev(char *arg1, char *arg2)
+int is_abbrev(const char *arg1, const char *arg2)
 {
   if (!*arg1)
     return(0);

@@ -19,7 +19,7 @@ extern struct spell_info_type spell_info[];
 extern struct char_data *character_list;
 extern struct index_data *obj_index;
 extern struct time_info_data time_info;
-extern char  *spells[];
+extern const char  *spells[];
 extern struct spell_info_type spell_info[MAX_SPL_LIST];
 extern struct int_app_type int_app[26];
 
@@ -703,7 +703,7 @@ void do_practice(struct char_data *ch, const char *arg, int cmd)
   char buf[MAX_STRING_LENGTH*2], buffer[MAX_STRING_LENGTH*2], temp[20];
   int i;
   
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   buffer[0] = '\0';

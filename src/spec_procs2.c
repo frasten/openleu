@@ -1595,7 +1595,7 @@ int cleric(struct char_data *ch, int cmd, const char *arg, struct char_data *mob
 int ninja_master(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] = {
+  const char *n_skills[] = {
     "disarm",   /* No. 245 */
     "doorbash", /* No. 259 */
     "spy",
@@ -3514,7 +3514,7 @@ int BreathWeapon( struct char_data *ch, int cmd, const char *arg,
 int sailor(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] = {
+  const char *n_skills[] = {
     "swim",
     "\n",
   };
@@ -3597,7 +3597,7 @@ int sailor(struct char_data *ch, int cmd, const char *arg, struct char_data *mob
 int loremaster(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] = {
+  const char *n_skills[] = {
     "necromancy",
     "vegetable lore",
     "animal lore",
@@ -3795,7 +3795,7 @@ int loremaster(struct char_data *ch, int cmd, const char *arg, struct char_data 
 int hunter(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] =
+  const char *n_skills[] =
   {
     "hunt",
     "find traps",
@@ -3953,7 +3953,7 @@ int archer_instructor( struct char_data *ch, int cmd, const char *arg,
                        struct char_data *mob, int type )
 {
   char buf[256];
-  static char *n_skills[] =
+  const char *n_skills[] =
   {
     "spot",
     "\n",
@@ -4062,7 +4062,7 @@ int archer_instructor( struct char_data *ch, int cmd, const char *arg,
 int monk_master(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] = {
+  const char *n_skills[] = {
     "quivering palm", /* No. 245 */
     "feign death", /* No. 259 */
     "retreat",
@@ -4342,7 +4342,7 @@ int DruidGuildMaster(struct char_data *ch, int cmd, const char *arg, struct char
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if ((cmd != 164) && (cmd != 170) && (cmd != 243)) return(FALSE);
@@ -6063,7 +6063,7 @@ int antioch_grenade(struct char_data *ch, int cmd, const char *arg, struct obj_d
 int barbarian_guildmaster(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   char buf[256];
-  static char *n_skills[] =
+  const char *n_skills[] =
   {
     "disarm",           /*  1 */
     "doorbash",         /*  2 */
@@ -6319,7 +6319,7 @@ int RangerGuildmaster(struct char_data *ch, int cmd, const char *arg, struct cha
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if (!ch->skills)
@@ -6463,7 +6463,7 @@ int PsiGuildmaster(struct char_data *ch, int cmd, const char *arg, struct char_d
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if (!ch->skills) return(FALSE);
@@ -6578,7 +6578,7 @@ int PaladinGuildmaster( struct char_data *ch, int cmd, const char *arg,
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if (!ch->skills)
@@ -6713,7 +6713,7 @@ int mage_specialist_guildmaster(struct char_data *ch, int cmd, const char *arg, 
   char buf[256];
   int i, number = 0;
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
 

@@ -161,7 +161,7 @@ int MageGuildMaster( struct char_data *ch, int cmd, const char *arg,
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if( type != EVENT_COMMAND )
@@ -370,7 +370,7 @@ int ClericGuildMaster(struct char_data *ch, int cmd, const char *arg, struct cha
   int number, i, percent;
   char buf[MAX_INPUT_LENGTH];
   struct char_data *guildmaster;
-  extern char *spells[];
+  extern const char *spells[];
   extern struct spell_info_type spell_info[MAX_SPL_LIST];
 
   if( type != EVENT_COMMAND )
@@ -509,7 +509,7 @@ int ThiefGuildMaster( struct char_data *ch, int cmd, const char *arg,
 {
   char buf[256];
   struct char_data *guildmaster;
-  static char *n_skills[] = 
+  const char *n_skills[] = 
   {
     "sneak",     /* 1 */
     "hide",
@@ -813,7 +813,7 @@ int WarriorGuildMaster(struct char_data *ch, int cmd, const char *arg,
 {
   char buf[256];
   struct char_data *guildmaster;
-  static char *n_skills[] = 
+  const char *n_skills[] = 
   {
     "kick",     /* 1 */
     "bash",

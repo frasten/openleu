@@ -33,7 +33,7 @@ extern struct index_data *obj_index;
 
 struct spell_info_type spell_info[MAX_SPL_LIST];
 
-char *spells[]=
+const char *spells[]=
 {
    "armor",               /* 1 */
    "teleport",

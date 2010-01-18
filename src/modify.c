@@ -20,7 +20,7 @@ extern struct descriptor_data *descriptor_list;
 struct room_data *world;              /* dyn alloc'ed array of rooms     */
 
 
-char *string_fields[] =
+const char *string_fields[] =
 {
   "name",
   "short",
@@ -33,7 +33,7 @@ char *string_fields[] =
   "\n"
 };
 
-char *room_fields[] =
+const char *room_fields[] =
 {
   "name",   /* 1 */
   "desc",
@@ -71,7 +71,7 @@ int room_length[] =
   50
 };
 
-char *skill_fields[] = 
+const char *skill_fields[] = 
 {
   "learned",
   "affected",

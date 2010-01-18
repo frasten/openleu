@@ -521,7 +521,7 @@ struct obj_data *get_obj_in_list(char *name, struct obj_data *list);
 struct obj_data *get_obj_in_list_num(int num, struct obj_data *list);
 struct obj_data *get_obj(char *name);
 struct obj_data *get_obj_num(int nr);
-struct char_data *get_char_room(char *name, int room);
+struct char_data *get_char_room(const char *name, int room);
 struct char_data *get_char(char *name);
 struct char_data *get_char_num(int nr);
 void obj_to_room(struct obj_data *object, long room);
@@ -581,7 +581,7 @@ void do_mforce(struct char_data *ch, const char *argument, int cmd);
  
 void commando(int number, int min_pos, void (*pointer)(), int min_level);
 int search_block(char *arg, char **list, bool exact);
-int old_search_block(const char *argument,int begin,int length,char **list,int mode);
+int old_search_block(const char *argument,int begin,int length,const char **list,int mode);
 void command_interpreter(struct char_data *ch, const char *argument);
 void argument_interpreter(const char *argument,char *first_arg,char *second_arg );
 void ThreeArgumentInterpreter( const char *pchArgument, char *pchFirstArg,
@@ -591,7 +591,7 @@ const char *one_argument(const char *argument, char *first_arg );
 const char *OneArgumentNoFill( const char *argument, char *first_arg );
 void only_argument(const char *argument, char *dest);
 int fill_word(char *argument);
-int is_abbrev(char *arg1, char *arg2);
+int is_abbrev(const char *arg1, const char *arg2);
 void half_chop(const char *string, char *arg1, char *arg2);
 int special(struct char_data *ch, int cmd, const char *arg);
 void assign_command_pointers ();

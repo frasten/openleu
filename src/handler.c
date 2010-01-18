@@ -1395,7 +1395,7 @@ struct obj_data *get_obj_num(int nr)
 
 
 /* search a room for a char, and return a pointer if found..  */
-struct char_data *get_char_room(char *name, int room)
+struct char_data *get_char_room(const char *name, int room)
 {
   struct char_data *i;
   int j, number;
