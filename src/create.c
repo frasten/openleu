@@ -53,15 +53,15 @@ extern const char *exit_bits[];
 extern const char *sector_types[];
  
  
-char *edit_menu = "    1) Name                       2) Description\n\r"
+const char *edit_menu = "    1) Name                       2) Description\n\r"
                   "    3) Flags                      4) Sector Type\n\r"
                   "    5) Exits\n\r\n\r";
  
-char *exit_menu = "    1) North                      2) East\n\r"
+const char *exit_menu = "    1) North                      2) East\n\r"
                   "    3) South                      4) West\n\r"
                   "    5) Up                         6) Down\n\r"
                   "\n\r";
-char *aszExitName[] =
+const char *aszExitName[] =
 {
   "north",
   "east",

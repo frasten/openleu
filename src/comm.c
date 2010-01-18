@@ -1883,7 +1883,7 @@ void save_all()
       save_char( i->character, AUTO_RENT );
 }
 
-void send_to_all( char *messg )
+void send_to_all( const char *messg )
 {
   struct descriptor_data *i;
   
@@ -1897,7 +1897,7 @@ void send_to_all( char *messg )
 }
 
 
-void send_to_outdoor(char *messg)
+void send_to_outdoor(const char *messg)
 {
   struct descriptor_data *i;
   
@@ -1910,7 +1910,7 @@ void send_to_outdoor(char *messg)
                                      USE_ANSI ), messg ), i );
 }
 
-void send_to_desert( char *messg )
+void send_to_desert( const char *messg )
 {
   struct descriptor_data *i;
   struct room_data *rp;
@@ -1944,7 +1944,7 @@ void send_to_desert( char *messg )
   }
 }
 
-void send_to_out_other( char *messg )
+void send_to_out_other( const char *messg )
 {
   struct descriptor_data *i;
   struct room_data *rp;
@@ -1975,7 +1975,7 @@ void send_to_out_other( char *messg )
 }
 
 
-void send_to_arctic(char *messg)
+void send_to_arctic(const char *messg)
 {
   struct descriptor_data *i;
   struct room_data *rp;
@@ -2004,7 +2004,7 @@ void send_to_arctic(char *messg)
 }
 
 
-void send_to_except(char *messg, struct char_data *ch)
+void send_to_except(const char *messg, struct char_data *ch)
 {
   struct descriptor_data *i;
   
@@ -2018,7 +2018,7 @@ void send_to_except(char *messg, struct char_data *ch)
 }
 
 
-void send_to_zone(char *messg, struct char_data *ch)
+void send_to_zone(const char *messg, struct char_data *ch)
 {
   struct descriptor_data *i;
   
@@ -2035,7 +2035,7 @@ void send_to_zone(char *messg, struct char_data *ch)
 
 
 
-void send_to_room(char *messg, int room)
+void send_to_room(const char *messg, int room)
 {
   struct char_data *i;
   
@@ -2051,7 +2051,7 @@ void send_to_room(char *messg, int room)
 
 
 
-void send_to_room_except(char *messg, int room, struct char_data *ch)
+void send_to_room_except(const char *messg, int room, struct char_data *ch)
 {
   struct char_data *i;
   
@@ -2065,7 +2065,7 @@ void send_to_room_except(char *messg, int room, struct char_data *ch)
 }
 
 void send_to_room_except_two
-  (char *messg, int room, struct char_data *ch1, struct char_data *ch2)
+  (const char *messg, int room, struct char_data *ch1, struct char_data *ch2)
 {
   struct char_data *i;
   

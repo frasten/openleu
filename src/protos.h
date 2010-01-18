@@ -414,16 +414,16 @@ void nonblock(int s);
 void coma(int s);
 void send_to_char(const char *messg, struct char_data *ch);
 void save_all();
-void send_to_all(char *messg);
-void send_to_outdoor(char *messg);
-void send_to_desert(char *messg);
-void send_to_out_other(char *messg);
-void send_to_arctic(char *messg);
-void send_to_except(char *messg, struct char_data *ch);
-void send_to_zone(char *messg, struct char_data *ch);
-void send_to_room(char *messg, int room);
-void send_to_room_except(char *messg, int room, struct char_data *ch);
-void send_to_room_except_two( char *messg, int room, struct char_data *ch1, 
+void send_to_all(const char *messg);
+void send_to_outdoor(const char *messg);
+void send_to_desert(const char *messg);
+void send_to_out_other(const char *messg);
+void send_to_arctic(const char *messg);
+void send_to_except(const char *messg, struct char_data *ch);
+void send_to_zone(const char *messg, struct char_data *ch);
+void send_to_room(const char *messg, int room);
+void send_to_room_except(const char *messg, int room, struct char_data *ch);
+void send_to_room_except_two( const char *messg, int room, struct char_data *ch1, 
                               struct char_data *ch2);
 void act( const char *str, int hide_invisible, struct char_data *ch,
           struct obj_data *obj, void *vict_obj, int type);
