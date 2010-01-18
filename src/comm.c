@@ -2085,7 +2085,8 @@ void send_to_room_except_two
 void act( const char *str, int hide_invisible, struct char_data *ch,
           struct obj_data *obj, void *vict_obj, int type )
 {
-  register char *point, *i;
+  register char *point;
+  const register char *i;
   register const char *strp;
   struct char_data *to;
   char buf[MAX_STRING_LENGTH], tmp[5];
@@ -2369,7 +2370,8 @@ extern struct title_type titles[MAX_CLASS][ABS_MAX_LVL];
 void construct_prompt( char *outbuf, struct char_data *ch )
 {
   struct room_data *rm;
-  char tbuf[255],*pr_scan,*mask;
+  char tbuf[255];
+  const char *mask, *pr_scan;
   long l,exp,texp;
   int i,s_flag=0;
 
