@@ -76,14 +76,14 @@ struct obj_data *get_obj_in_list_vis(struct char_data *ch, char *name,
 void do_actual_wiz_help(struct char_data *ch, const char *argument, int cmd);
 void list_obj_to_char(struct obj_data *list,struct char_data *ch, int mode,
                       bool show);
-char *DescDamage(float dam);
-char *DescRatio(float f);  /* theirs / yours */
-char *DescRatioF(float f);  /* theirs / yours */
-char *DamRollDesc(int a);
-char *HitRollDesc(int a);
-char *ArmorDesc(int a);
-char *AlignDesc(int a);
-char *DescAttacks(float a);
+const char *DescDamage(float dam);
+const char *DescRatio(float f);  /* theirs / yours */
+const char *DescRatioF(float f);  /* theirs / yours */
+const char *DamRollDesc(int a);
+const char *HitRollDesc(int a);
+const char *ArmorDesc(int a);
+const char *AlignDesc(int a);
+const char *DescAttacks(float a);
 int MobLevBonus( struct char_data *ch );
 
 int singular( struct obj_data *o)
@@ -2496,7 +2496,7 @@ void do_weather(struct char_data *ch, const char *argument, int cmd)
 {
   extern struct weather_data weather_info;
   char buf[ 256 ];
-  char *sky_look[] =
+  const char *sky_look[] =
   {
     "sereno",
     "nuvoloso",
@@ -2825,7 +2825,7 @@ void do_who(struct char_data *ch, const char *argument, int cmd)
           else
           {
             char levels[40]="", classes[20]="";
-            char *classname[]={ "Mu","Cl","Wa","Th","Dr","Mo","Ba","So","Pa",
+            const char *classname[]={ "Mu","Cl","Wa","Th","Dr","Mo","Ba","So","Pa",
                                 "Ra","Ps"};
             int i,total,classn; long bit;
 #if 1
@@ -4066,7 +4066,7 @@ void do_value(struct char_data *ch, const char *argument, int cmd)
   }  
 }
 
-char *AlignDesc(int a)
+const char *AlignDesc(int a)
 {
   if (a <= -900)
   {
@@ -4107,7 +4107,7 @@ char *AlignDesc(int a)
 }
 
 
-char *ArmorDesc(int a)
+const char *ArmorDesc(int a)
 {
   if (a >= 90)
   {
@@ -4147,7 +4147,7 @@ char *ArmorDesc(int a)
   }
 }
 
-char *HitRollDesc(int a)
+const char *HitRollDesc(int a)
 {
   if (a < -5)
   {
@@ -4175,7 +4175,7 @@ char *HitRollDesc(int a)
   }
 }
 
-char *DamRollDesc(int a)
+const char *DamRollDesc(int a)
 {
   if (a < -5)
   {
@@ -4203,7 +4203,7 @@ char *DamRollDesc(int a)
   }
 }
 
-char *DescRatio(float f)  /* theirs / yours */
+const char *DescRatio(float f)  /* theirs / yours */
 {
   if (f > 1.0)
   {
@@ -4234,7 +4234,7 @@ char *DescRatio(float f)  /* theirs / yours */
     return("estremamente piu` basso del tuo");
   }  
 }
-char *DescRatioF(float f)  /* theirs / yours */
+const char *DescRatioF(float f)  /* theirs / yours */
 {
   if (f > 1.0)
   {
@@ -4266,7 +4266,7 @@ char *DescRatioF(float f)  /* theirs / yours */
   }  
 }
 
-char *DescDamage(float dam)
+const char *DescDamage(float dam)
 {
   if (dam < 1.0)
   {
@@ -4302,7 +4302,7 @@ char *DescDamage(float dam)
   }
 }
 
-char *DescAttacks(float a)
+const char *DescAttacks(float a)
 {
   if (a < 1.0)
   {

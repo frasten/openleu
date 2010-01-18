@@ -171,13 +171,13 @@ void do_spells(struct char_data *ch, const char *argument, int cmd);
 void do_world(struct char_data *ch, const char *argument, int cmd);
 void do_attribute(struct char_data *ch, const char *argument, int cmd);
 void do_value(struct char_data *ch, const char *argument, int cmd);
-char *AlignDesc(int a);
-char *ArmorDesc(int a);
-char *HitRollDesc(int a);
-char *DamRollDesc(int a);
-char *DescRatio(float f);
-char *DescDamage(float dam);
-char *DescAttacks(float a);
+const char *AlignDesc(int a);
+const char *ArmorDesc(int a);
+const char *HitRollDesc(int a);
+const char *DamRollDesc(int a);
+const char *DescRatio(float f);
+const char *DescDamage(float dam);
+const char *DescAttacks(float a);
 
 /* From act.move.c */
 int MoveOne( struct char_data *ch, int dir, int bCheckSpecial );
