@@ -79,7 +79,7 @@ typedef struct alias_type
 struct QuestItem 
 {
   int item;
-  char *where;
+  const char *where;
 };
 
 /*

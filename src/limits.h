@@ -1,7 +1,7 @@
 
 struct title_type
 {
-        char *title_m;
-        char *title_f;
+        const char *title_m;
+        const char *title_f;
         int exp;
 };
