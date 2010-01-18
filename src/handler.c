@@ -30,7 +30,7 @@ extern int WizLock;
 extern int top_of_objt;
 extern long mob_count;
 
-int str_cmp2(char *arg1, char *arg2);
+int str_cmp2(const char *arg1, const char *arg2);
 
 char *fname(const char *namelist)
 {

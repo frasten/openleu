@@ -16,7 +16,7 @@ extern struct descriptor_data *descriptor_list;
 struct obj_data *create_money( int amount );
 char getall(char *name, char *newname);
 int getabunch(char *name, char  *newname);
-int str_cmp2(char *arg1, char *arg2);
+int str_cmp2(const char *arg1, const char *arg2);
 
 /* procedures related to get */
 void get( struct char_data *ch, struct obj_data *obj_object, 

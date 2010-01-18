@@ -484,8 +484,9 @@ int RawMove( struct char_data *ch, int dir, int bCheckSpecial )
   {
     if (ch->specials.hunting) 
     {
-      if (IS_SET(ch->specials.act, ACT_HUNTING) && ch->desc)
+      if (IS_SET(ch->specials.act, ACT_HUNTING) && ch->desc) {
         WAIT_STATE(ch, PULSE_VIOLENCE);
+      }
     }
   } 
   else 
@@ -1021,9 +1022,9 @@ void do_open_exit(struct char_data *ch, const char *argument, int cmd)
   struct room_direction_data    *exitp,*back;
   struct room_data      *rp;
 
-  char *cmdnameT = NULL;
-  char *cmdnameP = NULL;
-  char *cmdnameI = NULL;
+  const char *cmdnameT = NULL;
+  const char *cmdnameP = NULL;
+  const char *cmdnameI = NULL;
   /*=FindCommandName(cmd);*/
 
   switch( cmd )

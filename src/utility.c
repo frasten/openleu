@@ -641,7 +641,7 @@ int str_cmp(const char *arg1, const char *arg2)
  * x caratteri nel confronto. Dove x e la lunghezza di arg1.
  * Quindi le due stringhe 'pip' e 'pippo' sono considerate uguali.
  */
-int str_cmp2(char *arg1, char *arg2)
+int str_cmp2(const char *arg1, const char *arg2)
 {
   int chk;
 	unsigned int i;
