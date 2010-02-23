@@ -1889,7 +1889,7 @@ void do_cast(struct char_data *ch, const char *argument, int cmd)
         }
       }
     }        /* if GET_POS < min_pos */
-    free(arg);
+    //free(arg);
     return;
   }
   
