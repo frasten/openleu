@@ -1,0 +1,7 @@
+src/leu
+src/*.tar.gz
+*.o
+/logs/*
+/lib/players/*.dat
+/lib/rent/*
+/lib/world/*
