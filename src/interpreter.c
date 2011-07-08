@@ -1616,7 +1616,7 @@ void nanny(struct descriptor_data *d, char *arg)
   extern int WizLock;
   extern int plr_tick_count;
   
-  void do_look(struct char_data *ch, char *argument, int cmd);
+  void do_look(struct char_data *ch, const char *argument, int cmd);
   void load_char_objs(struct char_data *ch);
   int load_char(char *name, struct char_file_u *char_element);
   void show_class_selection(struct descriptor_data *d, int r);

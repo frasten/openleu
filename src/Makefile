@@ -20,7 +20,7 @@ TITANFLAGS = -g -43 -vector_c -safe=ptrs -DTITAN
 DEBUGFLAGS =-g # -O2 -fomit-frame-pointer -fno-strength-reduce -m486 -malign-loops=2 -malign-functions=2 -malign-jumps=2
 MYFLAGS = $(DEBUGFLAGS) -pipe -Wall -DNETBSD -DLINUX -DCLEAN_AT_BOOT -DNEW_EXP -DNEW_GAIN -traditional
 ## -mno-fp-ret-in-387
-CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE
+CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE -Werror
 ##
 ## **********************************************************
 ##  COMPILE TIME DEFINES, CPPFLAGS!
@@ -142,6 +142,7 @@ SRCS = comm.c act.comm.c act.info.c act.move.c act.obj1.c act.obj2.c \
 OBJS = $(SRCS:.c=.o)
 
 
+#V=1
 # from Lauri Leukkunen's build system
 ifdef V
   Q = 

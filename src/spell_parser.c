@@ -780,7 +780,7 @@ void affect_update( int pulse )
   
   
   void update_char_objects( struct char_data *ch ); /* handler.c */
-  void do_save(struct char_data *ch, char *arg, int cmd); /* act.other.c */
+  void do_save(struct char_data *ch, const char *arg, int cmd); /* act.other.c */
 
   
   for (i = character_list; i; i = next_char) 

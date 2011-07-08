@@ -1136,7 +1136,7 @@ void shopping_list( char *arg, struct char_data *ch,
                    struct char_data *keeper, int shop_nr);
 void shopping_kill( char *arg, struct char_data *ch,
                    struct char_data *keeper, int shop_nr);
-int shop_keeper(struct char_data *ch, int cmd, char *arg, char *mob, int type);
+int shop_keeper(struct char_data *ch, int cmd, const char *arg, char *mob, int type);
 void boot_the_shops();
 void assign_the_shopkeepers();
  

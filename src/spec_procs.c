@@ -1044,11 +1044,11 @@ int mayor(struct char_data *ch, int cmd, const char *arg, struct char_data *mob,
   static int index;
   static bool move = FALSE;
   
-  void do_move(struct char_data *ch, char *argument, int cmd);
-  void do_open(struct char_data *ch, char *argument, int cmd);
-  void do_lock(struct char_data *ch, char *argument, int cmd);
-  void do_unlock(struct char_data *ch, char *argument, int cmd);
-  void do_close(struct char_data *ch, char *argument, int cmd);
+  void do_move(struct char_data *ch, const char *argument, int cmd);
+  void do_open(struct char_data *ch, const char *argument, int cmd);
+  void do_lock(struct char_data *ch, const char *argument, int cmd);
+  void do_unlock(struct char_data *ch, const char *argument, int cmd);
+  void do_close(struct char_data *ch, const char *argument, int cmd);
 
   mob->lStartRoom = 0;
 
@@ -1715,7 +1715,7 @@ void npc_steal(struct char_data *ch,struct char_data *victim)
 int snake( struct char_data *ch, int cmd, const char *arg, struct char_data *mob, 
            int type)
 {
-  void cast_poison( byte level, struct char_data *ch, char *arg, int type,
+  void cast_poison( byte level, struct char_data *ch, const char *arg, int type,
                     struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if( type != EVENT_TICK || !AWAKE(ch))
@@ -2052,7 +2052,7 @@ int ghoul(struct char_data *ch, int cmd, const char *arg, struct char_data *mob,
 {
   struct char_data *tar;
   
-  void cast_paralyze( byte level, struct char_data *ch, char *arg, int type,
+  void cast_paralyze( byte level, struct char_data *ch, const char *arg, int type,
                       struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if (cmd || !AWAKE(ch))
@@ -2085,7 +2085,7 @@ int CarrionCrawler(struct char_data *ch, int cmd, const char *arg, struct char_d
   struct char_data *tar;
   int i;
   
-  void cast_paralyze( byte level, struct char_data *ch, char *arg, int type,
+  void cast_paralyze( byte level, struct char_data *ch, const char *arg, int type,
                       struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if (cmd || !AWAKE(ch))
@@ -2154,7 +2154,7 @@ int WizardGuard(struct char_data *ch, int cmd, const char *arg, struct char_data
 
 int vampire(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
-  void cast_energy_drain(byte level,struct char_data *ch, char *arg,int type,
+  void cast_energy_drain(byte level,struct char_data *ch, const char *arg,int type,
                          struct char_data *tar_ch,struct obj_data *tar_obj);
   
   if (cmd || !AWAKE(ch))
@@ -2178,7 +2178,7 @@ int vampire(struct char_data *ch, int cmd, const char *arg, struct char_data *mo
 
 int wraith(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
-  void cast_energy_drain( byte level, struct char_data *ch, char *arg, int type,          struct char_data *tar_ch, struct obj_data *tar_obj );
+  void cast_energy_drain( byte level, struct char_data *ch, const char *arg, int type,          struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if (cmd || !AWAKE(ch))
     return(FALSE);
@@ -2200,9 +2200,9 @@ int wraith(struct char_data *ch, int cmd, const char *arg, struct char_data *mob
 int shadow(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   
-  void cast_chill_touch( byte level, struct char_data *ch, char *arg, int type,
+  void cast_chill_touch( byte level, struct char_data *ch, const char *arg, int type,
                         struct char_data *tar_ch, struct obj_data *tar_obj );
-  void cast_weakness( byte level, struct char_data *ch, char *arg, int type,
+  void cast_weakness( byte level, struct char_data *ch, const char *arg, int type,
                      struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if (cmd || !AWAKE(ch))
@@ -2227,7 +2227,7 @@ int shadow(struct char_data *ch, int cmd, const char *arg, struct char_data *mob
 int geyser(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type)
 {
   
-  void cast_geyser( byte level, struct char_data *ch, char *arg, int type,
+  void cast_geyser( byte level, struct char_data *ch, const char *arg, int type,
                    struct char_data *tar_ch, struct obj_data *tar_obj );
   
   if (cmd || !AWAKE(ch))
@@ -3136,7 +3136,7 @@ int temple_labrynth_sentry(struct char_data *ch, int cmd, const char *arg, struc
   struct char_data *tch;
   int counter;
   
-  void cast_fireball( byte level, struct char_data *ch, char *arg, int type,
+  void cast_fireball( byte level, struct char_data *ch, const char *arg, int type,
                      struct char_data *victim, struct obj_data *tar_obj );
   void do_say(struct char_data *ch, const char *argument, int cmd);
   

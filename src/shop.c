@@ -108,7 +108,7 @@ int shop_producing(struct obj_data *item, int shop_nr)
   return(FALSE);
 }
 
-void shopping_buy( char *arg, struct char_data *ch,
+void shopping_buy( const char *arg, struct char_data *ch,
          struct char_data *keeper, int shop_nr)
 {
   char argm[100], buf[MAX_STRING_LENGTH], newarg[100];
@@ -252,7 +252,7 @@ void shopping_buy( char *arg, struct char_data *ch,
   return; 
 }
 
-void shopping_sell( char *arg, struct char_data *ch,
+void shopping_sell( const char *arg, struct char_data *ch,
                    struct char_data *keeper,int shop_nr)
 {
   char argm[100], buf[MAX_STRING_LENGTH];
@@ -398,7 +398,7 @@ void shopping_sell( char *arg, struct char_data *ch,
   return;
 }
 
-void shopping_value( char *arg, struct char_data *ch, 
+void shopping_value( const char *arg, struct char_data *ch, 
                     struct char_data *keeper, int shop_nr)
 {
   char argm[100], buf[MAX_STRING_LENGTH];
@@ -457,7 +457,7 @@ void shopping_value( char *arg, struct char_data *ch,
   return;
 }
 
-void shopping_list( char *arg, struct char_data *ch,
+void shopping_list( const char *arg, struct char_data *ch,
                    struct char_data *keeper, int shop_nr)
 {
   char buf[MAX_STRING_LENGTH], buf2[100],buf3[100];
@@ -522,7 +522,7 @@ void shopping_list( char *arg, struct char_data *ch,
   return;
 }
 
-void shopping_kill( char *arg, struct char_data *ch,
+void shopping_kill( const char *arg, struct char_data *ch,
                    struct char_data *keeper, int shop_nr)
 {
   char buf[100];
@@ -546,14 +546,14 @@ void shopping_kill( char *arg, struct char_data *ch,
 }
 
 
-int shop_keeper(struct char_data *ch, int cmd, char *arg, char *mob, int type)
+int shop_keeper(struct char_data *ch, int cmd, const char *arg, char *mob, int type)
 {
   char argm[100];
   struct char_data *temp_char;
   struct char_data *keeper;
   int shop_nr;
   
-  int citizen(struct char_data *ch, int cmd, char *arg, struct char_data *mob, int type);
+  int citizen(struct char_data *ch, int cmd, const char *arg, struct char_data *mob, int type);
 
   if(type == EVENT_DWARVES_STRIKE) {
     ch->generic = DWARVES_STRIKE;
