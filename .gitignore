@@ -5,3 +5,4 @@ src/*.tar.gz
 /lib/players/*.dat
 /lib/rent/*
 /lib/world/*
+src/.depend
