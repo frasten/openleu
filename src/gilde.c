@@ -17,7 +17,7 @@ typedef struct structSocioGilda
 typedef struct
 {
   int nGuardia;
-  int nGuardiaRoom;
+  long nGuardiaRoom;
   int nDir;
   int nBanchiere;
   int nBanca;
@@ -1344,7 +1344,7 @@ void BootGuilds()
       
       for( i = 0; i < nMax && !feof( pfDatiGilde ); i++ )
       {
-        fscanf( pfDatiGilde, "%80s %d %d %d %d %d %d %d %d\n", 
+        fscanf( pfDatiGilde, "%80s %d %ld %d %d %d %d %d %d\n",
                  pDatiGilde[ i ].szBaseFileName, &pDatiGilde[ i ].nGuardia,
                 &pDatiGilde[ i ].nGuardiaRoom,   &pDatiGilde[ i ].nDir,
                 &pDatiGilde[ i ].nBanchiere,     &pDatiGilde[ i ].nBanca,
