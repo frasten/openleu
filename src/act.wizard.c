@@ -1950,7 +1950,7 @@ void do_ooedit(struct char_data *ch, const char *argument, int cmd)
   char parmstr2[MAX_STRING_LENGTH];
 
   struct obj_data  *j=0;
-  int iVNum;
+  //int iVNum;
   
   /* for objects 
   extern char *item_types[];
@@ -2012,7 +2012,7 @@ void do_ooedit(struct char_data *ch, const char *argument, int cmd)
     
   if( ( j = (struct obj_data *)get_obj_in_list_vis( ch, item, ch->carrying ) ) ) 
   {
-    iVNum = (j->item_number >= 0) ? obj_index[j->item_number].iVNum : 0;
+    //iVNum = (j->item_number >= 0) ? obj_index[j->item_number].iVNum : 0;
 
     if (!strcmp(field,"name")) 
     {

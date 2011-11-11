@@ -2494,7 +2494,7 @@ void reset_zone(int zone)
   FILE *fl;
   static int done = FALSE;
   struct char_data *pLastMob = 0;
-  struct obj_data *pLastCont = 0;
+//  struct obj_data *pLastCont = 0;
 
   if( zone == 0 && !done )
   {
@@ -2634,8 +2634,8 @@ void reset_zone(int zone)
               {
                 obj_to_room( pObj, ZCMD.arg3 );
                 nLastCmd = TRUE;
-                if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
-                  pLastCont = pObj;
+//                if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
+//                  pLastCont = pObj;
               }
             }
           }
@@ -2670,8 +2670,8 @@ void reset_zone(int zone)
             pLastMob && ( pObj = read_object( ZCMD.arg1, REAL ) ) != NULL )
         {
           obj_to_char( pObj, pLastMob );
-          if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
-            pLastCont = pObj;
+//          if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
+//            pLastCont = pObj;
         }
         break;
 
@@ -2696,8 +2696,8 @@ void reset_zone(int zone)
           if( !pLastMob->equipment[ ZCMD.arg3 ] )
           {
             equip_char( pLastMob, pObj, ZCMD.arg3);
-            if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
-              pLastCont = pObj;
+//            if( ITEM_TYPE( pObj ) == ITEM_CONTAINER )
+//              pLastCont = pObj;
           }
           else
           {

@@ -4921,7 +4921,7 @@ int IsRoomDistanceInRange( int nFirstRoom, int nSecondRoom, int nRange )
   
   int i, tmp_room, count = 0, bThruDoors;
   struct room_data *herep, *therep;
-  struct room_data *startp;
+//  struct room_data *startp;
   struct room_direction_data *exitp;
 
   /* If start = destination we are done */
@@ -4938,7 +4938,8 @@ int IsRoomDistanceInRange( int nFirstRoom, int nSecondRoom, int nRange )
     bThruDoors = TRUE;
   }
 
-  startp = real_roomp( nFirstRoom );
+  //startp = real_roomp( nFirstRoom );
+  real_roomp( nFirstRoom );
 
 #if defined( EMANUELE )
   memset( aRoom, 0, sizeof( aRoom ) );

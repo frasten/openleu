@@ -824,7 +824,8 @@ void update_obj_file()
 {
   struct obj_file_u st;
   struct char_file_u ch_st;
-  long days_passed, secs_lost;
+  long days_passed;
+  // long secs_lost;
   
 
   FILE *pObjFile;
@@ -857,7 +858,7 @@ void update_obj_file()
               {
                 mudlog( LOG_CHECK, " Processing %s.", st.owner );
                 days_passed = ((time(0) - st.last_update) / SECS_PER_REAL_DAY);
-                secs_lost = ((time(0) - st.last_update) % SECS_PER_REAL_DAY);
+                // secs_lost = ((time(0) - st.last_update) % SECS_PER_REAL_DAY);
           
                 if( ch_st.load_room == AUTO_RENT )
                 {  /* this person was autorented */

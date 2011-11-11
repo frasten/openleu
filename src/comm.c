@@ -192,10 +192,10 @@ char *ParseAnsiColors( int UsingAnsi, const char *txt )
   static char buf [MAX_STRING_LENGTH ] = "";
   char tmp[20];
   
-  register int i,l,f = 0;
+  register int l,f = 0;
 
   buf[ 0 ] = 0;        
-  for( i=0, l=0; *txt; )
+  for( l=0; *txt; )
   {
     if( *txt == '\\' && *( txt + 1 ) == '$' )
     {

@@ -851,7 +851,7 @@ int banshee(struct char_data *ch, int cmd, const char *arg, struct char_data *mo
 {
 
  struct char_data *tmp;
- int victim;
+ //int victim;
  
   if (cmd) return(FALSE);
   if (!AWAKE(mob)) return(FALSE);
@@ -865,7 +865,7 @@ int banshee(struct char_data *ch, int cmd, const char *arg, struct char_data *mo
     if (tmp == ch || IS_IMMORTAL(tmp)) {
       continue;
     } else {
-      victim=1;
+      //victim=1;
       act("$n wails loudly draining the life from your body!", TRUE, ch, 0, 0, TO_ROOM);
       /* do wail damage stuff here */
     }

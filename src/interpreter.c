@@ -1607,7 +1607,7 @@ void nanny(struct descriptor_data *d, char *arg)
 #if !defined( EMANUELE )
   int player_i;
 #endif
-  int count=0, oops=FALSE, index=0;
+  int index=0;
   char tmp_name[20];
   struct char_file_u tmp_store;
   struct char_data *tmp_ch;
@@ -2052,8 +2052,8 @@ void nanny(struct descriptor_data *d, char *arg)
       for (; isspace(*arg); arg++);
 
       d->character->player.iClass = 0;
-      count=0;
-      oops=FALSE;
+      //count=0;
+      //oops=FALSE;
 
       switch (*arg) 
       {
