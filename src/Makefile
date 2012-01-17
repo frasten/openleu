@@ -18,7 +18,19 @@ LD=$(CC)
 ##  these are architecture dependent flags
 TITANFLAGS = -g -43 -vector_c -safe=ptrs -DTITAN
 DEBUGFLAGS =-g # -O2 -fomit-frame-pointer -fno-strength-reduce -m486 -malign-loops=2 -malign-functions=2 -malign-jumps=2
-MYFLAGS = $(DEBUGFLAGS) -pipe -Wall -DNETBSD -DLINUX -DCLEAN_AT_BOOT -DNEW_EXP -DNEW_GAIN -traditional
+
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	ARCHFLAGS := -DLINUX
+endif
+ifeq ($(UNAME), Darwin)
+	ARCHFLAGS := -DMACOSX -DLINUX
+	MACOSX = 1
+endif
+
+
+MYFLAGS = $(DEBUGFLAGS) $(ARCHFLAGS) -pipe -Wall -DNETBSD -DCLEAN_AT_BOOT -DNEW_EXP -DNEW_GAIN -traditional
 ## -mno-fp-ret-in-387
 CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE -Werror
 ##
@@ -152,6 +164,10 @@ else
   Q = @
 endif
 
+ifndef MACOSX
+	# Not required under MacOSX
+	LIBCRYPT = /usr/lib/libcrypt.a
+endif
 
 
 
@@ -168,7 +184,7 @@ leu: ${OBJS}
 ##	$(LD) -nostartfiles -o $@ /usr/lib/gcrt0.o -gdb3 ${OBJS} /usr/lib/libgmon.a
 ##	$(LD) $(DEBUGFLAGS) -o $@ ${OBJS}
 	$(P)LD
-	$(Q)$(LD) $(DEBUGFLAGS) -o $@ ${OBJS} /usr/lib/libcrypt.a
+	$(Q)$(LD) $(DEBUGFLAGS) -o $@ ${OBJS} $(LIBCRYPT)
 
 ##  $(LD) -o $@ -g ${OBJS} -L/usr/local/gnu/lib/gcc-lib/sun4-sunos4.1.1/2.3
 

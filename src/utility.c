@@ -1,6 +1,12 @@
 
 #include <stdio.h>
-#include <malloc.h>
+
+#ifdef MACOSX
+  #include <sys/malloc.h>
+#else
+  #include <malloc.h>
+#endif
+
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
