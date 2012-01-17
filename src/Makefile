@@ -43,7 +43,7 @@ CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE -Werror
 ##
 ##  To make some optimizations, you need to add things to the line above.
 ##  to use hash tables for rooms  (More cpu, less storage), add
-##  -DHASH    
+##  -DHASH
 ##
 ##  To get rid of tracking (lower cpu)
 ##  -DNOTRACK
@@ -116,7 +116,7 @@ CFLAGS = $(MYFLAGS) -DLOG_DEBUG -DEMANUELE -Werror
 ##    GLOBAL. Tell is limited to people in the zone you are currently
 ##    standing in. This does NOT include SHOUT.
 ##
-## -DLAG_MOBILES    
+## -DLAG_MOBILES
 ##    This define should make mobiles lag with commands as
 ##    pc's do. I.e. bashed pause, etc...
 ##
@@ -157,7 +157,7 @@ OBJS = $(SRCS:.c=.o)
 #V=1
 # from Lauri Leukkunen's build system
 ifdef V
-  Q = 
+  Q =
   P = @printf "" # <- space before hash is important!!!
 else
   P = @printf "[%s] $@\n" # <- space before hash is important!!!
