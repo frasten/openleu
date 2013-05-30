@@ -465,6 +465,10 @@ void switch_light(byte why)
    mudlog( LOG_CHECK, "setting all rooms to dark" );
    gLightLevel = 0;
    break;
+ case SUN_RISE:
+   mudlog( LOG_CHECK, "setting all rooms to light" );
+   gLightLevel = 2;
+   break;
  case MOON_RISE:
    mudlog( LOG_CHECK, "setting all non-forest to light" );
    gLightLevel = 1;
